@@ -3,8 +3,6 @@ import core from 'free-fe-core';
 import config from '../config';
 import { i18n } from './i18n';
 
-import builder from '../free/builder';
-
 const messages = {
   'en-us': {
     error404: 'Sorry, nothing here...',
@@ -25,7 +23,6 @@ const messages = {
 };
 
 export default boot((ctx) => {
-  config.builder = builder;
   const { routes } = core.init({ ...ctx, config });
 
   routes.push({

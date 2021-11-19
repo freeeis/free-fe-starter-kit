@@ -4064,6 +4064,14 @@ fraction.js@^4.1.1:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.1.1.tgz"
   integrity sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==
 
+"free-fe-core@https://github.com/freeeis/free-fe-core.git":
+  version "0.0.1"
+  resolved "https://github.com/freeeis/free-fe-core.git#07a975e43b29c27037eb8e6eeccbb54e74f55f5e"
+
+"free-fe-demo@https://github.com/freeeis/free-fe-demo.git":
+  version "0.0.1"
+  resolved "https://github.com/freeeis/free-fe-demo.git#fe5275e1d03857a6dc800fb74d56515b0697cc40"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz"

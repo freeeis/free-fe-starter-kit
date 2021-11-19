@@ -30,6 +30,8 @@
     "ant-design-vue": "2.2.8",
     "axios": "^0.22.0",
     "core-js": "^3.18.2",
+    "free-fe-core": "https://github.com/freeeis/free-fe-core.git",
+    "free-fe-demo": "https://github.com/freeeis/free-fe-demo.git",
     "moment": "^2.29.1",
     "path": "^0.12.7",
     "quasar": "^2.1.0",
