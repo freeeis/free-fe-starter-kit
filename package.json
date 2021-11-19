@@ -1,0 +1,66 @@
+{
+  "name": "free3",
+  "version": "0.0.1",
+  "description": "Next version of Free",
+  "productName": "",
+  "author": "zhiquan <x.zhiquan@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "env=development quasar dev",
+    "start:test": "env=test quasar dev",
+    "start:prod": "env=production quasar dev",
+    "start:android": "env=capacitor quasar dev -m capacitor -T android",
+    "start:ios": "env=capacitor quasar dev -m capacitor -T ios",
+    "build:dev": "env=development quasar build",
+    "build:test": "env=test quasar build",
+    "build:prod": "env=production quasar build",
+    "test:dev": "echo \"No test specified\" && exit 0",
+    "test:test": "echo \"No test specified\" && exit 0",
+    "test:prod": "echo \"No test specified\" && exit 0",
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --ext .js,.vue src --fix",
+    "genkey": "keytool -genkey -v -keystore android.keystore -alias free -keyalg RSA -keysize 2048 -validity 20000",
+    "build:android": "env=capacitor quasar build -m capacitor -T android",
+    "build:android:sign": "env=capacitor quasar build -m capacitor -T android && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore android.keystore ./dist/capacitor/android/apk/release/app-release-unsigned.apk free && ~/Library/Android/sdk/build-tools/28.0.0/zipalign -f -v 4 ./dist/capacitor/android/apk/release/app-release-unsigned.apk wcjf.apk",
+    "build:ios": "env=capacitor quasar build -m capacitor -T ios"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.11.2",
+    "@tinymce/tinymce-vue": "^4.0.4",
+    "ant-design-vue": "2.2.8",
+    "axios": "^0.22.0",
+    "core-js": "^3.18.2",
+    "moment": "^2.29.1",
+    "path": "^0.12.7",
+    "quasar": "^2.1.0",
+    "uglify": "^0.1.5",
+    "vant": "^3.2.3",
+    "vue-i18n": "^9.2.0-beta.7",
+    "vuex": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.8",
+    "@quasar/app": "^3.1.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.19.1",
+    "eslint-webpack-plugin": "^3.0.1",
+    "workbox-webpack-plugin": "^6.3.0"
+  },
+  "browserslist": [
+    "last 20 Chrome versions",
+    "last 20 Firefox versions",
+    "last 10 Edge versions",
+    "last 10 Safari versions",
+    "last 15 Android versions",
+    "last 10 ChromeAndroid versions",
+    "last 10 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 10 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
