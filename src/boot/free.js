@@ -2,7 +2,10 @@ import { boot } from 'quasar/wrappers'
 import core from 'free-fe-core';
 import config from '../config';
 
+import builder from '../free/builder';
+
 export default boot((ctx) => {
+  config.builder = builder;
   const { routes } = core.init({ ...ctx, config });
 
   routes.push({

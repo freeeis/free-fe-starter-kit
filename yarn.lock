@@ -2682,15 +2682,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001219:
-  version "1.0.30001239"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001239.tgz"
-  integrity sha512-cyBkXJDMeI4wthy8xJ2FvDU6+0dtcZSJW3voUF8+e9f1bBeuvyZfc3PNbkOETyhbR+dGCPzn9E7MA3iwzusOhQ==
-
-caniuse-lite@^1.0.30001260, caniuse-lite@^1.0.30001264:
-  version "1.0.30001265"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001265.tgz#0613c9e6c922e422792e6fcefdf9a3afeee4f8c3"
-  integrity sha512-YzBnspggWV5hep1m9Z6sZVLOt7vrju8xWooFAgN6BA5qvy98qPAPb7vNUzypFaoh2pb3vlfzbDO8tB57UPGbtw==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001260, caniuse-lite@^1.0.30001264:
+  version "1.0.30001332"
+  resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001332.tgz"
+  integrity sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==
 
 chalk@4.1.2:
   version "4.1.2"
@@ -4066,7 +4061,7 @@ fraction.js@^4.1.1:
 
 "free-fe-core@https://github.com/freeeis/free-fe-core.git":
   version "0.0.1"
-  resolved "https://github.com/freeeis/free-fe-core.git#07a975e43b29c27037eb8e6eeccbb54e74f55f5e"
+  resolved "https://github.com/freeeis/free-fe-core.git#b0318c00c661f8e0b379a30814ae0a4af80fa2e5"
 
 "free-fe-demo@https://github.com/freeeis/free-fe-demo.git":
   version "0.0.1"

@@ -23,7 +23,7 @@ const messages = {
 };
 
 const getLocale = () => {
-  let locale = store.getters['app/getLocale'] || config.defaultLocale;
+  let locale = store().getters['app/getLocale'] || config.defaultLocale;
 
   if (!locale) {
     const sysLocale = Quasar.lang.getLocale().toLowerCase();
@@ -45,10 +45,10 @@ const i18n = createI18n({
   fallbackLocale: DEFAULT_LANGUAGE,
 })
 
-export default boot(({ app }) => {
+export default boot((ctx) => {
   // Set i18n instance on app
-  app.config.globalProperties.i18n = i18n;
-  app.use(i18n);
+  ctx.app.config.globalProperties.i18n = i18n;
+  ctx.app.use(i18n);
 
   if (ctx.store && ctx.store.i18nMessages) {
     Object.keys(ctx.store.i18nMessages).forEach((ik) => {

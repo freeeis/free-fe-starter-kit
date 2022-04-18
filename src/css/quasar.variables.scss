@@ -11,3 +11,30 @@ $positive  : #0CAFCC;
 $negative  : #820909;
 $info      : #2a9ab0;
 $warning   : #E09E10;
+
+// layout;
+$portalContentWidthValue: 1200px;
+$portalContentMaxWidth: 100%;
+$portalContentMinWidth: 1200px;
+$contentMaxWidth: 100%;
+$contentMinWidth: 400px;
+
+// Input field label;
+$inputFieldCategoryMargin: 30px auto -20px auto;
+$inputFieldWrapperMargin: 0 0 30px 0;
+$inputFieldMargin: 0px 20px 0px 0;
+$simpleFieldWidth: 100%;
+$simpleFieldHeight: 40px;
+$fieldLabelWidth: 120px;
+$fieldLabelFontSize: 12px;
+$fieldLabelColor: black;
+$fieldLabelAfter: '';
+$fieldLabelRequiredColor: red;
+$editorAreaBackground: rgba(238,238,238,1);
+
+$zebraEvenColor: #F0F5FF;
+$zebraOddColor: $background;
+
+// table;
+$tableBorderColor: rgba(0, 0, 0, 0.12);
+$tableRowHeight: 40px;

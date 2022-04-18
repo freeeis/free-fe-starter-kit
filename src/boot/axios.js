@@ -2,6 +2,7 @@ import { boot } from 'quasar/wrappers'
 import axios from 'axios'
 import config from '../config';
 import { Platform, Notify } from 'quasar';
+import { getLocale } from './i18n';
 
 import Store from '@/store';
 const store = Store();
@@ -95,7 +96,7 @@ const getQueryKVPare = (o, parent = '') => {
       const kvl = getQueryKVPare(o[ok], parent ? `${parent}_DOT_${ok}` : ok);
       kv = kv.concat(kvl);
     }
-  } else if (parent && o) {
+  } else if (parent && o !== void 0 && o !== null) {
     kv.push(`${encodeURI(parent)}=${encodeURI(o)}`);
   }
 
