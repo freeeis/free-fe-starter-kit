@@ -1,6 +1,8 @@
 import { boot } from 'quasar/wrappers';
-import echarts from 'echarts';
+import * as echarts from 'echarts';
 
-export default boot(({ app }) => {
+// "async" is optional;
+// more info on params: https://v2.quasar.dev/quasar-cli/boot-files
+export default boot(async ({ app }) => {
   app.config.globalProperties.$echarts = echarts;
 })
