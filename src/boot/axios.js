@@ -1,14 +1,17 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
 import config from '../config';
-import { Notify } from 'quasar';
+import { Platform, Notify } from 'quasar';
 
 import Store from '@/store';
 const store = Store();
 
 let requests;
 const Mocks = [];
-const { baseUrl } = config;
+let { baseUrl } = config;
+if (Platform.is.capacitor) {
+  baseUrl = `${config.backendURL}${baseUrl}`;
+}
 
 axios.defaults.timeout = 3000 * 1000;
 
@@ -38,22 +41,46 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error && error.response && error.response.status === 401) {
-      if (window.location.pathname !== '/login') { window.location.pathname = '/login'; }
+      if (window.location.pathname !== '/login') {
+        window.location.href = `/login?redirect=${window.location.pathname}`;
+      }
+    } else if (error && error.response && error.response.status === 403 && error.response.data && error.response.data.msg === 'RSTPWD') {
+      if (window.location.pathname !== '/recover') {
+        window.location.href = `/recover?redirect=${window.location.pathname}`;
+      }
     } else if (error && error.response && error.response.status !== 404) {
       if (error.response.data && error.response.data.msg) {
-        Notify.create(error.response.data.msg || error.response.data.msg.message);
+        let errMsg = error.response.data.msg.message || error.response.data.msg;
+        if (error.response.data.msg.code) {
+          errMsg = ERROR_MESSAGES[error.response.data.msg.code] || errMsg;
+        }
+
+        Notify.create(errMsg);
       }
     }
   },
 );
 
-const mockIt = (url, method) => {
+const addLocale = (opts) => {
+  if (opts && opts.locale) return opts;
+
+  const locale = getLocale();
+  if (config.requestWithLocale && locale) {
+    return { ...opts, locale };
+  }
+
+  return { ...opts };
+};
+
+const mockIt = (url, method, opts) => {
+  if (!process.env.DEV || config.ignoreMock) return undefined;
+
   const theMock = Mocks.find(
     (mk) => mk.method === method && new RegExp(mk.url).test(url),
   );
   if (theMock && theMock.func) {
     return new Promise((resolve) => {
-      resolve(typeof theMock.func === 'function' ? theMock.func() : theMock.func);
+      resolve(typeof theMock.func === 'function' ? theMock.func(opts) : theMock.func);
     });
   }
   return undefined;
@@ -68,13 +95,12 @@ const getQueryKVPare = (o, parent = '') => {
       const kvl = getQueryKVPare(o[ok], parent ? `${parent}_DOT_${ok}` : ok);
       kv = kv.concat(kvl);
     }
-  } else if (parent && o !== void 0 && o !== null) {
+  } else if (parent && o) {
     kv.push(`${encodeURI(parent)}=${encodeURI(o)}`);
   }
 
   return kv;
 };
-
 
 export default boot(({ app }) => {
   const getRequest = (url, options, newWin = false) => {
@@ -82,6 +108,8 @@ export default boot(({ app }) => {
 
     const shouldCancel = { shouldCancelRequest: options && options.cancel_request };
     if (options) delete options.cancel_request;
+
+    options = addLocale(options);
 
     if (options && Object.keys(options).length) {
       if (url.indexOf('?') > 0) {
@@ -97,7 +125,7 @@ export default boot(({ app }) => {
       return window.open(`${config.baseUrl}/${encodeURI(url)}${queryString}`);
     }
 
-    return mockIt(`${url}${queryString}`, 'get') || axiosInstance.get(encodeURI(url) + queryString, shouldCancel);
+    return mockIt(`${url}${queryString}`, 'get', options) || axiosInstance.get(encodeURI(url) + queryString, shouldCancel);
   };
 
   const postRequest = (url, data) => {
@@ -113,6 +141,8 @@ export default boot(({ app }) => {
     // }
 
     // if (data && data.pwdConfirm) delete data.pwdConfirm;
+
+    data = addLocale(data);
 
     return mockIt(url, 'post', data) || axiosInstance.post(url, Object.decycle(data));
   };
@@ -130,10 +160,17 @@ export default boot(({ app }) => {
     // }
 
     // if (data && data.pwdConfirm) delete data.pwdConfirm;
+
+    data = addLocale(data);
+
     return mockIt(url, 'put', data) || axiosInstance.put(url, Object.decycle(data));
   };
 
-  const deleteRequest = (url, data) => mockIt(url, 'delete', { data }) || axiosInstance.delete(url, { data: Object.decycle(data) });
+  const deleteRequest = (url, data) => {
+    data = addLocale(data);
+
+    return mockIt(url, 'delete', { data }) || axiosInstance.delete(url, { data: Object.decycle(data) });
+  };
 
   requests = {
     $axios: axiosInstance,
