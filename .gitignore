@@ -34,6 +34,5 @@ yarn-error.log*
 *.sln
 
 # !!TODO:!! please remove the following lines to enable customized modules
-/src/modules
-/src/free
+/src/modules/*
 /.gitmodules

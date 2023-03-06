@@ -1,7 +1,9 @@
 import { boot } from 'quasar/wrappers';
 import { createI18n } from 'vue-i18n';
 import { Quasar } from 'quasar';
-import store from '../store';
+import { createPinia } from 'pinia';
+import useAppStore from '../stores/app';
+import config from '../config';
 
 const messages = {
   'en-us': {
@@ -22,8 +24,10 @@ const messages = {
   },
 };
 
+let DEFAULT_LANGUAGE = '';
+
 const getLocale = () => {
-  let locale = store().getters['app/getLocale'] || config.defaultLocale;
+  let locale = DEFAULT_LANGUAGE || config.defaultLocale || 'zh-cn';
 
   if (!locale) {
     const sysLocale = Quasar.lang.getLocale().toLowerCase();
@@ -35,24 +39,32 @@ const getLocale = () => {
   return locale || 'zh-cn';
 };
 
-const DEFAULT_LANGUAGE = getLocale();
+DEFAULT_LANGUAGE = getLocale();
 
 export { DEFAULT_LANGUAGE, getLocale };
 
 const i18n = createI18n({
-  // legacy: false,
-  locale: DEFAULT_LANGUAGE,
-  fallbackLocale: DEFAULT_LANGUAGE,
+  legacy: false,
+  locale: 'zh-cn',
+  fallbackLocale: 'zh-cn',
 })
 
 export default boot((ctx) => {
+  ctx.app.use(createPinia())
+  const store = useAppStore();
+
+  const defaultLocale = store.locale || DEFAULT_LANGUAGE || Quasar.lang.getLocale().toLowerCase() || 'zh-cn';
+  i18n.locale = defaultLocale;
+  i18n.fallbackLocale = defaultLocale;
+  DEFAULT_LANGUAGE = defaultLocale;
+
   // Set i18n instance on app
   ctx.app.config.globalProperties.i18n = i18n;
   ctx.app.use(i18n);
 
-  if (ctx.store && ctx.store.i18nMessages) {
-    Object.keys(ctx.store.i18nMessages).forEach((ik) => {
-      i18n.global.setLocaleMessage(ik, { ...ctx.store.i18nMessages[ik], ...(messages[ik] || {}) });
+  if (ctx.app.i18nMessages) {
+    Object.keys(ctx.app.i18nMessages).forEach((ik) => {
+      i18n.global.setLocaleMessage(ik, { ...ctx.app.i18nMessages[ik], ...(messages[ik] || {}) });
     });
   }
 })

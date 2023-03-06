@@ -3,4 +3,5 @@ export default () => ({
   canI: [],
   locale: localStorage.getItem('locale'),
   theme: localStorage.getItem('theme') || '',
-});
+}
+)

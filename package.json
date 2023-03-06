@@ -25,29 +25,28 @@
     "build:ios": "env=capacitor quasar build -m capacitor -T ios"
   },
   "dependencies": {
-    "@quasar/extras": "^1.11.2",
-    "@tinymce/tinymce-vue": "^4.0.4",
-    "axios": "^0.22.0",
-    "core-js": "^3.18.2",
+    "@quasar/extras": "^1.15.11",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
     "echarts": "^5.3.2",
-    "free-fe-core": "https://github.com/freeeis/free-fe-core.git",
-    "free-fe-demo": "https://github.com/freeeis/free-fe-demo.git",
-    "free-fe-mixins": "https://github.com/freeeis/free-fe-mixins.git",
-    "moment": "^2.29.1",
+    "free-fe-core": "^0.0.2",
+    "free-fe-mixins": "^0.0.2",
+    "moment": "^2.29.4",
     "path": "^0.12.7",
-    "quasar": "^2.1.0",
-    "uglify": "^0.1.5",
-    "vue-i18n": "^9.2.0-beta.7",
-    "vuex": "^4.0.1"
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",
-    "@quasar/app": "^3.1.2",
-    "eslint": "^7.32.0",
+    "@quasar/app-webpack": "^3.7.1",
+    "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-vue": "^7.19.1",
-    "eslint-webpack-plugin": "^3.0.1",
-    "workbox-webpack-plugin": "^6.3.0"
+    "eslint-plugin-vue": "^9.9.0",
+    "eslint-webpack-plugin": "^4.0.0",
+    "prettier": "^2.5.1"
   },
   "browserslist": [
     "last 20 Chrome versions",
@@ -61,8 +60,8 @@
     "last 10 Opera versions"
   ],
   "engines": {
-    "node": ">= 12.22.1",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "node": ">= 16.15.1",
+    "npm": ">= 9.5.0",
+    "yarn": ">= 1.22.19"
   }
 }
