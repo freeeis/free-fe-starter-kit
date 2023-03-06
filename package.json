@@ -1,10 +1,11 @@
 {
-  "name": "free3",
-  "version": "0.0.1",
+  "name": "free-fe-starter-kit",
+  "version": "0.0.2",
   "description": "Build your enterprise information system freely",
   "productName": "",
-  "author": "zhiquan <x.zhiquan@gmail.com>",
-  "private": true,
+  "author": "zhiquan",
+  "license": "GPL-1.0-or-later",
+  "private": false,
   "scripts": {
     "start": "env=development quasar dev",
     "start:test": "env=test quasar dev",
