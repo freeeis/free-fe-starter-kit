@@ -3267,6 +3267,11 @@ free-fe-core@^0.0.2:
   resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.2.tgz#42e0ab11efd0a313ea0f97792032017ceda4b782"
   integrity sha512-lXvjck521nWvtazCtbvqT/RxT3DNWnxeCSG/XSCPBRixn85laNqyuxD5drNB+8356kdeh8wob69ib8CtfkuobQ==
 
+free-fe-demo@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/free-fe-demo/-/free-fe-demo-0.0.2.tgz#bc137d64e15d66af422b69ed4278e39afa40180b"
+  integrity sha512-3aziGkO2e7h0hbRYFxPpl9EQ1lFB8MLimlV1oYrNrLKWhZquGgSr4LbuXs26ft8ttSefPreG6cnymYvOxkI02A==
+
 free-fe-mixins@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/free-fe-mixins/-/free-fe-mixins-0.0.2.tgz#354f1b71174c01bddc6cb65ec89b6a8d29736f3a"

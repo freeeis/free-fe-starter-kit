@@ -31,6 +31,7 @@
     "core-js": "^3.6.5",
     "echarts": "^5.3.2",
     "free-fe-core": "^0.0.2",
+    "free-fe-demo": "^0.0.2",
     "free-fe-mixins": "^0.0.2",
     "moment": "^2.29.4",
     "path": "^0.12.7",
