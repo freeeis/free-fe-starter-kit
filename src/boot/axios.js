@@ -4,7 +4,7 @@
  *
  * @Author: zhiquan
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-07 11:40:58
+ * @LastEditTime: 2023-03-07 12:53:03
  * @LastEditors: zhiquan
  */
 
@@ -19,6 +19,9 @@ import useAppStore from '@/stores/app';
 let requests;
 const Mocks = [];
 let { baseUrl } = config;
+const ERROR_MESSAGES = {
+  401: 'No permission!',
+};
 
 /**
  * capacitor环境下，接口路径前需要添加设置的后台地址

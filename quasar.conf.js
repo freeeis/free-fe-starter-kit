@@ -31,6 +31,7 @@ module.exports = configure(function (ctx) {
       'i18n',
       'libs',
       'echarts',
+      'notify',
     ],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
