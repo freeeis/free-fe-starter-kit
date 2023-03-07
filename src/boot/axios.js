@@ -1,9 +1,10 @@
 /*
  * @Description: 封装axios库，实现后台接口调用。包括请求体的包装、响应数据的解析、mock等。
+ * 此boot file需要在free之前加载，因为这里面定义的mock方法在free中将被调用。
  *
  * @Author: zhiquan
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-07 09:07:20
+ * @LastEditTime: 2023-03-07 11:40:58
  * @LastEditors: zhiquan
  */
 
