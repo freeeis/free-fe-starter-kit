@@ -1,3 +1,14 @@
+/*
+ * @Description: i18n的封装。包括加载各模块中定义的字典数据。
+ * 这里要注意，此boot文件的加载应该在free boot文件之后。设置在quasar.conf.js中。
+ *
+ * @Author: zhiquan <x.zhiquan@gmail.com>
+ * @Date: 2021-06-21 15:14:42
+ * @LastEditTime: 2023-03-07 09:13:04
+ * @LastEditors: zhiquan
+ */
+
+
 import { boot } from 'quasar/wrappers';
 import { createI18n } from 'vue-i18n';
 import { Quasar } from 'quasar';
@@ -5,6 +16,7 @@ import { createPinia } from 'pinia';
 import useAppStore from '../stores/app';
 import config from '../config';
 
+// 默认的一些字典数据
 const messages = {
   'en-us': {
     error404: 'Sorry, nothing here...',
@@ -62,6 +74,7 @@ export default boot((ctx) => {
   ctx.app.config.globalProperties.i18n = i18n;
   ctx.app.use(i18n);
 
+  // 加载各模块中的字典数据。
   if (ctx.app.i18nMessages) {
     Object.keys(ctx.app.i18nMessages).forEach((ik) => {
       i18n.global.setLocaleMessage(ik, { ...ctx.app.i18nMessages[ik], ...(messages[ik] || {}) });

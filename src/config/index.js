@@ -1,3 +1,14 @@
+/*
+ * @Description: 定义全局方法 + 全局配置入口。
+ * 全局配置加载顺序为：默认配置 -> 当前环境对应的配置。后者覆盖前者。
+ * 全局配置中，每个模块的配置信息，会覆盖模块内部定义的配置默认值。
+ * 
+ * @Author: zhiquan <x.zhiquan@gmail.com>
+ * @Date: 2021-06-21 15:22:03
+ * @LastEditTime: 2023-03-07 09:26:55
+ * @LastEditors: zhiquan
+ */
+
 import { extend } from 'quasar';
 
 /**
@@ -25,6 +36,13 @@ Object.merge = (target, ...source) => {
   return target;
 };
 
+/**
+ * @description: 检查给定值是否有内容。
+ * 如果不是对象，则检查其是否为空。如果是对象，则检查其是否为空对象。
+ * 
+ * @param {any} o 要检查的值
+ * @return {Boolean} 是否有内容的判定。
+ */
 Object.hasValue = (o) => {
   if ([undefined, null].indexOf(o) >= 0) return false;
   if (typeof o !== 'object' && !!o) return true;
@@ -38,6 +56,12 @@ Object.hasValue = (o) => {
   return false;
 };
 
+/**
+ * @description: 获取对象中的嵌套值。
+ * @param {Object} obj 要获取其嵌套值的对象
+ * @param {String} p 要获取值的路径，可使用"."来连接多层级，以获取深层嵌套值
+ * @return {any} 指定路径下的嵌套值
+ */
 Object.nestValue = (obj, p) => {
   if (!obj || !p) return undefined;
 
@@ -56,6 +80,14 @@ Object.nestValue = (obj, p) => {
   return v;
 };
 
+/**
+ * @description: 设置对象的嵌套值
+ * 
+ * @param {Object} obj 要设置嵌套值的对象
+ * @param {String} n 要设置嵌套值的路径
+ * @param {any} v 要设置的值
+ * @return {Object} 设置了嵌套值之后的对象
+ */
 Object.setValue = (obj, n, v) => {
   if (!obj || !n) return undefined;
 
@@ -121,6 +153,7 @@ import config from './config.default';
 
 const allConfigs = {};
 
+// 获取所有环境的全局配置
 const configContext = require.context('./', true, /\/config.[a-z]+.js$/);
 const contextKeys = configContext.keys();
 for (let i = 0; i < contextKeys.length; i += 1) {
@@ -133,6 +166,7 @@ for (let i = 0; i < contextKeys.length; i += 1) {
   }
 }
 
+// 根据当前运行环境返回需要的全局配置
 const finalConfig = Object.merge(config, allConfigs[`${process.env.env || 'development'}`]);
 
 export default finalConfig;

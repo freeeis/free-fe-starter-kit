@@ -1,3 +1,12 @@
+/*
+ * @Description: 全局配置文件的默认配置。这些配置可能会被相应的运行环境配置覆盖。
+ * 
+ * @Author: zhiquan <x.zhiquan@gmail.com>
+ * @Date: 2021-06-21 15:22:03
+ * @LastEditTime: 2023-03-07 09:16:56
+ * @LastEditors: zhiquan
+ */
+
 export default {
   siteName: 'FreeEIS',
   backendURL: 'http://127.0.0.1:8000/',
