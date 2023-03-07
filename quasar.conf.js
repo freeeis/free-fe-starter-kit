@@ -26,23 +26,24 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
-      'axios',
       'free',
       'i18n',
+      'axios',
       'libs',
       'echarts',
     ],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
-      'app.sass'
+      'app.scss'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
-      'fontawesome-v5',
+      // 'fontawesome-v5',
+      'fontawesome-v6',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -94,7 +95,10 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      https: false,
+      server: {
+        type: 'http'
+      },
+      // https: false,
       port: 8080,
       open: false, // opens browser window automatically
       proxy: {
@@ -243,7 +247,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'free.aslancer.com'
+        appId: 'free.xixineis.com'
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
