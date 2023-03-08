@@ -1,5 +1,5 @@
-.DS_Store
-.thumbs.db
+**/.DS_Store
+**/.thumbs.db
 node_modules
 
 # Quasar core related directories
@@ -33,5 +33,11 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-# !!TODO:!! please remove the following lines to enable customized modules
+/src/modules/*
+!/src/modules/main
+!/src/modules/portal
+!/src/modules/themes
+!/src/modules/Error404.vue
+
+# !!TODO:!! please remove the following line to enable customized modules
 /.gitmodules
