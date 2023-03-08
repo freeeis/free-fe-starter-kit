@@ -3297,6 +3297,13 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
+free-fe-account@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.1.tgz#e49b3e479ad5b2677fcfefd3db7ff5e7d4518911"
+  integrity sha512-Hs55YnjcGd41ahHpU3nnhzq06voj9qE5LwQgncKT4uovd/+g1wOLAUiVthyuAnJ0lagTu5aaVwVGk0gCnuEL1g==
+  dependencies:
+    js-cookie "^3.0.1"
+
 free-fe-core-modules@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.1.tgz#af280a59268465527767c6cfaf0fb4620c9be952"
@@ -3304,10 +3311,10 @@ free-fe-core-modules@^0.0.1:
   dependencies:
     "@tinymce/tinymce-vue" "^5.0.0"
 
-free-fe-core@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.2.tgz#42e0ab11efd0a313ea0f97792032017ceda4b782"
-  integrity sha512-lXvjck521nWvtazCtbvqT/RxT3DNWnxeCSG/XSCPBRixn85laNqyuxD5drNB+8356kdeh8wob69ib8CtfkuobQ==
+free-fe-core@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.3.tgz#dd0f2c2ea59296017402d12d97470150474b4dc0"
+  integrity sha512-Pe7yj4+GIqNx3nobJwR10oBPS/vx9lPE0NGkiqM0lPYAwiEaoHGa0Y18wWu7RwIug6vAt6lC862/S8ZtfgrzsQ==
 
 free-fe-demo@^0.0.2:
   version "0.0.2"
@@ -3874,6 +3881,11 @@ jest-worker@^29.1.2, jest-worker@^29.4.1:
     jest-util "^29.4.3"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+js-cookie@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
+  integrity sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==
 
 js-sdsl@^4.1.4:
   version "4.3.0"

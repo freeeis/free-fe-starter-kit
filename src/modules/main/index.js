@@ -14,6 +14,18 @@ export default {
       ref: 'portal>portal',
     },
     {
+      path: '/login',
+      ref: 'account>login'
+    },
+    {
+      path: '/register',
+      ref: 'account>register',
+    },
+    {
+      path: '/recover',
+      ref: 'account>recover',
+    },
+    {
       path: '/admin',
       component: () => import('./Layout.vue'),
       redirect: '/home',
