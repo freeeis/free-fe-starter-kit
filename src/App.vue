@@ -1,18 +1,10 @@
 <template>
-  <router-view :class="`free-app free-theme-${store.theme || 'default'}`"/>
+  <router-view class="free-app"/>
 </template>
 <script>
-import { defineComponent } from 'vue';
-import useAppStore from './stores/app'
+import { defineComponent, onMounted, getCurrentInstance } from 'vue';
 
 export default defineComponent({
   name: 'App',
-  setup() {
-    const store = useAppStore();
-
-    return {
-      store,
-    }
-  }
 })
 </script>

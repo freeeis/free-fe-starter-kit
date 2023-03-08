@@ -116,6 +116,7 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       config: {
+        dark: 'auto',
         screen: {
           bodyClasses: true
         }
