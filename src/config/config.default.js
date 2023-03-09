@@ -1,6 +1,6 @@
 /*
  * @Description: 全局配置文件的默认配置。这些配置可能会被相应的运行环境配置覆盖。
- * 
+ *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
  * @LastEditTime: 2023-03-07 09:16:56
@@ -36,10 +36,6 @@ export default {
       locale: 'en-us',
       name: 'English',
     },
-    {
-      locale: 'br',
-      name: 'BR'
-    }
   ],
   i18n: {
     'en-us': {

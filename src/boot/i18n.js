@@ -4,7 +4,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-07 09:13:04
+ * @LastEditTime: 2023-03-09 09:54:52
  * @LastEditors: zhiquan
  */
 
@@ -12,7 +12,6 @@
 import { boot } from 'quasar/wrappers';
 import { createI18n } from 'vue-i18n';
 import { Quasar } from 'quasar';
-import { createPinia } from 'pinia';
 import useAppStore from '../stores/app';
 import config from '../config';
 
@@ -25,6 +24,7 @@ const messages = {
     LOGOUT: 'Logout',
     REGISTER: 'Register',
     SETTINGS: 'Settings',
+    首页: 'Home,'
   },
   'zh-cn': {
     error404: '抱歉，此页面不存在...',
@@ -62,7 +62,6 @@ const i18n = createI18n({
 })
 
 export default boot((ctx) => {
-  ctx.app.use(createPinia())
   const store = useAppStore();
 
   const defaultLocale = store.locale || DEFAULT_LANGUAGE || Quasar.lang.getLocale().toLowerCase() || 'zh-cn';

@@ -16,6 +16,8 @@
 
           <theme-switch></theme-switch>
 
+          <select-locales></select-locales>
+
           <q-btn flat class="user-profile-btn">
             <q-avatar>
               <q-img src="icons/icon-128x128.png" round class="bg-grey-1"></q-img>
