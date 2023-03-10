@@ -3297,24 +3297,24 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-free-fe-account@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.1.tgz#e49b3e479ad5b2677fcfefd3db7ff5e7d4518911"
-  integrity sha512-Hs55YnjcGd41ahHpU3nnhzq06voj9qE5LwQgncKT4uovd/+g1wOLAUiVthyuAnJ0lagTu5aaVwVGk0gCnuEL1g==
+free-fe-account@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.2.tgz#8e7fbab4924c34ecc0afdffef1038b70b6af3a05"
+  integrity sha512-ZlM79FpWOUsTU/Ix71LHn4ANdvH4qNo4oVF2TXQp1BrkjGGyefX1d9FyP2ML4LsJNWhbarz4J5Nluv/bWw5nwg==
   dependencies:
     js-cookie "^3.0.1"
 
-free-fe-core-modules@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.1.tgz#af280a59268465527767c6cfaf0fb4620c9be952"
-  integrity sha512-/HCkhGsnLDONnLGV0RyUe3CC0oN9LZdSCc4skAz3x3WgAXblFVgUm+TA+J4HE7cZJHiBxDndaWyObzbhYvmsMg==
+free-fe-core-modules@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.2.tgz#5dc04bed718c8f5a2ab4887b5fe84225f53c520e"
+  integrity sha512-Rz88DMo0GH5Kpy8ZuGpEp3aK6Q81dGO0efFqUkAWZWXsghASiu2G4+wLc8Ye9a4M0+xcoHesERoWX3jjbrk0Wg==
   dependencies:
     "@tinymce/tinymce-vue" "^5.0.0"
 
-free-fe-core@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.3.tgz#dd0f2c2ea59296017402d12d97470150474b4dc0"
-  integrity sha512-Pe7yj4+GIqNx3nobJwR10oBPS/vx9lPE0NGkiqM0lPYAwiEaoHGa0Y18wWu7RwIug6vAt6lC862/S8ZtfgrzsQ==
+free-fe-core@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/free-fe-core/-/free-fe-core-0.0.4.tgz#94de02405650097f9b0a77540317b1a9ef808187"
+  integrity sha512-YnT3H8GL/mjcIM9TCczzNOpP7fi+ZSOJsVxrkAoGKvR5HljfTpoHRCJZRsE9TD2XG1RCjPAdbmkn4ftQpqrsiQ==
 
 free-fe-demo@^0.0.2:
   version "0.0.2"
