@@ -4,7 +4,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-09 09:54:52
+ * @LastEditTime: 2023-03-09 12:59:30
  * @LastEditors: zhiquan
  */
 
@@ -24,7 +24,7 @@ const messages = {
     LOGOUT: 'Logout',
     REGISTER: 'Register',
     SETTINGS: 'Settings',
-    首页: 'Home,'
+    首页: 'Home',
   },
   'zh-cn': {
     error404: '抱歉，此页面不存在...',
@@ -33,6 +33,7 @@ const messages = {
     LOGOUT: '退出登录',
     REGISTER: '注册',
     SETTINGS: '设置',
+    首页: '首页',
   },
 };
 
