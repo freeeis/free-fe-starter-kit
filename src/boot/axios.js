@@ -241,7 +241,7 @@ export default boot(({ app }) => {
 
       if (store && store.canI) {
         const storedCanI = store.canI.find((ci) => ci && ci.url === url);
-        if (storedCanI && typeof storedCanI.can !== 'undefined') {
+        if (storedCanI && storedCanI.can !== void 0) {
           return new Promise(((resolve) => {
             resolve(!!storedCanI.can);
           }));

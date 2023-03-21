@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export default {
   config: {
     dependencies: [
@@ -146,7 +144,7 @@ export default {
     normalDate: {
       description: 'format the given date to normal date string',
       func: (d) => {
-        return new moment(d).format('YYYY-MM-DD hh:mm:ss');
+        return new moment(d).format('YYYY-MM-DD');
       }
     }
   },

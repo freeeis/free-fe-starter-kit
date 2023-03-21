@@ -75,22 +75,33 @@
 </template>
 
 <script>
-import mixins from 'free-fe-mixins';
 import { mapStores } from 'pinia';
 import useAppStore from '@/stores/app';
+import { useObjectData, objectDataProps } from 'free-fe-core-modules/composible/useObjectData';
 
 export default {
   name: 'WebLayout',
-  mixins: [mixins.ObjectDataMixin],
   components: {
   },
   props: {
+    ...objectDataProps,
     Logout: {
       type: Function,
     },
   },
   meta: {
     title: '服务平台',
+  },
+  setup(props, ctx) {
+    const {
+      data,
+      refreshData,
+    } = useObjectData(props, ctx);
+
+    return {
+      data, 
+      refreshData,
+    };
   },
   data() {
     return {
@@ -106,7 +117,7 @@ export default {
   computed: {
     ...mapStores(useAppStore),
     userName() {
-      return '未知用户';
+      return this.ctx.modules.account.store().user?.Name || this.$t('未知用户');
     },
   },
   beforeCreate() {
@@ -117,6 +128,13 @@ export default {
     });
   },
   methods: {
+    fieldChanged(f) {
+      if  (this.changedFields.indexOf(f.Name) < 0) {
+        this.changedFields.push(f.Name);
+      }
+
+      Object.setValue(this.changedData, f.Name, Object.nestValue(this.myData, f.Name));
+    },
     toPortal() {
       window.open('/', '_self');
     },
@@ -131,7 +149,7 @@ export default {
           .utils.logout()
           .then(() => {
             // clear info to store
-            this.ctx.modules.account.store.clearLoginStatus();
+            this.ctx.modules.account.store().clearLoginStatus();
             this.$router.replace('/');
           });
       }
