@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, h } from "vue";
+import { defineComponent, h, resolveComponent } from "vue";
 import { useRouter } from 'vue-router';
 import { QBtn } from 'quasar';
 
@@ -14,6 +14,9 @@ export default defineComponent({
           class: "fit",
         },
         [
+          h(resolveComponent('ThemeSwitch'), {
+            class: 'hidden'
+          }),
           h('div', {
             class: 'row justify-end'
           }, [
