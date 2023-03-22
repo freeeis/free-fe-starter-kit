@@ -3,7 +3,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-03-07 09:16:56
+ * @LastEditTime: 2023-03-22 08:50:40
  * @LastEditors: zhiquan
  */
 
@@ -20,6 +20,8 @@ export default {
   videoUrlBase: '/assets/misc/',
   documentUrlBase: '/assets/docs/',
   nanPlaceholder: '/',
+  requestWithLocale: false,
+  ignoreMock: false,
   locales: [
     {
       locale: 'zh-cn',

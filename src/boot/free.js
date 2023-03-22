@@ -4,13 +4,21 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-22 10:36:53
- * @LastEditTime: 2023-03-07 09:11:29
+ * @LastEditTime: 2023-03-22 08:58:02
  * @LastEditors: zhiquan
  */
 
+// import VueRouter from 'vue-router';
 import { boot } from 'quasar/wrappers'
 import core from 'free-fe-core';
 import config from '../config';
+
+
+// const originalPush = VueRouter.prototype.push;
+// VueRouter.prototype.push = function push(location, onResolve, onReject) {
+//   if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject);
+//   return originalPush.call(this, location).catch((err) => err);
+// };
 
 export default boot((ctx) => {
   const { routes } = core.init({ ...ctx, config });

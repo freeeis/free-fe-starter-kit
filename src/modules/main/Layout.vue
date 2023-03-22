@@ -6,7 +6,7 @@
       <q-header class="print-hide">
         <div class="header-inner full-width bg-primary">
         <q-toolbar class="admin-main-toolbar">
-          <q-toolbar-title class="cursor-pointer" @click="$router.push('/')">
+          <q-toolbar-title class="cursor-pointer" @click="toPortal">
             <q-img class="logo" src="icons/icon-128x128.png"
               width="40px" height="40px"></q-img>
             服务平台
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 import { mapStores } from 'pinia';
 import useAppStore from '@/stores/app';
 import { useObjectData, objectDataProps } from 'free-fe-core-modules/composible/useObjectData';
@@ -97,10 +98,12 @@ export default {
       data,
       refreshData,
     } = useObjectData(props, ctx);
+    const router = useRouter();
 
     return {
-      data, 
+      data,
       refreshData,
+      router,
     };
   },
   data() {
@@ -136,7 +139,8 @@ export default {
       Object.setValue(this.changedData, f.Name, Object.nestValue(this.myData, f.Name));
     },
     toPortal() {
-      window.open('/', '_self');
+      // window.open('/', '_self');
+      this.router.push('/')
     },
     ucMenuChanged(s) {
       this.ucMenuShown = s;
@@ -150,7 +154,7 @@ export default {
           .then(() => {
             // clear info to store
             this.ctx.modules.account.store().clearLoginStatus();
-            this.$router.replace('/');
+            this.router.replace('/');
           });
       }
     },

@@ -1,0 +1,192 @@
+.fixed-table
+  table-layout: fixed
+  .q-table
+    table-layout: fixed
+
+.flow-step
+  &-message
+    padding-left: 24px
+    height: 34px
+    min-height: 34px
+    .q-banner__content
+      color: #ea0732
+      font-size: 14px
+      font-weight: bold
+      position: relative
+      top: 6px
+  .flow-step-submit-log
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+  .q-stepper__step-inner
+    padding: 0 !important
+    &> div
+      padding: 0 24px
+  .flow-step-input-fields
+    margin-top: 16px
+    border-top-right-radius: 5px
+    border-top-left-radius: 5px
+    .free-field-static
+      padding: 0 6px
+    &>.free-field-wrapper
+      &>.free-field-fixed-list
+        margin-right: 4px
+      & td
+        border-color: rgba(0,0,0,0.12)
+
+.free-field-date.free-field--readonly .q-field__control
+  background: unset
+
+.flow-step-submit-log.max-height-true
+  overflow-y: scroll
+  .q-timeline__entry
+    padding-left: 24px
+
+// flow step button group, selection style (radio button)
+.flow-action-buttons
+  border-bottom: 1px solid var(--bodyBackground)
+  // border-bottom-left-radius: 5px
+  // border-bottom-right-radius: 5px
+  span:first-child
+    .q-btn
+      margin-left: 0
+  .q-btn-group .q-btn
+    padding-left: 30px
+    & .q-btn__wrapper
+      padding-right: 6px
+      min-height: 2em
+    &:before
+      content: ''
+      position: absolute
+      display: block
+      width: 18px
+      height: 18px
+      // background: transparent
+      top: 9px
+      left: 6px
+      border-radius: 50%
+      border: 2px solid currentColor
+      opacity: 0.5
+
+.flow-action-buttons .q-btn-group .selected
+  &:after
+    content: ''
+    position: absolute
+    display: block
+    width: 10px
+    height: 10px
+    background: currentColor
+    top: 13px
+    left: 10px
+    border-radius: 50%
+
+.flow-action-buttons .q-btn-group .selected
+  &:before
+    opacity: 0.8
+
+.free-field-file,.free-field-file-list
+  .uploader-btns
+    a
+      min-width: 94px
+
+.free-field-warning-text
+  white-space: normal
+
+.free-field--readonly .q-table
+  td
+    text-align: left
+  th
+    background: var(--editorAreaBackground)
+  tr:nth-child(2n)
+    background: var(--editorAreaBackground)
+    & td
+      background: var(--editorAreaBackground)
+
+.row-zebra-even
+  background: white !important
+  & td
+    background: white !important
+
+td.td-lines-
+  &3 .table-cell
+    span
+      -webkit-line-clamp: 3
+  &2 .table-cell
+    span
+      -webkit-line-clamp: 2
+  &3,&2
+    .table-cell
+      span
+        display: -webkit-box
+        white-space: normal
+        -webkit-box-orient: vertical
+.field-no-label
+  .field-label-empty,.field-label
+    display: none
+
+.q-table .pre-line .table-cell
+  *
+    white-space: pre-line
+
+.q-table td
+  &.index
+    max-width: 80px
+
+// paginagion to page
+.pagination-go-to-page
+  margin-left: 4px
+  vertical-align: middle
+  line-height: 20px
+  display: flex
+  label
+    display: inline-block
+  .q-field__control
+    max-width: 40px
+    height: 20px
+    font-size: 12px
+    // margin-left: 4px
+    padding: 0
+    padding-left: 2px
+    margin-right: 4px
+  button
+    line-height: 12px
+    margin-left: 4px
+    max-width: 40px
+    padding: 0
+
+.flow-step-uc-info
+  .flow-action-btn-offnotify
+    position: absolute
+    right: 0
+    background: white !important
+    font-size: 12px !important
+    padding-right: 0 !important
+    margin-right: 0 !important
+    .q-focus-helper
+      display: none
+    .q-btn__wrapper
+      &::before
+        display: none
+
+@page
+  size: A4 landscape
+  margin: 0px //0px 5px 0px 25px
+
+// print
+@media print
+  #q-app .admin-layout
+    zoom: 80%
+    background: rgba(0,0,0,0)
+    .q-page-container
+      margin: 0 !important
+      padding: 0 !important
+    .admin-page
+      .sticky-messenger,.hgap,.q-breadcrumbs
+        display: none
+    .flow-step.q-stepper
+      .q-stepper__header
+        display: none
+      .q-stepper__content
+        .q-stepper__step-inner
+          .flow-step-submit-log,
+          .flow-action-buttons
+            display: none

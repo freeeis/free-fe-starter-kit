@@ -4,7 +4,7 @@
  *
  * @Author: zhiquan
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-07 12:53:03
+ * @LastEditTime: 2023-03-22 09:01:02
  * @LastEditors: zhiquan
  */
 
@@ -61,11 +61,11 @@ axiosInstance.interceptors.response.use(
      * TODO: 如下处理不应该写死，而应该提取一些设置使其可以更灵活处理
      */
     if (error && error.response && error.response.status === 401) {
-      if (window.location.pathname !== '/login') {
+      if (window.location.pathname !== '/login' && !window.location.pathname.startsWith('/login?')) {
         window.location.href = `/login?redirect=${window.location.pathname}`;
       }
     } else if (error && error.response && error.response.status === 403 && error.response.data && error.response.data.msg === 'RSTPWD') {
-      if (window.location.pathname !== '/recover') {
+      if (window.location.pathname !== '/recover' && !window.location.pathname.startsWith('/recover?')) {
         window.location.href = `/recover?redirect=${window.location.pathname}`;
       }
     } else if (error && error.response && error.response.status !== 404) {
@@ -236,10 +236,10 @@ export default boot(({ app }) => {
       },
     },
     // 检查当前用户对某些接口路径是否有权限访问
-    canI: async (url) => {
+    canI: async (url, force = false) => {
       const store = useAppStore();
 
-      if (store && store.canI) {
+      if (!force && store && store.canI) {
         const storedCanI = store.canI.find((ci) => ci && ci.url === url);
         if (storedCanI && storedCanI.can !== void 0) {
           return new Promise(((resolve) => {

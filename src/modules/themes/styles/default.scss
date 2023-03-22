@@ -1,0 +1,44 @@
+.zebra-table {
+  &table, &.q-table, & .q-table {
+    th {
+      tr {
+        background: var(--background);
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(2n) {
+          background: var(--zebra-even-color);
+        }
+      }
+    }
+  }
+}
+
+.with-triangle {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 18px;
+    height: 18px;
+    border-width: 9px;
+    border-style: dashed dashed dashed solid;
+    border-color: #EAF4FD transparent transparent transparent;
+  }
+}
+
+.fixed-table {
+  &.q-table, & .q-table {
+    table-layout: fixed;
+  }
+}
+
+.zebra-even {
+  background: var(--zebra-even-color) !important;
+}
+
+.zebra-odd {
+  background: var(--zebra-odd-color) !important;
+}

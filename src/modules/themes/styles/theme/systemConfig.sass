@@ -1,0 +1,37 @@
+.system-config-wrapper
+  .q-stepper__header
+    justify-content: flex-start
+    padding: 5px
+    margin-bottom: 16px
+    padding: 16px
+    .q-stepper__tab
+      position: relative !important
+      flex: unset
+      flex-direction: column
+      align-items: center
+      justify-items: center
+      justify-content: center
+      .q-stepper__dot
+        margin: 0
+        &::before
+          display: none
+      .q-stepper__label
+        margin-top: 6px
+        text-align: center
+        &::after
+          display: none
+      &:not(:last-child)
+        margin-right: 24px
+      &--active
+        border: none !important
+        overflow: visible
+        &::after
+          content: ''
+          position: absolute
+          top: 80px !important
+          width: 18px
+          height: 18px
+          border-width: 9px
+          border-left: 9px solid transparent
+          border-right: 9px solid transparent
+          border-bottom: 9px solid var(--q-primary)

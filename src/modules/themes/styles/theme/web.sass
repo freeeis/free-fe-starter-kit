@@ -1,0 +1,1182 @@
+// predefined
+.breadcrumb-back-btn
+  border-radius: 5px 5px 5px 5px
+  height: 32px
+  font-size: 14px
+  font-weight: 400
+  margin-right: 5px
+  .q-btn__wrapper
+    padding-top: 0
+    .q-btn__content
+      line-height: 30px
+      .q-icon
+        line-height: 32px
+        padding-right: 10px
+
+.btn-primary
+  height: 33px
+  border-radius: 5px
+  font-size: 14px
+  font-weight: 400
+  background: var(--q-primary)
+  color: white
+  .q-icon
+    font-size: 14px
+  &:hover
+    opacity: 0.9
+
+.btn-secondary
+  @extend .btn-primary
+
+.btn-cancel,.cancel-btn
+  @extend .btn-secondary
+  min-width: 125px
+  background: var(--q-primary)
+  &:hover
+    background: var(--q-primary)
+  &.disabled
+    background: var(--grey-6)
+
+.btn-ok,.ok-btn,.save-btn,.btn-save
+  @extend .btn-secondary
+  width: 125px
+
+// general
+.q-table
+  td,th
+    padding: 0px 6px
+  thead
+    font-size: 16px
+    font-weight: 400
+  .persistant-top-row, .persistant-bottom-row
+    height: 6px
+  .persistant-top-row *,.persistant-bottom-row *
+    position: absolute
+    border: 0 !important
+    left: 0
+    right: 0
+    width: 100%
+    height: 1px
+  .persistant-bottom-row *
+    margin-top: 30px
+  &--horizontal-separator thead th
+    border-bottom: 0
+
+.zebra-even
+  background: var(--zebraEvenColor) !important
+.zebra-odd
+  background: var(--zebraOddColor) !important
+
+.q-stepper
+  box-shadow: none
+  .q-stepper__header
+
+    margin-bottom: 16px
+    .q-stepper__header--border
+      border: 0
+    .q-stepper__label
+      margin-top: 5px !important
+    .q-stepper__tab:not(:first-child)
+      margin-left: 60px
+    .q-stepper__dot::after
+      margin-left: 16px
+    .q-stepper__dot::before
+      margin-right: 16px
+
+
+.q-table__bottom--nodata
+  min-height: 304px
+  font-size: 16px
+  font-weight: bold
+
+.flow-list
+  .q-th
+    margin: 0 25px
+  .filter-header-cell
+    position: absolute
+    right: 0
+    top: 6px
+    padding-right: 24px
+  .q-table__container
+    position: relative
+    // padding: 0 25px
+  .q-table__middle
+    overflow: hidden
+  .table-row
+    cursor: pointer
+    .q-td
+      max-width: 300px
+      padding: 0
+    .q-td .table-cell
+      display: flex
+      align-items: center
+      justify-content: center
+      height: var(--tableCellHeight)
+      padding: 0 8px
+    .flow-list-status-td
+      width: 160px
+      max-width: 300px !important
+      min-width: 160px !important
+    .step-status-wrapper
+      display: flex
+    .step-icon
+      position: absolute
+      left: 0px
+      width: 45px
+      height: 45px
+      margin-right: 6px
+      font-size: 45px
+      line-height: 45px
+    .status-info
+      position: absolute
+      left: 50px
+      text-align: left
+    .step-title,.status-0,.status-1,.status--1
+      font-size: 14px
+      font-weight: 400
+    .step-status
+      font-size: 12px
+    .status-1
+      color: rgba(99,188,129,1)
+    .status-1 .step-icon
+      color: rgba(99,188,129,1)
+    .status--1
+      color: rgba(236,109,112,1)
+    .status--1 .step-icon
+      color: rgba(236,109,112,1)
+  .to-details-td
+    width: 20px
+  .table-row td
+    font-size: 14px
+    font-weight: 400
+    .to-details
+      height: 80px
+      width: 20px
+    .to-details>div
+      font-size: 18px
+      position: absolute
+      right: 5px
+      width: 30px
+      height: 80px
+      border-radius: 5px
+      line-height: 80px
+      text-align: center
+  .q-table__bottom
+    border: 0
+    margin-top: 20px
+  .filter-row
+    cursor: initial
+    td
+      border: 0
+    .free-field-wrapper
+      .field-label
+        width: auto
+        min-width: 56px
+        margin: 0 4px
+        font-size: 12px
+        font-weight: 400
+        line-height: 40px
+        &::after
+          content: ''
+      .q-field__before
+        padding: 0
+      .q-field__control
+        max-width: 150px
+        &::before
+          border: 0
+          border-radius: 0
+      .keyword
+        .q-field__control
+          width: 320px
+          max-width: 320px
+      .free-field-select-chain
+        align-items: center
+        span
+          &:nth-child(2)
+            margin-left: 0 !important
+
+    .query-btn, .export-btn
+      @extend .btn-primary
+    .clear-btn
+      @extend .btn-secondary
+
+.breadcrumbs
+  padding: 0 5px 0 25px
+  height: 48px
+
+  border-radius: 5px 5px 5px 5px
+  font-size: 14px
+  font-weight: 400
+  line-height: 48px
+  &>div
+    margin-top: unset
+    &>div
+      margin-top: unset
+    &>button
+      margin-top: unset
+
+  .q-breadcrumbs__separator
+    width: 16px
+    text-align: center
+    font-size: 14px
+    line-height: 48px
+  .q-btn
+    @extend .breadcrumb-back-btn
+    .q-btn__wrapper
+      min-height: 1em
+      padding-bottom: 0
+
+.q-carousel__slide
+  padding: 0
+
+.free-field-wrapper
+  margin: 16px 0
+
+.q-field__marginal
+  height: auto
+.q-field--auto-height .q-field__control, .q-field--auto-height .q-field__native
+  min-height: 35px !important
+
+.q-field__label
+  top: 0 !important
+  line-height: 35px
+  font-size: 14px
+.q-field--float .q-field__label
+  display: none
+
+.q-field__control-container
+  padding-top: 0 !important
+
+.q-field__control
+  border: 0 !important
+
+.q-field--focused
+  .q-field__control
+    &::before
+      border-radius: 5px !important
+
+.q-field--error
+  .q-field__control
+    border: 1px solid var(--q-color-negative) !important
+    &::after
+      display: none
+.free-field--error
+  border-color: var(--q-color-negative) !important
+  &-tag
+    color: var(--q-color-negative) !important
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 2
+    .e-icon>.q-icon
+      position: absolute
+
+.q-textarea .q-field__native
+  padding: 4px !important
+
+// input field
+.free-field-category
+  height: 57px
+  font-size: 16px
+  font-weight: bold
+  line-height: 41px
+  .label
+    &::before
+      content: '【'
+    &::after
+      content: '】'
+.simple-field
+  align-items: center
+  .q-field
+    width: var(--simpleFieldWidth)
+    align-items: center
+  .q-field--readonly
+    .q-field
+      width: var(--simpleFieldWidth)
+    .q-field__control
+      padding: 0
+      border: 0
+      &::before
+        border: 0 !important
+  .q-field__control
+    width: var(--simpleFieldWidth)
+    padding: 0 8px
+    height: 35px
+    min-height: 35px
+    border-radius: 6px
+  .q-field__control-container
+    line-height: 35px
+    margin: 0
+  .q-field__before
+    display: inline-block
+  .q-input
+    font-size: 14px
+    font-weight: 400
+
+.free-field-date-range, .free-field-year-range, .free-field-time-range
+  .simple-field
+    flex: 0
+
+.free-field-dynamic-list,.free-field-fixed-list,.free-field-mixed-table
+  .q-table
+    & tr
+      height: 35px
+    & th
+      padding-top: 0
+      padding-bottom: 0
+    .q-td
+      padding: 0
+      margin: 0
+      width: auto
+      height: auto
+      .free-field-wrapper
+        padding: 0
+        margin: 0
+        max-height: 100%
+    .simple-field
+      min-width: 10px
+      // max-width: 180px
+      margin: 0
+      padding: 0
+      .q-field
+        width: 100%
+        & *, .q-field__control::before
+          border: 0
+          border-radius: 0
+        input
+          padding: initial
+    .free-field-select>span
+      width: 100%
+
+.free-field-select
+  .q-field__native
+    padding-bottom: 0
+
+.free-field-select-chain
+  span:nth-child(2)
+    width: 100%
+  label
+    width: 100%
+    // &:nth-child(1)
+    //   padding-left: 8px
+  .simple-field
+    max-width: var(--simpleFieldWidth)
+
+.free-field-select-ascheck
+  .field-label
+    align-self: center
+  &>.column
+    margin-left: -10px
+
+.free-field-select-chain
+  .field-label
+    align-self: center
+
+// portal
+.portal-layout
+  // .q-page-container
+  //   margin: 0px 50px 50px 50px
+  .sliding-news
+    padding-left: 18px
+    padding-right: 18px
+
+    font-size: 16px
+    // line-height: 41px
+    &-title
+      padding-right: 16px
+    .sliding-news-label
+      font-weight: bold
+      font-size: 16px
+      .sliding-news-label-icon
+        // height: 18px
+        // width: 18px
+        // margin-right: 14px
+        font-size: 18px
+    .sliding-news-right
+      // line-height: 40px
+      height: 100%
+    .sliding-news-close-btn
+      font-size: 12px
+      padding: 0
+      margin: 0 18px 0 24px
+  .portal-main-toolbar
+    height: 60px
+    padding: 0 50px
+    .portal-logo
+      width: 391px
+      height: 49px
+      margin: 5px 0
+    .portal-main-toolbar-buttons .e-icon
+      width: 18px
+      height: 18px
+      // margin-right: 10px
+    .portal-main-toolbar-buttons
+      .q-btn,.welcome-info
+        margin-left: 39px
+        font-size: 16px
+        font-weight: bold
+      .q-img
+        display: block
+  .portal-main-menu
+    height: 60px
+
+    font-size: 16px
+    font-weight: 400
+    line-height: 30px
+    &>div>a
+      min-width: 110px
+      margin: 0 4px
+    .active,
+    .q-btn:active
+      font-weight: bold
+      background: #D9E8F2
+      border-radius: 5px
+
+  .portal-sliding-head
+    padding: 5px
+    border-radius: 5px
+  .portal-main-content-wrapper
+    .filter-area
+      .free-field-wrapper
+        .simple-field
+          margin-right: 12px
+        .field-label
+          width: auto
+          min-width: 56px
+          margin: 0 4px
+          font-size: 12px
+          font-weight: 400
+          vertical-align: middle
+          &::after
+            content: ''
+        .q-field__before
+          padding: 0
+        .q-field__control
+          max-width: 150px
+          &::before
+            border: 0
+            border-radius: 0
+        .keyword
+          flex-grow: 1 !important
+          & *
+            flex-grow: 1 !important
+          .q-field__control
+            width: 100% !important
+            max-width: 100%
+      .query-btn
+        @extend .btn-primary
+      .clear-btn
+        @extend .btn-secondary
+
+// footer
+.main-footer
+  // height: 180px
+  padding: 15px 50px 45px 50px
+  .footer-logo
+    width: 391px
+    height: 49px
+  .footer-menu-title
+    height: 15px
+    font-size: 16px
+    font-weight: 400
+    line-height: 41px
+  .footer-menu-title-dot
+    display: inline-block
+    width: 3px
+    height: 3px
+    border-radius: 50%
+    margin-right: 6px
+  .q-item__label--caption
+    margin-left: 8px
+    height: 15px
+    font-size: 14px
+    font-weight: 400
+    // text-decoration: underline
+    line-height: 36px
+    white-space: nowrap
+    .text
+      padding-bottom: 2px
+  .q-item--active
+    & *
+      font-weight: bold
+  .footer-qrcode
+    font-size: 128px
+    width: 128px
+    height: 128px
+    cursor: pointer
+
+.free-field-wrapper
+  .field-label
+    display: inline-block
+    font-weight: 400
+    text-align: right
+    vertical-align: middle
+    font-size: var(--field-label-font-size)
+    width: var(--field-label-width) !important
+    min-width: var(--field-label-width) !important
+    max-width: var(--field-label-width) !important
+    &.required::before
+      content: '* '
+      color: red
+    &::after
+      content: var(--field-label-after)
+    .required-mark
+      display: none
+
+  .admin-layout,.register-layout,.recover-layout
+    .admin-main-toolbar
+      height: 60px
+      .admin-logo
+        width: 391px
+        height: 49px
+        margin: 5px 0
+      .q-avatar .e-icon
+        width: 32px
+        height: 32px
+      .user-name
+        width: 97px
+        height: 33px
+        font-size: 14px
+        font-weight: 400
+        line-height: 16px
+        white-space: nowrap
+        .date-label
+          margin-top: 4px
+          font-size: 10px
+          line-height: 12px
+    .q-page-container
+      // margin: 12px// 50px 20px 50px
+      .leveled-menu
+        max-width: 220px
+        padding: 10px 0
+        font-size: 16px
+        font-weight: 400
+        line-height: 30px
+        white-space: nowrap
+        overflow: hidden
+
+        border-radius: 5px
+        .q-item
+          min-height: 50px !important
+        .q-expansion-item
+          margin: 0 2px
+          .simple-expand-icon
+            display: none
+          .q-item__section--avatar
+            min-width: 32px !important
+            i
+              font-size: 18px
+          .q-expansion-item__content
+            padding-left: 0 !important
+            .leveled-menu .header
+              padding-left: 32px
+        .q-item.q-router-link--active, .q-item--active
+          // background: rgba(217,232,242,1)
+          border-radius: 5px
+          font-size: 16px
+          font-weight: bold
+          color: var(--primary)
+          line-height: 30px
+      .admin-main-content-wrapper,.register-content,.recover-content
+        // margin-left: 10px
+        // background: white
+        .flow-list,.flow-step,.step-left
+          // background: var(--bodyBackground)
+        .vgap,.hgap
+          // background: var(--bodyBackground)
+        .summary-head-wrapper
+          height: 150px
+          border-radius: 6px
+
+          margin-bottom: 16px
+          .summary-head-number
+            font-size: 12px
+            font-weight: bold
+        .flow-editor-content
+          background: var(--bodyBackground)
+          .flow-action-buttons
+
+            border-radius: 6px
+          .flow-step-input-fields
+            padding: 24px
+        .q-stepper.flow-step
+          .q-stepper__header
+            // flex-wrap: nowrap
+            min-height: 150px
+            border-radius: 6px
+            .q-stepper__label
+              .q-stepper__caption
+                display: none
+              .q-stepper__title
+                font-size: 16px
+                font-weight: bold
+                margin-top: 16px
+            .q-focus-helper
+              display: none
+            .q-ripple
+              display: none
+            .q-stepper__dot
+              width: 60px
+              height: 60px
+              border-radius: 0
+              background: rgba(0,0,0,0)
+              font-size: 60px
+              line-height: 60px
+              i
+                font-size: 60px
+                line-height: 60px
+              img
+                width: 100%
+                height: 100%
+              span
+                color: unset
+              &::after,&::before
+                // display: none
+                background: unset
+                border-top: 1px dashed rgba(0,0,0,0.12)
+            .q-stepper__tab--
+              &active
+                position: unset
+                &::after
+                  content: ''
+                  position: absolute
+                  top: 150px
+                  width: 18px
+                  height: 18px
+                  border-width: 9px
+                  border-style: dashed dashed dashed solid
+                  border-color: currentColor transparent transparent transparent
+              &error i
+                color: #EC6D70
+              &done i
+                color: #63BC81
+              &disabled
+                color: #8E8E8E
+          .q-stepper__content
+            border-radius: 5px
+            .flow-action-buttons
+              border-radius: 5px
+              padding-top: 4px
+              padding-bottom: 4px
+              // height: 28px
+              .q-btn
+                // margin-top: 0
+                // margin-bottom: 0
+                width: 106px
+                height: 33px
+                border-radius: 5px
+            .flow-step-submit-log
+              font-size: 14px
+              font-weight: 400
+              .q-timeline__title
+                font-size: 14px
+                font-weight: bold
+                margin-bottom: 14px
+              .q-timeline__subtitle
+                display: none
+              .q-timeline__content
+                padding-bottom: 18px
+              .entry
+                .date
+                  position: absolute
+                  right: 0
+                  top: 0
+                  .label
+                    display: none
+              .entry-
+                &-1
+                  color: rgba(236,109,112,1)
+                  .q-timeline__dot
+                    &::before,&::after
+                      color: rgba(236,109,112,1)
+                &1
+                  color: rgba(99,188,129,1)
+                  .q-timeline__dot
+                    &::before,&::after
+                      color: rgba(99,188,129,1)
+                &0
+                  color: var(--grey-7)
+                  .q-timeline__dot
+                    &::before,&::after
+                      color: var(--grey-7)
+                &recall
+                  color: var(--grey-8)
+                  .q-timeline__dot
+                    &::before,&::after
+                      color: var(--grey-8)
+            .flow-step-input-fields
+              min-height: 800px
+        .sticky-button
+          & >div .column .q-btn
+            .q-btn__wrapper
+              min-height: unset
+              padding-top: 0
+              line-height: 35px
+          .q-fab__actions
+            .q-btn
+              width: 106px
+            .q-btn__wrapper
+              padding-top: 0
+        .flow-action-btn-,.sticky-button-
+          &previous,&next, &print, &export,&create,&register,&regaudit,&cancel
+            @extend .btn-secondary
+          &submit,&save, &recall,&recallop,&remove,&enable,&edit,&sign,&assign,&sback,&delete,&recallnotify,&change,&resetpwd,&tosteptwo,&off,&offnotify,&return
+            @extend .btn-primary
+
+.free-field-wrapper.without-label
+  &>.simple-field>.q-field>.q-field__before,
+  &>.free-field-text>.q-field>.q-field__before,
+  &>.free-field-dynamic-list>.q-field>.q-field__before,
+  &>.free-field-select>span>.q-field>.q-field__before
+    display: none
+.free-field-wrapper.without-label
+  &>.free-field-text
+    height: 100%
+    min-height: 100%
+.free-field-wrapper.without-label
+  &>.free-field-dynamic-list>.q-table__container,
+  &>.free-field-fixed-list>.q-table__container
+    margin: 0
+.free-field-wrapper.with-label
+  &>.simple-field>.q-field>.q-field__before
+    display: inline-block
+  .free-field-rich
+    .content
+      margin-left: 12px
+
+.free-field-wrapper .free-field-tips
+  position: relative
+  margin-left: var(--fieldLabelWidth) + 10px
+  margin-top: 6px
+  font-size: 12px
+  font-weight: 400
+  padding-right: 20px
+  .tips-list
+    .free-field-tips-tip
+      display: block
+      .tip-link
+        font-size: 14px
+        font-weight: bold
+        a,a:visited
+        &-prefix::before
+          content: '【'
+        &-postfix::after
+          content: '】'
+        &-text
+          text-decoration: underline
+  &-prefix
+    display: inline-block
+    position: absolute
+    width: 18px
+    height: 18px
+    border: 2px solid
+    border-radius: 50%
+    margin-right: 4px
+    top: 0px
+    left: 0
+    & + .tips-list
+      position: relative
+      left: 24px
+  &-postfix
+    display: inline-block
+    position: absolute
+    top: 0px
+    left: 6px
+    width: 6px
+    height: 3px
+
+    &::after
+      display: inline-block
+      position: absolute
+      content: '!'
+      font-size: 16px
+      font-weight: 700
+      width: 3px
+      top: -6px
+      left: 2px
+      transform: translateX(-50%)
+      -moz-transform: translateX(-50%)
+      -ms-transform: translateX(-50%)
+
+.free-field-wrapper-agreement .free-field-tips
+  margin-top: 0
+
+.simple-field
+  .postfix, .prefix
+    font-size: 12px
+
+.free-field-agreement-check
+  .free-field-tips
+    margin-left: 0 !important
+    margin-top: 0 !important
+    left: 0 !important
+    &-prefix
+      display: none
+      & + .tips-list
+        left: 0
+    &-postfix
+      display: none
+  & + .free-field-tips
+    display: none
+
+// flow list
+.summary-head-wrapper
+  margin-bottom: 8px
+  .last-summary
+    position: relative
+  .last-summary:after
+    position: absolute
+    content: ''
+    background: var(--grey-4)
+    width: 1px
+    height: 70px
+    right: 0
+    top: 40px
+  .summary-head-item
+    flex-direction: column
+    .summary-head-icon
+      height: 60px
+      width: 60px
+    .is-number
+      font-size: 12px !important
+      font-weight: bold
+      line-height: 12px !important
+    .summary-head-label
+      font-size: 16px
+      font-weight: 400
+      line-height: 16px !important
+    .summary-head-btn
+      width: 104px
+      height: 35px
+      background: rgba(255,29,63,1)
+      border-radius: 7px
+      font-size: 14px
+      font-weight: 400
+      .q-btn__wrapper
+        min-height: 1em
+
+.user-profile-menu
+  .logout-btn
+    font-size: 14px
+    font-weight: 400
+    border-radius: 0
+.free-field--error
+  border: 1px solid red
+  border-radius: 5px
+
+// uploader components
+.free-field-file,.free-field-image, .free-field-file-list,.free-field-image-list
+  .q-uploader__header
+    display: none
+  .q-uploader:not(.only-icon)
+    max-height: unset
+    margin-left: 12px
+  .q-uploader__list
+    min-height: unset !important
+    padding: 0 !important
+  .upload-btn,.add-btn
+    border-radius: 5px
+    font-size: 14px
+    font-weight: 400
+    margin-right: 8px
+  .delete-btn
+    height: 24px !important
+    width: 24px !important
+    font-size: 14px
+    font-weight: 400
+    border-radius: 50%
+    .q-btn__wrapper
+      min-width: 1em
+      min-height: 1em
+  .file-list
+    margin-top: 0px
+    overflow: hidden
+    .file-list-item
+      height: 130px
+      display: flex
+      flex-direction: column
+      margin-top: 24px
+      .file-image
+        width: 100px
+        height: 100px
+        border: 1px solid var(--grey-4)
+        &:hover
+          cursor: pointer
+          .view-btn-wrapper
+            display: block
+        .view-btn-wrapper
+          height: 100px
+          width: 100px
+          background: rgba(0, 0, 0, 0.46)
+          display: none
+          .view-btn
+            font-size: 14px
+            font-weight: bold
+        .q-icon
+          font-size: 64px
+
+      .file-size
+        display: none
+      .file-name
+        width: 100%
+        text-align: center
+        position: absolute
+        top: 105px
+        font-size: 12px
+        font-weight: 400
+        a
+          white-space: nowrap
+      .delete-btn
+        border-radius: 50% !important
+        position: absolute
+        top: -8px
+        right: -8px
+.free-field--readonly
+  &.free-field-file,
+  &.free-field-image,
+  &.free-field-file-list,
+  &.free-field-image-list
+    position: relative
+    .file-list
+      position: relative
+      top: -24px
+  &.free-field-rich
+    .content
+      margin-left: 8px
+
+.free-field-field-type-options
+  .q-field__control
+    padding: 0 8px !important
+
+//free-field-radio-list
+.q-radio__inner--truthy .q-radio__check
+  color: green
+.free-field-radio-list
+  .q-item
+    height: 100px
+    // padding: 0 !important
+    // margin: 10px auto
+    // border: 1px dashed grey
+    .icon-section
+      width: 94px
+      .icon
+        width: 64px
+        height: 64px
+    .label-section
+      padding-right: 10px
+      .label
+        font-size: 16px
+        font-weight: bold
+      .description
+        font-size: 14px
+        font-weight: 400
+      &:after
+        content: ''
+        width: 1px
+        height: 45px
+        background: rgba(210,210,210,1)
+        position: absolute
+        top: 30px
+        right: 70px
+//
+.free-field-fixed-list,.free-field-dynamic-list,.free-field-mixed-table
+  .q-table
+    overflow: hidden
+  .q-table__container
+    margin-left: 12px
+    .q-table__bottom
+      border-left: 1px solid rgba(191,191,191,0.5)
+      height: 24px !important
+      min-height: 24px !important
+      .summary-tr
+        position: relative
+        display: flex
+        flex-wrap: wrap
+        justify-content: flex-end
+        width: 100%
+        .summary-td
+          border: 0
+    .q-table__container
+      margin: 0
+      border: 0
+      border-radius: 0
+      .q-td:first-child
+        border-left: 0
+  .simple-field.free-field--readonly
+    & span.full-width
+      display: flex
+      .readonly-content>span
+        line-height: 35px
+  .free-field-file, .free-field-image
+    .file-list
+      justify-content: center
+
+.free-field-
+  &select,&year,&year-range,&select-chain
+    .q-field--error
+      .q-select__dropdown-icon
+        display: none
+.free-field-select-chain
+  .q-field--labeled .q-field__native
+    padding-bottom: 0
+
+// readonly
+.free-field--readonly
+  &.simple-field
+    min-height: 35px
+  .free-field-wrapper
+    margin: 0
+    & *
+      white-space: normal
+      overflow: hidden
+  .q-field__control
+    // background: rgba(0, 0, 0, 0)
+    width: unset !important
+    // min-width: 0
+    // max-width: 100%
+  .q-field__append
+    display: none
+  .free-field-warning,.uploader-btns,.delete-btn
+    display: none !important
+  .file-list
+    margin-top: 0 !important
+  .q-td
+    margin: 0
+    padding: 0
+    height: auto !important
+  .required-mark
+    display: none
+.field-label-readonly
+  margin-right: 12px
+
+.free-field-search:not(.free-field--readonly),
+.free-field-text:not(.free-field--readonly)
+  .q-field__control
+    border-radius: 5px
+    background: var(--editorAreaBackground)
+    &::before
+      display: none
+// .free-field-text.free-field--readonly
+//   .q-field__control
+//     border-radius: 5px
+//     &::before
+//       // border: 1px solid rgba(191,191,191,0.5)
+//     &::after
+//       display: none
+//     textarea
+//       resize: none
+// search dialog
+.free-field-search
+  height: 35px
+  .q-field__control
+    padding-right: 0 !important
+    // border: 0
+.free-field-search-dialog-card
+  .simple-field
+    padding-top: 12px
+    .q-field__control
+      max-width: 100%
+      width: 100%
+.flow-submit-dialog.free-field-list
+  .title
+    padding: 0 70px
+    font-size: 14px
+  .simple-field .q-field, .simple-field .q-field__control
+    width: 100%
+
+// table borders
+.free-field-mixed-table,.free-field-fixed-list,.free-field-dynamic-list
+  .q-table__container
+    box-shadow: none
+    border: 1px solid rgba(191,191,191,0.5)
+    border-radius: 5px
+.free-field-mixed-table
+    .q-table__top
+      border-left: 1px solid rgba(0, 0, 0, 0.12)
+// have border issue when have span
+.free-field-mixed-table
+  .q-table__container
+    border-left: 0
+  td:first-child
+    border-left: 1px solid rgba(0,0,0,0.12)
+
+.free-field-separator
+  margin: 30px auto
+  background: rgba(210,210,210,1)
+
+.q-date .q-date__header,.q-time .q-time__header
+  display: none
+
+.free-field-rich
+  .tox-tinymce
+    border-radius: 5px
+
+.free-field-query-filters
+  .query-btns
+    .q-btn
+      margin-right: 10px
+    .q-btn
+      .q-icon
+        margin-right: 6px
+      .q-btn__content>div
+        position: relative
+        top: -1px
+  .free-field-check .field-label-empty
+    width: 30px
+    min-width: unset
+  .simple-field
+    min-width: 200px
+
+.basic-dialog-card
+  .action-buttons
+    min-height: 68px
+    margin-bottom: 0px
+    bottom: 0
+    // position: absolute
+    position: relative
+    border-top: 1px solid var(--grey-4)
+  .warning
+    font-size: 12px
+    font-weight: 400
+    color: rgba(234,7,50,1)
+    margin: 0 50px
+    overflow: hidden
+    white-space: nowrap
+    display: inline-block
+    &-icon
+      position: relative
+      top: -7px
+      display: inline-block
+      border-width: 8px
+      border-color: transparent transparent #FF8244 transparent
+      border-style: dashed
+      transform: scaleY(2.3)
+      &-sign-top
+        position: relative
+        top: -2px
+        left: -9px
+        background: var(--primary)
+        display: inline-block
+        width: 2px
+        height: 8px
+      &-sign-dot
+        position: relative
+        top: 3px
+        left: -10px
+        background: var(--primary)
+        display: inline-block
+        width: 3px
+        height: 3px
+        transform: translateX(-50%)
+        -moz-transform: translateX(-50%)
+        -webkit-transform: translateX(-50%)
+        -ms-transform: translateX(-50%)
+    &-text
+      overflow: hidden
+      white-space: normal
+
+// login page etc.
+.login-layout,.register-layout,.recover-layout
+  @extend .admin-layout
+  .simple-field
+    min-width: 250px

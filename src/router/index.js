@@ -1,5 +1,6 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import config from '../config';
 
 /*
  * If not building with SSR mode, you can
@@ -30,6 +31,12 @@ export default route(async function () {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
+
+  Router.afterEach(() => {
+    if (config.toTopEveryPage) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   return Router
 })
