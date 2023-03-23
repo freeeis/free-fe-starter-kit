@@ -38,6 +38,3 @@ yarn-error.log*
 !/src/modules/portal
 !/src/modules/themes
 !/src/modules/Error404.vue
-
-# !!TODO:!! please remove the following line to enable customized modules
-/.gitmodules
