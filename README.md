@@ -9,14 +9,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/free-be-starter-kit">
-    <img src="https://img.shields.io/npm/v/free-be-starter-kit" alt="Version">
+  <a href="https://www.npmjs.com/package/free-fe-starter-kit">
+    <img src="https://img.shields.io/npm/v/free-fe-starter-kit" alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/free-be-starter-kit">
-    <img src="https://img.shields.io/npm/dm/free-be-starter-kit" alt="Download">
+  <a href="https://www.npmjs.com/package/free-fe-starter-kit">
+    <img src="https://img.shields.io/npm/dm/free-fe-starter-kit" alt="Download">
   </a>
   <a href="https://github.com/didi/LogicFlow/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/free-be-starter-kit" alt="LICENSE">
+    <img src="https://img.shields.io/npm/l/free-fe-starter-kit" alt="LICENSE">
   </a>
 </p>
 
@@ -114,8 +114,8 @@ $ yarn start
 | 模块      | 前端模块 | 后端模块 | 功能 | 说明|
 | :------- |------- |------- | ----|----: |
 | 内核 | [free-fe-core](https://github.com/freeeis/free-fe-core) | [free-be-core](https://github.com/freeeis/free-be-core) | 加载其他模块|默认添加在脚手架中|
-| 基础功能 | [free-fe-core-modules](https://github.com/freeeis/free-fe-core-modules) | [free-be-core-modules](https://github.com/freeeis/free-be-core-modules)| 数据字典、日志、菜单管理、系统配置、错误代码管理、缓存管理、哀悼日、文件处理、数据校验方法、多语言支持、多皮肤支持等等 | 默认添加在脚手架中|
-| 账号管理 | [free-fe-account](https://github.com/freeeis/free-fe-account) | [free-be-account](https://github.com/freeeis/free-be-account) |账号管理、组织结构管理、权限管理、角色管理、权限控制| 默认添加在脚手架中|
+| 基础功能 | [free-fe-core-modules](https://github.com/freeeis/free-fe-core-modules) | [free-be-core-modules](https://github.com/freeeis/free-be-core-modules)| 数据字典、日志、菜单管理、系统配置、<br>错误代码管理、缓存管理、哀悼日、<br>文件处理、数据校验方法、<br>多语言支持、多皮肤支持等等 | 默认添加在脚手架中|
+| 账号管理 | [free-fe-account](https://github.com/freeeis/free-fe-account) | [free-be-account](https://github.com/freeeis/free-be-account) |账号管理、组织结构管理、权限管理、<br>角色管理、权限控制| 默认添加在脚手架中|
 | 数据库 | / | [free-be-mongodb](https://github.com/freeeis/free-be-mongodb) |数据库操作| 默认添加在脚手架中|
 | 演示模块 | [free-fe-demo](https://github.com/freeeis/free-fe-demo) | [free-be-demo](https://github.com/freeeis/free-be-demo) |演示模块内部结构和使用方法| 默认添加在脚手架中|
 
