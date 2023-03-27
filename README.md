@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://freeeis.aslancer.com" target="_blank">
+  <a href="https://www.freeeis.com" target="_blank">
     <img
       src="https://user-images.githubusercontent.com/33030594/227073920-03ed137f-c4f7-4ed7-ae05-d781dd1991f7.png"
       alt="FreeEIS"
