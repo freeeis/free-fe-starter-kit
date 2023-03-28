@@ -4,7 +4,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-09 12:59:30
+ * @LastEditTime: 2023-03-28 17:41:04
  * @LastEditors: zhiquan
  */
 
@@ -65,7 +65,11 @@ const i18n = createI18n({
 export default boot((ctx) => {
   const store = useAppStore();
 
-  const defaultLocale = store.locale || DEFAULT_LANGUAGE || Quasar.lang.getLocale().toLowerCase() || 'zh-cn';
+  const defaultLocale =
+    store.locale ||
+    DEFAULT_LANGUAGE ||
+    Quasar.lang.getLocale().toLowerCase() ||
+    "zh-cn";
   i18n.locale = defaultLocale;
   i18n.fallbackLocale = defaultLocale;
   DEFAULT_LANGUAGE = defaultLocale;
@@ -77,7 +81,18 @@ export default boot((ctx) => {
   // 加载各模块中的字典数据。
   if (ctx.app.i18nMessages) {
     Object.keys(ctx.app.i18nMessages).forEach((ik) => {
-      i18n.global.setLocaleMessage(ik, { ...ctx.app.i18nMessages[ik], ...(messages[ik] || {}) });
+      i18n.global.setLocaleMessage(ik, {
+        ...ctx.app.i18nMessages[ik],
+        ...(messages[ik] || {}),
+      });
+
+      // if not exists in config, add to the list
+      if (config.locales.findIndex((l) => l.locale === ik) < 0) {
+        config.locales.push({
+          name: ik,
+          locale: ik,
+        });
+      }
     });
   }
 })
