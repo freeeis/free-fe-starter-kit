@@ -3333,10 +3333,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-free-fe-account@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.6.tgz#35da598ecbee5cf831c9f1df41255624d6da3c54"
-  integrity sha512-vH7GpGWEGYsdWipgO9k3kVU9KfEB6BS9lXLkANs3TW3ZCG7IPtSeP0Xle5IRvEE2f4w7+7eJlhZSnI0EfhQLZw==
+free-fe-account@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.7.tgz#0de1c16384b2def68e695c6087fa45e0b28f4f95"
+  integrity sha512-Xx3hMh0c6ZeQC10uX2MdtmyluLJJsvHvwHFjx0x8IR4pTzf6mTsWgnYP53AxFC/GNZ3G2ZlKyJ5O4a/9EJ3FNg==
   dependencies:
     js-cookie "^3.0.1"
 
