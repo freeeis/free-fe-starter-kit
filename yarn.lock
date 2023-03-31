@@ -3333,17 +3333,17 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-free-fe-account@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.7.tgz#0de1c16384b2def68e695c6087fa45e0b28f4f95"
-  integrity sha512-Xx3hMh0c6ZeQC10uX2MdtmyluLJJsvHvwHFjx0x8IR4pTzf6mTsWgnYP53AxFC/GNZ3G2ZlKyJ5O4a/9EJ3FNg==
+free-fe-account@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/free-fe-account/-/free-fe-account-0.0.8.tgz#60b2d126da514af39d37180390ee0132111bc09d"
+  integrity sha512-3E0CsxSUwDTPJM5d2gH6OtlYuwXouLq+ePNratKUZJoN79pmwhS776AHLo7EWX3CLrXDPQ0hxjmsWS5ziXLq+Q==
   dependencies:
     js-cookie "^3.0.1"
 
-free-fe-core-modules@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.10.tgz#459f2069852105e2b2d2b029a1fba7d2a64e070d"
-  integrity sha512-J08EmSCm43cKb653/Z62TKoG8HH/hvL8EFhWqbptA/ytz8pCUJuijCkjVPep6tdrFTVCErAqcI9iUTRkXYgcdw==
+free-fe-core-modules@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.11.tgz#ab69cddd14b0be4f6a02d80b0a837ec96a659074"
+  integrity sha512-qGKv0nTSA2SFtaWI8i+sbXjiHUf3mbM8iSPJPCEjMnCfjPdLXTQvLEzKUa5ybE9oqp4wsx20KPb6gcatv4pG/Q==
   dependencies:
     "@tinymce/tinymce-vue" "^5.0.1"
 
