@@ -3340,10 +3340,10 @@ free-fe-account@^0.0.8:
   dependencies:
     js-cookie "^3.0.1"
 
-free-fe-core-modules@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.11.tgz#ab69cddd14b0be4f6a02d80b0a837ec96a659074"
-  integrity sha512-qGKv0nTSA2SFtaWI8i+sbXjiHUf3mbM8iSPJPCEjMnCfjPdLXTQvLEzKUa5ybE9oqp4wsx20KPb6gcatv4pG/Q==
+free-fe-core-modules@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.12.tgz#6f5931fd8a84b6a7fce451fd45d3a385fda77db7"
+  integrity sha512-bcRlHGZ5vLKH+xryM3W/6DI8cN0jkrgytgo2RrQx10XsGNlJzTDj/UX+nEFYp1WEdpA9qkkEJstK4UXG+e425w==
   dependencies:
     "@tinymce/tinymce-vue" "^5.0.1"
 
