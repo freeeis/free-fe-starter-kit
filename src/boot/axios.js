@@ -4,10 +4,11 @@
  *
  * @Author: zhiquan
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-03-22 09:01:02
+ * @LastEditTime: 2023-05-01 12:35:34
  * @LastEditors: zhiquan
  */
 
+import Cookies from 'js-cookie';
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
 import config from '../config';
@@ -62,6 +63,9 @@ axiosInstance.interceptors.response.use(
      */
     if (error && error.response && error.response.status === 401) {
       if (window.location.pathname !== '/login' && !window.location.pathname.startsWith('/login?')) {
+        // clear cached token
+        Cookies.set('token', '');
+
         window.location.href = `/login?redirect=${window.location.pathname}`;
       }
     } else if (error && error.response && error.response.status === 403 && error.response.data && error.response.data.msg === 'RSTPWD') {
@@ -226,6 +230,21 @@ export default boot(({ app }) => {
     deleteRequest,
     // nothing请求，通常用来检测当前登录状态是否依然有效等
     nothingRequest: () => axiosInstance.get('/nothing'),
+    checkVersion: () => {
+      // check version and refresh
+      if (config.checkVersion) {
+        const currentVersion = localStorage.getItem('version');
+        axios.get(`/__v.json?ts=${Date.now()}`).then((dd) => {
+          const nv = dd && dd.data && dd.data.v;
+          if (nv && currentVersion !== nv) {
+            console.log(`version: ${nv}`);
+
+            localStorage.setItem('version', nv);
+            window.location.reload();
+          }
+        });
+      }
+    },
     Mock: {
       mock: (url, method = 'get', func) => {
         Mocks.push({

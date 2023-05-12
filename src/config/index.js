@@ -2,10 +2,10 @@
  * @Description: 定义全局方法 + 全局配置入口。
  * 全局配置加载顺序为：默认配置 -> 当前环境对应的配置。后者覆盖前者。
  * 全局配置中，每个模块的配置信息，会覆盖模块内部定义的配置默认值。
- * 
+ *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-03-07 09:26:55
+ * @LastEditTime: 2023-05-07 14:40:32
  * @LastEditors: zhiquan
  */
 
@@ -39,7 +39,7 @@ Object.merge = (target, ...source) => {
 /**
  * @description: 检查给定值是否有内容。
  * 如果不是对象，则检查其是否为空。如果是对象，则检查其是否为空对象。
- * 
+ *
  * @param {any} o 要检查的值
  * @return {Boolean} 是否有内容的判定。
  */
@@ -82,7 +82,7 @@ Object.nestValue = (obj, p) => {
 
 /**
  * @description: 设置对象的嵌套值
- * 
+ *
  * @param {Object} obj 要设置嵌套值的对象
  * @param {String} n 要设置嵌套值的路径
  * @param {any} v 要设置的值
@@ -114,7 +114,7 @@ Object.setValue = (obj, n, v) => {
  * @param {*} o The object from which to remove the cycle reference
  */
  const decycle = (o) => {
-  if(typeof o !== 'object') return o;
+  if(typeof o !== 'object' || !o) return o;
 
   let ret;
   o.__cycle_mark = 1;
@@ -122,7 +122,7 @@ Object.setValue = (obj, n, v) => {
   if(Array.isArray(o)) {
     ret = [];
     for(let oi of o) {
-      if(!oi.__cycle_mark){
+      if(!oi || !oi.__cycle_mark){
         ret.push(decycle(oi));
       }
     }
@@ -130,7 +130,7 @@ Object.setValue = (obj, n, v) => {
     ret = {};
 
     for(let ok of Object.keys(o)) {
-      if(!o[ok].__cycle_mark) {
+      if(!o[ok] || !o[ok].__cycle_mark) {
         ret[ok] = decycle(o[ok]);
       }
     }

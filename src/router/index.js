@@ -1,6 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import config from '../config';
+import { requests } from '../boot/axios';
 
 /*
  * If not building with SSR mode, you can
@@ -36,6 +37,9 @@ export default route(async function () {
     if (config.toTopEveryPage) {
       window.scrollTo(0, 0);
     }
+
+    // check version and refresh
+    requests.checkVersion();
   });
 
   return Router

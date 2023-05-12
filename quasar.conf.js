@@ -78,7 +78,9 @@ module.exports = configure(function (ctx) {
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       chainWebpack (chain) {
         chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
+          .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }]);
+
+        chain.plugin('version-control-plugin').use(VersionControlPlugin);
       },
       extendWebpack (cfg) {
         cfg.resolve.alias = {
