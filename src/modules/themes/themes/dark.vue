@@ -3,19 +3,15 @@
 </template>
 
 <script>
-import { defineComponent, onBeforeMount } from 'vue';
-import { Dark } from 'quasar';
+import { defineComponent } from 'vue';
+import { useQuasar } from 'quasar';
 
 export default defineComponent({
-  name: 'themeDefault',
+  name: 'EISThemeDark',
   setup() {
-    onBeforeMount(() => {
-      Dark.set(true);
-    })
+    import('../styles/dark.scss');
+    const $q = useQuasar();
+    $q.dark.set(true);
   },
 });
 </script>
-
-<style lang="scss">
-@import '../styles/dark.scss';
-</style>

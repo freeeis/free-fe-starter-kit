@@ -77,6 +77,15 @@ body {
 @import './default.scss';
 
 .theme-EISThemeDefault {
+  --q-primary   : #4871BF;
+  --q-secondary : #E09E10;
+  --q-accent    : #E09E10;
+  --q-dark      : #403e3e;
+  --q-positive  : #0CAFCC;
+  --q-negative  : #e27909;
+  --q-info      : #2a9ab0;
+  --q-warning   : #E09E10;
+
   --field-label-font-size: 14px;
   --table-row-height: 100px;
 
