@@ -3,7 +3,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-05-01 11:36:11
+ * @LastEditTime: 2023-05-25 16:55:09
  * @LastEditors: zhiquan
  */
 
@@ -22,7 +22,7 @@ export default {
   nanPlaceholder: '/',
   requestWithLocale: false,
   ignoreMock: false,
-  checkVersion: true,
+  checkVersion: false,
   locales: [
     {
       locale: 'zh-cn',

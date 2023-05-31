@@ -9,6 +9,7 @@
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
 const { configure } = require('quasar/wrappers');
+const { VersionControlPlugin } = require('./version.control.plugin');
 
 const path = require('path');
 

@@ -180,6 +180,7 @@ export default {
 
 <style lang="scss" scoped>
 .admin-layout {
+  background: $bodyBackground;
   position: absolute;
   min-width: $contentMinWidth;
   .header-inner {

@@ -5,7 +5,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-05-07 14:40:32
+ * @LastEditTime: 2023-05-26 11:44:39
  * @LastEditors: zhiquan
  */
 
@@ -98,7 +98,7 @@ Object.setValue = (obj, n, v) => {
 
     if (i < nList.length - 1) {
       if (!t[nl]) {
-        t[nl] = typeof nList[i + 1] === 'number' ? [] : {};
+        t[nl] = Number(nList[i + 1]) >= 0 ? [] : {};
       }
       t = t[nl];
     } else {
