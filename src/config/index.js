@@ -5,7 +5,7 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-05-26 11:44:39
+ * @LastEditTime: 2023-06-16 10:43:55
  * @LastEditors: zhiquan
  */
 
@@ -71,6 +71,8 @@ Object.nestValue = (obj, p) => {
   const pList = p.split('.');
 
   for (let i = 0; i < pList.length; i += 1) {
+    if (!v) return v;
+
     const pl = pList[i];
 
     if (typeof v[pl] === 'object') v = v[pl];

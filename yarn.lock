@@ -3358,10 +3358,10 @@ free-fe-account@^0.0.9:
   dependencies:
     js-cookie "^3.0.5"
 
-free-fe-core-modules@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.21.tgz#178e89fe182eefa3fb41c968c924b89bd086cd71"
-  integrity sha512-YRsmvvbVpTO37TBmtXw2kdEF/QWeuXJx/JNuD+rWlqun/OcpO22Prw64PGF8zqfqidy3bNOmJRuu0BTCIxG7xQ==
+free-fe-core-modules@^0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/free-fe-core-modules/-/free-fe-core-modules-0.0.23.tgz#0a27fabfc41cd9c63b2e8256f846fe22304d1c13"
+  integrity sha512-yoYmjA9ePmP3CzQSVGDlSqquqKDGQaXln2AO4GD9zCiEpT0KY6y8Yjb0iKKjPHzOe/1AZyzTEhKsxqBDwD9eSw==
   dependencies:
     "@tinymce/tinymce-vue" "^5.1.0"
 
@@ -4701,10 +4701,10 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pinia@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.1.3.tgz#50c70c7b4c94c109fade0ed4122231cbba72f8c5"
-  integrity sha512-XNA/z/ye4P5rU1pieVmh0g/hSuDO98/a5UC8oSP0DNdvt6YtetJNHTrXwpwsQuflkGT34qKxAEcp7lSxXNjf/A==
+pinia@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.1.4.tgz#a642adfe6208e10c36d3dc16184a91064788142a"
+  integrity sha512-vYlnDu+Y/FXxv1ABo1vhjC+IbqvzUdiUC3sfDRrRyY2CQSrqqaa+iiHmqtARFxJVqWQMCJfXx1PBvFs9aJVLXQ==
   dependencies:
     "@vue/devtools-api" "^6.5.0"
     vue-demi ">=0.14.5"
