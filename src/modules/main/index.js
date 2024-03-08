@@ -7,6 +7,8 @@ export default {
       'core-modules',
       'portal',
       'themes',
+      'flow',
+      'flow-editor',
     ],
   },
   routers: [
@@ -138,6 +140,25 @@ export default {
         {
           ref: 'core-modules>errcode',
           meta: [{ title: '错误代码管理' }],
+        },
+        {
+          path: 'f',
+          ref: 'flow>flow>f',
+          meta: [
+            {
+              title: '流程',
+            },
+          ],
+        },
+        {
+          path: 'flow',
+          ref: 'flow-editor>editor>mgmt',
+          meta: [
+            { title: '系统管理' },
+            {
+              title: '流程管理',
+            },
+          ],
         },
       ],
     },

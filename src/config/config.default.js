@@ -19,6 +19,7 @@ export default {
   thumbUrlBase: '/assets/thumb/',
   videoUrlBase: '/assets/misc/',
   documentUrlBase: '/assets/docs/',
+  zipUrlBase: '/assets/zip/',
   nanPlaceholder: '/',
   requestWithLocale: false,
   ignoreMock: false,

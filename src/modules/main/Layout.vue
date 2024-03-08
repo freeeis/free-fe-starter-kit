@@ -28,7 +28,7 @@
             </span>
             <e-icon class="user-profile-menu-icon"
               :name="ucMenuShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></e-icon>
-            <q-menu content-class="user-profile-menu" fit @input="ucMenuChanged">
+            <q-menu content-class="user-profile-menu" fit @update:modelValue="ucMenuChanged">
               <q-list style="min-width: 191px">
                 <q-item>
                   <q-item-section>

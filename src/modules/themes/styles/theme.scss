@@ -1,3 +1,5 @@
+@import './default.scss';
+
 // 全局变量
 body {
   --simple-field-width: 100%;
@@ -12,6 +14,10 @@ body {
 //全局样式
 #q-app {
   background: var(--bodyBackground);
+
+  .free-app {
+    background-color: #88888811;
+  }
 }
 
 .step-left {
@@ -38,11 +44,11 @@ body {
   text-align: center
 }
 
-.input-field-search .q-field__prepend {
+.free-field-search .q-field__prepend {
   flex-wrap: wrap
 }
 
-.input-field-search .simple-field .q-field__prepend {
+.free-field-search .simple-field .q-field__prepend {
   max-width: calc(100% - 48px);
   .q-chip__content {
     text-overflow: ellipsis;
@@ -53,12 +59,12 @@ body {
   }
 }
 
-.input-field-search .simple-field.empty .q-field__prepend {
+.free-field-search .simple-field.empty .q-field__prepend {
   display: none;
 }
 
 // hide input when having data in search component
-.input-field-search .has-data {
+.free-field-search .has-data {
   input {
     display: none;
   }
@@ -68,21 +74,13 @@ body {
   }
 }
 
-// import customer style
-@import './theme/web';
-@import './theme/flows';
-@import './theme/adminTree';
-@import './theme/systemConfig';
-
-@import './default.scss';
-
 .theme-EISThemeDefault {
   --q-primary   : #4871BF;
   --q-secondary : #E09E10;
   --q-accent    : #E09E10;
   --q-dark      : #403e3e;
   --q-positive  : #0CAFCC;
-  --q-negative  : #e27909;
+  --q-negative  : #c10015;
   --q-info      : #2a9ab0;
   --q-warning   : #E09E10;
 
@@ -214,17 +212,14 @@ body {
 
     .flow-step {
       .flow-action-buttons {
-        margin-bottom: 20px;
-
+        padding: 16px;
         &>span {
           &>.q-btn {
             margin: 0 16px 0 0;
           }
 
-          &:first-child {
-            .q-btn {
-              margin-left: 16px;
-            }
+          &:not(:last-child) {
+            margin-right: 16px;
           }
 
           .q-btn-group {
@@ -233,16 +228,15 @@ body {
         }
 
         .flow-action-btn- {
-
           &delete,
           &recall,
           &remove {
-            background-color: var(--q-color-negative);
+            background-color: var(--q-negative);
           }
 
           &print,
           &export {
-            background-color: var(--q-color-warning);
+            background-color: var(--q-warning);
           }
         }
       }
@@ -280,9 +274,9 @@ body {
     }
   }
 
-  .input-field-wrapper {
-    .input-field-category {
-      margin: var(--input-field-category-margin);
+  .free-field-wrapper {
+    .free-field-category {
+      margin: var(--free-field-category-margin);
       height: 57px;
       font-size: 16px;
       font-weight: bold;
@@ -300,12 +294,12 @@ body {
     }
 
     &:first-child {
-      .input-field-category {
+      .free-field-category {
         margin-top: 0;
       }
     }
 
-    .input-field-separator {
+    .free-field-separator {
       margin: 32px 16px;
     }
 
@@ -316,3 +310,9 @@ body {
     }
   }
 }
+
+// import customer style
+@import './theme/web';
+@import './theme/flows';
+@import './theme/adminTree';
+@import './theme/systemConfig';

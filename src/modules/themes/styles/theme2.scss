@@ -1,14 +1,349 @@
 @import './default.scss';
 
+// 全局变量
+body {
+  --simple-field-width: 100%;
+  --field-label-width: 120px;
+  --field-label-font-size: 14px;
+  --field-label-color: rgba(142,142,142,1);
+  --field-label-after: ':';
+  --field-label-required-color: red;
+  --editor-area-background: rgba(238,238,238,1);
+}
+
+//全局样式
+#q-app {
+  background: var(--bodyBackground);
+
+  .free-app {
+    background-color: #88888811;
+  }
+}
+
+.step-left {
+  .q-stepper__tab {
+    flex: 0 0 auto
+  }
+
+  .q-stepper__header {
+    justify-content: flex-start
+  }
+}
+
+// input fields
+.simple-field {
+  flex: 1
+}
+
+.q-item.q-router-link--active,
+.q-item--active {
+  background: rgba(0, 0, 0, 0.15)
+}
+
+.q-notification .q-notification__message {
+  text-align: center
+}
+
+.free-field-search .q-field__prepend {
+  flex-wrap: wrap
+}
+
+.free-field-search .simple-field .q-field__prepend {
+  max-width: calc(100% - 48px);
+  .q-chip__content {
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.free-field-search .simple-field.empty .q-field__prepend {
+  display: none;
+}
+
+// hide input when having data in search component
+.free-field-search .has-data {
+  input {
+    display: none;
+  }
+
+  textarea {
+    display: none;
+  }
+}
+
 .theme-EISThemeDefault2 {
-  --q-primary   : #00a344;
+  --q-primary   : #29b560;
   --q-secondary : #487bc2;
-  --q-accent    : #4067c9;
+  --q-accent    : #E09E10;
   --q-dark      : #303030;
   --q-positive  : #074f18;
-  --q-negative  : #a10013;
+  --q-negative  : #f5504f;
   --q-info      : #58b4c7;
   --q-warning   : #f2e338;
 
   --content-max-width: 100%;
+
+  .q-message-text-content--received {
+    color: #1A1A1A !important;
+    .chat-message-markdown-content {
+      color: #1A1A1A !important;
+    }
+  }
+
+  --field-label-font-size: 14px;
+  --table-row-height: 100px;
+
+  .admin-main-content-wrapper {
+    .q-table__container {
+      box-shadow: none;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .q-table {
+
+      td,
+      th {
+        padding: 0px 6px;
+      }
+
+      thead {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .persistant-top-row,
+      .persistant-bottom-row {
+        height: 6px;
+      }
+
+      .persistant-top-row *,
+      .persistant-bottom-row * {
+        position: absolute;
+        border: 0 !important;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--body-background);
+      }
+
+      .persistant-bottom-row * {
+        margin-top: 30px;
+      }
+
+      &--horizontal-separator thead th {
+        border-bottom: 0;
+      }
+    }
+
+    .q-page-sticky {
+      .q-btn {
+        border-radius: 6px;
+        width: 80px;
+        height: 36px;
+        font-size: 13px;
+        opacity: 0.65;
+
+        .q-btn__wrapper {
+          padding: 0;
+
+          .q-btn__content {
+            height: 36px;
+
+            i {
+              margin: 0 4px 0 0;
+            }
+          }
+        }
+      }
+
+      .q-fab__actions {
+        .q-btn {
+          .q-btn__wrapper {
+            .q-btn__content {
+              i {
+                margin: 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .flow-list {
+      .summary-head-wrapper {
+        &+.q-table__container {
+          top: 16px;
+          box-shadow: none;
+        }
+
+        .summary-head-item {
+          .summary-head-icon {
+            font-size: 48px;
+
+            &.e-icon {
+              display: inline-flex;
+              height: 48px;
+              width: 48px;
+            }
+          }
+
+          .summary-head-btn {
+            min-width: 92px;
+            border-radius: 6px;
+          }
+        }
+      }
+
+      .q-table {
+        @extend .zebra-table;
+
+        tbody tr {
+          height: var(--table-row-height);
+        }
+      }
+    }
+
+    .step-left {
+      box-shadow: none;
+
+      .q-stepper__header {
+        justify-content: flex-start;
+
+        .q-stepper__tab {
+          flex-grow: 0 !important;
+        }
+      }
+    }
+
+    .flow-step {
+      .flow-action-buttons {
+        margin-bottom: 20px;
+
+        &>span {
+          &>.q-btn {
+            margin: 0 16px 0 0;
+          }
+
+          &:first-child {
+            .q-btn {
+              margin-left: 16px;
+            }
+          }
+
+          .q-btn-group {
+            margin: 0 16px 0 0;
+          }
+        }
+
+        .flow-action-btn- {
+
+          &delete,
+          &recall,
+          &remove {
+            background-color: var(--q-negative);
+          }
+
+          &print,
+          &export {
+            background-color: var(--q-warning);
+          }
+        }
+      }
+    }
+
+    .pagination-go-to-page {
+      margin-left: 4px;
+      vertical-align: middle;
+      line-height: 20px;
+      display: flex;
+
+      label {
+        display: inline-block;
+      }
+
+      .q-field__control {
+        max-width: 40px;
+        height: 20px;
+        font-size: 12px;
+        padding: 0;
+        padding-left: 2px;
+        margin-right: 4px;
+      }
+
+      button {
+        line-height: 12px;
+        margin-left: 4px;
+        max-width: 40px;
+        padding: 0;
+      }
+    }
+
+    .q-table__bottom.q-table__bottom--nodata {
+      min-height: 200px;
+    }
+  }
+
+  .free-field-wrapper {
+    .free-field-category {
+      margin: var(--free-field-category-margin);
+      height: 57px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 41px;
+
+      .label {
+        &::before {
+          content: '【';
+        }
+
+        &::after {
+          content: '】';
+        }
+      }
+    }
+
+    &:first-child {
+      .free-field-category {
+        margin-top: 0;
+      }
+    }
+
+    .free-field-separator {
+      margin: 32px 16px;
+    }
+
+    .q-field__append {
+      .postfix {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &.body--dark {
+    .q-message-text--sent {
+      background: #2C2C2C;
+
+      &::before {
+        color: #2C2C2C;
+      }
+    }
+    .q-message-text-content--sent {
+      color: #eaeaea;
+    }
+
+    .q-message-text-content--received {
+      color: #1A1A1A !important;
+    }
+  }
 }
+
+// import customer style
+@import './theme/web';
+@import './theme/flows';
+@import './theme/adminTree';
+@import './theme/systemConfig';
+

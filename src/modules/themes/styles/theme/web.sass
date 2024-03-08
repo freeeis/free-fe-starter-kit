@@ -201,6 +201,7 @@
       @extend .btn-secondary
 
 .breadcrumbs
+  background: $background
   padding: 0 5px 0 25px
   height: 48px
 
@@ -523,205 +524,203 @@
     .required-mark
       display: none
 
-  .admin-layout,.register-layout,.recover-layout
-    .admin-main-toolbar
-      height: 60px
-      .admin-logo
-        width: 391px
-        height: 49px
-        margin: 5px 0
-      .q-avatar .e-icon
-        width: 32px
-        height: 32px
-      .user-name
-        width: 97px
-        height: 33px
-        font-size: 14px
-        font-weight: 400
-        line-height: 16px
-        white-space: nowrap
-        .date-label
-          margin-top: 4px
-          font-size: 10px
-          line-height: 12px
-    .q-page-container
-      // margin: 12px// 50px 20px 50px
-      .leveled-menu
-        max-width: 220px
-        padding: 10px 0
-        font-size: 16px
-        font-weight: 400
-        line-height: 30px
-        white-space: nowrap
-        overflow: hidden
+.admin-layout,.register-layout,.recover-layout
+  .admin-main-toolbar
+    height: 60px
+    .admin-logo
+      width: 391px
+      height: 49px
+      margin: 5px 0
+    .q-avatar .e-icon
+      width: 32px
+      height: 32px
+    .user-name
+      width: 97px
+      height: 33px
+      font-size: 14px
+      font-weight: 400
+      line-height: 16px
+      white-space: nowrap
+      .date-label
+        margin-top: 4px
+        font-size: 10px
+        line-height: 12px
+  .q-page-container
+    .leveled-menu-wrapper
+      background: $background
+    .leveled-menu
+      max-width: 220px
+      padding: 10px 0
+      font-size: 16px
+      font-weight: 400
+      line-height: 30px
+      white-space: nowrap
+      overflow: hidden
 
+      border-radius: 5px
+      .q-item
+        min-height: 50px !important
+      .q-expansion-item
+        margin: 0 2px
+        .simple-expand-icon
+          display: none
+        .q-item__section--avatar
+          min-width: 32px !important
+          i
+            font-size: 18px
+        .q-expansion-item__content
+          padding-left: 0 !important
+          .leveled-menu .header
+            padding-left: 32px
+      .q-item.q-router-link--active, .q-item--active
+        // background: rgba(217,232,242,1)
         border-radius: 5px
-        .q-item
-          min-height: 50px !important
-        .q-expansion-item
-          margin: 0 2px
-          .simple-expand-icon
-            display: none
-          .q-item__section--avatar
-            min-width: 32px !important
-            i
-              font-size: 18px
-          .q-expansion-item__content
-            padding-left: 0 !important
-            .leveled-menu .header
-              padding-left: 32px
-        .q-item.q-router-link--active, .q-item--active
-          // background: rgba(217,232,242,1)
-          border-radius: 5px
-          font-size: 16px
+        font-size: 16px
+        font-weight: bold
+        color: var(--primary)
+        line-height: 30px
+    .admin-main-content-wrapper,.register-content,.recover-content
+      // margin-left: 10px
+      // background: white
+      .flow-list,.flow-step,.step-left
+        background: $bodyBackground
+      .vgap,.hgap
+        background: var(--bodyBackground)
+      .summary-head-wrapper
+        height: 150px
+        border-radius: 6px
+        margin-bottom: 16px
+        .summary-head-number
+          font-size: 12px
           font-weight: bold
-          color: var(--primary)
-          line-height: 30px
-      .admin-main-content-wrapper,.register-content,.recover-content
-        // margin-left: 10px
-        // background: white
-        .flow-list,.flow-step,.step-left
-          // background: var(--bodyBackground)
-        .vgap,.hgap
-          // background: var(--bodyBackground)
-        .summary-head-wrapper
-          height: 150px
+      .flow-editor-content
+        .flow-action-buttons
+          background: $background
+
           border-radius: 6px
-
-          margin-bottom: 16px
-          .summary-head-number
-            font-size: 12px
-            font-weight: bold
-        .flow-editor-content
-          background: var(--bodyBackground)
-          .flow-action-buttons
-
-            border-radius: 6px
-          .flow-step-input-fields
-            padding: 24px
-        .q-stepper.flow-step
-          .q-stepper__header
-            // flex-wrap: nowrap
-            min-height: 150px
-            border-radius: 6px
-            .q-stepper__label
-              .q-stepper__caption
-                display: none
-              .q-stepper__title
-                font-size: 16px
-                font-weight: bold
-                margin-top: 16px
-            .q-focus-helper
+        .flow-step-free-fields
+          background: $background
+          padding: 24px
+      .q-stepper.flow-step
+        .q-stepper__header
+          background: $background
+          // flex-wrap: nowrap
+          min-height: 150px
+          border-radius: 6px
+          .q-stepper__label
+            .q-stepper__caption
               display: none
-            .q-ripple
-              display: none
-            .q-stepper__dot
-              width: 60px
-              height: 60px
-              border-radius: 0
-              background: rgba(0,0,0,0)
+            .q-stepper__title
+              font-size: 16px
+              font-weight: bold
+              margin-top: 16px
+          .q-focus-helper
+            display: none
+          .q-ripple
+            display: none
+          .q-stepper__dot
+            width: 60px
+            height: 60px
+            border-radius: 0
+            background: rgba(0,0,0,0)
+            font-size: 60px
+            line-height: 60px
+            i
               font-size: 60px
               line-height: 60px
-              i
-                font-size: 60px
-                line-height: 60px
-              img
-                width: 100%
-                height: 100%
-              span
-                color: unset
-              &::after,&::before
-                // display: none
-                background: unset
-                border-top: 1px dashed rgba(0,0,0,0.12)
-            .q-stepper__tab--
-              &active
-                position: unset
-                &::after
-                  content: ''
-                  position: absolute
-                  top: 150px
-                  width: 18px
-                  height: 18px
-                  border-width: 9px
-                  border-style: dashed dashed dashed solid
-                  border-color: currentColor transparent transparent transparent
-              &error i
-                color: #EC6D70
-              &done i
-                color: #63BC81
-              &disabled
-                color: #8E8E8E
-          .q-stepper__content
+            img
+              width: 100%
+              height: 100%
+            span
+              color: unset
+            &::after,&::before
+              // display: none
+              background: unset
+              border-top: 1px dashed rgba(0,0,0,0.12)
+          .q-stepper__tab--
+            &active
+              position: unset
+              &::after
+                content: ''
+                position: absolute
+                top: 150px
+                width: 18px
+                height: 18px
+                border-width: 9px
+                border-style: dashed dashed dashed solid
+                border-color: currentColor transparent transparent transparent
+            &error i
+              color: #EC6D70
+            &done i
+              color: #63BC81
+            &disabled
+              color: #8E8E8E
+        .q-stepper__content
+          background: $background
+          border-radius: 5px
+          .flow-action-buttons
             border-radius: 5px
-            .flow-action-buttons
-              border-radius: 5px
-              padding-top: 4px
-              padding-bottom: 4px
-              // height: 28px
-              .q-btn
-                // margin-top: 0
-                // margin-bottom: 0
-                width: 106px
-                height: 33px
-                border-radius: 5px
-            .flow-step-submit-log
-              font-size: 14px
-              font-weight: 400
-              .q-timeline__title
-                font-size: 14px
-                font-weight: bold
-                margin-bottom: 14px
-              .q-timeline__subtitle
-                display: none
-              .q-timeline__content
-                padding-bottom: 18px
-              .entry
-                .date
-                  position: absolute
-                  right: 0
-                  top: 0
-                  .label
-                    display: none
-              .entry-
-                &-1
-                  color: rgba(236,109,112,1)
-                  .q-timeline__dot
-                    &::before,&::after
-                      color: rgba(236,109,112,1)
-                &1
-                  color: rgba(99,188,129,1)
-                  .q-timeline__dot
-                    &::before,&::after
-                      color: rgba(99,188,129,1)
-                &0
-                  color: var(--grey-7)
-                  .q-timeline__dot
-                    &::before,&::after
-                      color: var(--grey-7)
-                &recall
-                  color: var(--grey-8)
-                  .q-timeline__dot
-                    &::before,&::after
-                      color: var(--grey-8)
-            .flow-step-input-fields
-              min-height: 800px
-        .sticky-button
-          & >div .column .q-btn
-            .q-btn__wrapper
-              min-height: unset
-              padding-top: 0
-              line-height: 35px
-          .q-fab__actions
             .q-btn
-              width: 106px
-            .q-btn__wrapper
-              padding-top: 0
-        .flow-action-btn-,.sticky-button-
-          &previous,&next, &print, &export,&create,&register,&regaudit,&cancel
-            @extend .btn-secondary
-          &submit,&save, &recall,&recallop,&remove,&enable,&edit,&sign,&assign,&sback,&delete,&recallnotify,&change,&resetpwd,&tosteptwo,&off,&offnotify,&return
-            @extend .btn-primary
+              min-width: 106px
+              height: 33px
+              border-radius: 5px
+          .flow-step-submit-log
+            font-size: 14px
+            font-weight: 400
+            .q-timeline__title
+              font-size: 14px
+              font-weight: bold
+              margin-bottom: 14px
+            .q-timeline__subtitle
+              display: none
+            .q-timeline__content
+              padding-bottom: 18px
+            .entry
+              .date
+                position: absolute
+                right: 0
+                top: 0
+                .label
+                  display: none
+            .entry-
+              &-1
+                color: rgba(236,109,112,1)
+                .q-timeline__dot
+                  &::before,&::after
+                    color: rgba(236,109,112,1)
+              &1
+                color: rgba(99,188,129,1)
+                .q-timeline__dot
+                  &::before,&::after
+                    color: rgba(99,188,129,1)
+              &0
+                color: var(--grey-7)
+                .q-timeline__dot
+                  &::before,&::after
+                    color: var(--grey-7)
+              &recall
+                color: var(--grey-8)
+                .q-timeline__dot
+                  &::before,&::after
+                    color: var(--grey-8)
+          .flow-step-input-fields
+            min-height: 800px
+      .sticky-button
+        & >div .column .q-btn
+          .q-btn__wrapper
+            min-height: unset
+            padding-top: 0
+            line-height: 35px
+        .q-fab__actions
+          .q-btn
+            width: 106px
+          .q-btn__wrapper
+            padding-top: 0
+      .flow-action-btn-,.sticky-button-
+        &previous,&next, &print, &export,&create,&register,&regaudit,&cancel
+          @extend .btn-secondary
+        &submit,&save, &recall,&recallop,&remove,&enable,&edit,&sign,&assign,&sback,&delete,&recallnotify,&change,&resetpwd,&tosteptwo,&off,&offnotify,&return
+          @extend .btn-primary
 
 .free-field-wrapper.without-label
   &>.simple-field>.q-field>.q-field__before,
@@ -820,6 +819,7 @@
 
 // flow list
 .summary-head-wrapper
+  background: $background
   margin-bottom: 8px
   .last-summary
     position: relative
@@ -847,7 +847,7 @@
     .summary-head-btn
       width: 104px
       height: 35px
-      // background: rgba(255,29,63,1)
+      background: $positive
       border-radius: 7px
       font-size: 14px
       font-weight: 400
@@ -1051,20 +1051,8 @@
 .free-field-search:not(.free-field--readonly),
 .free-field-text:not(.free-field--readonly)
   .q-field__control
-    border-radius: 5px
-    background: var(--editorAreaBackground)
     &::before
       display: none
-// .free-field-text.free-field--readonly
-//   .q-field__control
-//     border-radius: 5px
-//     &::before
-//       // border: 1px solid rgba(191,191,191,0.5)
-//     &::after
-//       display: none
-//     textarea
-//       resize: none
-// search dialog
 .free-field-search
   height: 35px
   .q-field__control

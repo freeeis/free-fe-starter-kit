@@ -3,22 +3,22 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-22 09:22:12
- * @LastEditTime: 2023-03-08 15:54:25
+ * @LastEditTime: 2023-05-31 18:02:06
  * @LastEditors: zhiquan
  */
 
-$bodyBackground: #FAFAFA;
-$background: rgba(255,255,255,1);
+$bodyBackground: var(--body-background, #F1F1F1);
+$background: var(--background, rgba(255,255,255,1));
 $foreground: #333; //#c9d1d9;
 
-$primary   : #188595;
+$primary   : #185095;
 $secondary : #E09E10;
 $accent    : #E09E10;
 
 $dark      : #403e3e;
 
 $positive  : #0CAFCC;
-$negative  : #820909;
+$negative  : #c10015;
 $info      : #2a9ab0;
 $warning   : #E09E10;
 
@@ -30,9 +30,9 @@ $contentMaxWidth: 100%;
 $contentMinWidth: 400px;
 
 // Input field label;
-$inputFieldCategoryMargin: 30px auto -20px auto;
-$inputFieldWrapperMargin: 0 0 30px 0;
-$inputFieldMargin: 0px 20px 0px 0;
+$freeFieldCategoryMargin: 30px auto -20px auto;
+$freeFieldWrapperMargin: 0 0 30px 0;
+$freeFieldMargin: 0px 20px 0px 0;
 $simpleFieldWidth: 100%;
 $simpleFieldHeight: 40px;
 $fieldLabelWidth: 120px;
