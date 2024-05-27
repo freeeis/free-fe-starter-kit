@@ -12,6 +12,50 @@
 import { extend } from 'quasar';
 
 /**
+ * Deep clone an object.
+ * Be careful, if define Object.prototype.clone here (which should be better), it will conflict with mongoose lib. Not investigated yet!
+ */
+Object.clone = function (source) {
+  // Handle null or undefined or function
+  if (!source || ("object" != typeof source) || (Object.keys(source).length <= 0))
+      return source;
+
+  // Handle the 3 simple types, Number and String and Boolean
+  if (source instanceof Number || source instanceof String || source instanceof Boolean)
+      return source.valueOf();
+
+  // Handle Date
+  if (source instanceof Date) {
+      var copy = new Date();
+      copy.setTime(source.getTime());
+      return copy;
+  }
+  // Handle Array or Object
+  if (Array.isArray(source)) {
+      const copy = [];
+      for (let i = 0; i < source.length; i += 1) {
+          const attr = source[i];
+
+          copy[i] = attr ? Object.clone(attr) : attr;
+      }
+
+      return copy;
+  } else if (typeof source === 'object') {
+      const copy = {};
+      Object.keys(source).forEach(attr => {
+          if (source.hasOwnProperty(attr) && !attr.startsWith('_') && !attr.startsWith('$'))
+              copy[attr] = source[attr] ? Object.clone(source[attr]) : source[attr];
+      })
+
+      return copy;
+  }
+
+  // not support other types yet!
+  throw new Error(`${typeof source} is not supported!`);
+}
+
+
+/**
  * Merge (deep) multiple objects into the target object.
  */
 Object.merge = (target, ...source) => {

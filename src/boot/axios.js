@@ -4,10 +4,9 @@
  *
  * @Author: zhiquan
  * @Date: 2021-06-21 15:14:42
- * @LastEditTime: 2023-05-01 12:35:34
+ * @LastEditTime: 2023-05-07 12:14:52
  * @LastEditors: zhiquan
  */
-
 import Cookies from 'js-cookie';
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
@@ -28,14 +27,14 @@ const ERROR_MESSAGES = {
  * capacitor环境下，接口路径前需要添加设置的后台地址
  */
 if (Platform.is.capacitor) {
-  baseUrl = `${config.backendURL}${baseUrl}`;
+  baseUrl = `${config.backendURL}/${baseUrl}`;
 }
 
-axios.defaults.timeout = 3000 * 1000;
+axios.defaults.timeout = 15 * 60 * 1000 * 1000;
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
-  timeout: 3000 * 1000,
+  timeout: 15 * 60 * 1000 * 1000,
 });
 
 axiosInstance.interceptors.request.use((cfg) => {
@@ -189,10 +188,12 @@ export default boot(({ app }) => {
    * @param {Object} data 请求数据
    * @returns 响应数据
    */
-  const postRequest = (url, data) => {
-    data = addLocale(data);
+  const postRequest = (url, data, opts) => {
+    if (!opts?.__ignoreDecycle) {
+      data = addLocale(data);
+    }
 
-    return mockIt(url, 'post', data) || axiosInstance.post(url, Object.decycle(data));
+    return mockIt(url, 'post', data) || axiosInstance.post(url, opts?.__ignoreDecycle ? data : Object.decycle(data), opts);
   };
 
   /**
@@ -202,10 +203,12 @@ export default boot(({ app }) => {
   * @param {Object} data 请求数据
   * @returns 响应数据
   */
-  const putRequest = (url, data) => {
-    data = addLocale(data);
+  const putRequest = (url, data, opts) => {
+    if (!opts?.__ignoreDecycle) {
+      data = addLocale(data);
+    }
 
-    return mockIt(url, 'put', data) || axiosInstance.put(url, Object.decycle(data));
+    return mockIt(url, 'put', data) || axiosInstance.put(url, opts?.__ignoreDecycle ? data : Object.decycle(data), opts);
   };
 
   /**
@@ -215,10 +218,12 @@ export default boot(({ app }) => {
    * @param {Object} data 请求数据
    * @returns 响应数据
    */
-  const deleteRequest = (url, data) => {
-    data = addLocale(data);
+  const deleteRequest = (url, data, opts) => {
+    if (!opts?.__ignoreDecycle) {
+      data = addLocale(data);
+    }
 
-    return mockIt(url, 'delete', { data }) || axiosInstance.delete(url, { data: Object.decycle(data) });
+    return mockIt(url, 'delete', { data }) || axiosInstance.delete(url, { data: opts?.__ignoreDecycle ? data : Object.decycle(data)}, opts);
   };
 
   // 封装所有可用的实例和方法，以绑定到全局
