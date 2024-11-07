@@ -54,6 +54,9 @@ const getLocale = () => {
 
 DEFAULT_LANGUAGE = getLocale();
 
+// set html lang attribute
+document.documentElement.lang = DEFAULT_LANGUAGE;
+
 export { DEFAULT_LANGUAGE, getLocale };
 
 const i18n = createI18n({

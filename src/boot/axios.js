@@ -242,7 +242,6 @@ export default boot(({ app }) => {
         axios.get(`/__v.json?ts=${Date.now()}`).then((dd) => {
           const nv = dd && dd.data && dd.data.v;
           if (nv && currentVersion !== nv) {
-            console.log(`version: ${nv}`);
 
             localStorage.setItem('version', nv);
             window.location.reload();
