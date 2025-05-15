@@ -43,7 +43,7 @@ Object.clone = function (source) {
   } else if (typeof source === 'object') {
       const copy = {};
       Object.keys(source).forEach(attr => {
-          if (source.hasOwnProperty(attr) && !attr.startsWith('_') && !attr.startsWith('$'))
+          if (Object.prototype.hasOwnProperty.call(source, attr) && !attr.startsWith('_') && !attr.startsWith('$'))
               copy[attr] = source[attr] ? Object.clone(source[attr]) : source[attr];
       })
 
