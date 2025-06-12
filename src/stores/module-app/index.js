@@ -1,11 +1,11 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
-import state from './state';
-import getters from './getters';
-import actions from './actions';
+import state from './state.js'
+import getters from './getters.js'
+import actions from './actions.js'
 
 export default defineStore('app', {
   getters,
   actions,
   state,
-});
+})

@@ -8,12 +8,12 @@
  * @LastEditors: zhiquan
  */
 
+import { defineBoot } from '#q-app/wrappers'
 
-import { boot } from 'quasar/wrappers';
-import { createI18n } from 'vue-i18n';
-import { Quasar } from 'quasar';
-import useAppStore from '../stores/app';
-import config from '../config';
+import { createI18n } from 'vue-i18n'
+import { Quasar } from 'quasar'
+import useAppStore from '../stores/app.js'
+import config from '../config/index.js'
 
 // 默认的一些字典数据
 const messages = {
@@ -35,29 +35,29 @@ const messages = {
     SETTINGS: '设置',
     首页: '首页',
   },
-};
+}
 
-let DEFAULT_LANGUAGE = '';
+let DEFAULT_LANGUAGE = ''
 
 const getLocale = () => {
-  let locale = DEFAULT_LANGUAGE || config.defaultLocale || 'zh-cn';
+  let locale = DEFAULT_LANGUAGE || config.defaultLocale || 'zh-cn'
 
   if (!locale) {
-    const sysLocale = Quasar.lang.getLocale().toLowerCase();
+    const sysLocale = Quasar.lang.getLocale().toLowerCase()
     if (config.locales[sysLocale]) {
-      locale = sysLocale;
+      locale = sysLocale
     }
   }
 
-  return locale || 'zh-cn';
-};
+  return locale || 'zh-cn'
+}
 
-DEFAULT_LANGUAGE = getLocale();
+DEFAULT_LANGUAGE = getLocale()
 
 // set html lang attribute
-document.documentElement.lang = DEFAULT_LANGUAGE;
+document.documentElement.lang = DEFAULT_LANGUAGE
 
-export { DEFAULT_LANGUAGE, getLocale };
+export { DEFAULT_LANGUAGE, getLocale }
 
 const i18n = createI18n({
   legacy: false,
@@ -65,38 +65,35 @@ const i18n = createI18n({
   fallbackLocale: 'zh-cn',
 })
 
-export default boot((ctx) => {
-  const store = useAppStore();
+export default defineBoot(({ app }) => {
+  const store = useAppStore()
 
   const defaultLocale =
-    store.locale ||
-    DEFAULT_LANGUAGE ||
-    Quasar.lang.getLocale().toLowerCase() ||
-    "zh-cn";
-  i18n.locale = defaultLocale;
-  i18n.fallbackLocale = defaultLocale;
-  DEFAULT_LANGUAGE = defaultLocale;
+    store.locale || DEFAULT_LANGUAGE || Quasar.lang.getLocale().toLowerCase() || 'zh-cn'
+  i18n.locale = defaultLocale
+  i18n.fallbackLocale = defaultLocale
+  DEFAULT_LANGUAGE = defaultLocale
 
   // Set i18n instance on app
-  ctx.app.config.globalProperties.i18n = i18n;
-  ctx.app.use(i18n);
+  app.config.globalProperties.i18n = i18n
+  app.use(i18n)
 
   // 加载各模块中的字典数据。
-  if (ctx.app.i18nMessages) {
-    Object.keys(ctx.app.i18nMessages).forEach((ik) => {
+  if (app.i18nMessages) {
+    Object.keys(app.i18nMessages).forEach((ik) => {
       i18n.global.setLocaleMessage(ik, {
-        ...ctx.app.i18nMessages[ik],
+        ...app.i18nMessages[ik],
         ...(messages[ik] || {}),
-      });
+      })
 
       // if not exists in config, add to the list
       if (config.locales.findIndex((l) => l.locale === ik) < 0) {
         config.locales.push({
           name: ik,
           locale: ik,
-        });
+        })
       }
-    });
+    })
   }
 })
 

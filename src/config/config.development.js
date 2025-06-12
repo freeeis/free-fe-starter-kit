@@ -3,15 +3,13 @@
  *
  * @Author: zhiquan <x.zhiquan@gmail.com>
  * @Date: 2021-06-21 15:22:03
- * @LastEditTime: 2023-05-31 15:25:25
+ * @LastEditTime: 2025-06-11 16:39:25
  * @LastEditors: zhiquan
  */
 
 export default {
   modules: [
     'main',
-    // 'flow',
-    // 'flow-editor',
   ],
 
   countIcon: 'img:images/count.svg',

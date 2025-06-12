@@ -1,13 +1,10 @@
-// TODO: 在新版本的ESLint中将使用eslint.config.js做为配置文件，
-// 但目前直接升级到最新的@quasar/app-webpack会有更多的问题，需要先解决这些问题之后再切换到这个配置文件
+import js from '@eslint/js'
+import globals from 'globals'
+import pluginVue from 'eslint-plugin-vue'
+import pluginQuasar from '@quasar/app-vite/eslint'
+import prettierSkipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-const js = require('@eslint/js');
-const globals = require('globals');
-const pluginVue = require('eslint-plugin-vue');
-const pluginQuasar = require('@quasar/app-webpack/eslint');
-const prettierSkipFormatting = require('@vue/eslint-config-prettier/skip-formatting');
-
-module.exports = [
+export default [
   {
     /**
      * Ignore the following files.
@@ -17,11 +14,7 @@ module.exports = [
      *
      * ESLint requires "ignores" key to be the only one in this object
      */
-    ignores: [
-      'src-bex/www/*',
-      'babel.config.js',
-      'public/*',
-    ]
+    ignores: [],
   },
 
   ...pluginQuasar.configs.recommended(),
@@ -39,7 +32,7 @@ module.exports = [
    * pluginVue.configs["flat/recommended"]
    *   -> Above, plus rules to enforce subjective community defaults to ensure consistency.
    */
-  ...pluginVue.configs[ 'flat/essential' ],
+  ...pluginVue.configs['flat/essential'],
 
   {
     languageOptions: {
@@ -54,28 +47,27 @@ module.exports = [
         cordova: 'readonly',
         Capacitor: 'readonly',
         chrome: 'readonly', // BEX related
-        browser: 'readonly' // BEX related
-      }
+        browser: 'readonly', // BEX related
+      },
     },
 
     // add your custom rules here
     rules: {
-      'vue/no-v-model-argument': 'off',
       'prefer-promise-reject-errors': 'off',
 
       // allow debugger during development only
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-    }
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    },
   },
 
   {
-    files: [ 'src-pwa/custom-service-worker.js' ],
+    files: ['src-pwa/custom-service-worker.js'],
     languageOptions: {
       globals: {
-        ...globals.serviceworker
-      }
-    }
+        ...globals.serviceworker,
+      },
+    },
   },
 
-  prettierSkipFormatting
+  prettierSkipFormatting,
 ]

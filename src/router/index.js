@@ -1,7 +1,12 @@
-import { route } from 'quasar/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
-import config from '../config';
-import { requests } from '../boot/axios';
+import { defineRouter } from '#q-app/wrappers'
+import {
+  createRouter,
+  createMemoryHistory,
+  createWebHistory,
+  createWebHashHistory,
+} from 'vue-router'
+import config from '../config/index.js'
+import { requests } from '../boot/axios.js'
 
 /*
  * If not building with SSR mode, you can
@@ -12,35 +17,38 @@ import { requests } from '../boot/axios';
  * with the Router instance.
  */
 
-export default route(async function () {
+export default defineRouter(async function () {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+    : process.env.VUE_ROUTER_MODE === 'history'
+      ? createWebHistory
+      : createWebHashHistory
 
   const Router = createRouter({
     // scrollBehavior: () => ({ left: 0, top: 0 }),
-    scrollBehavior: async (to, from, savedPosition) => new Promise((resolve) => {
-      if (savedPosition) {
-        return setTimeout(() => resolve(savedPosition), 500);
-      }
-      return { x: 0, y: 0 };
-    }),
+    scrollBehavior: async (to, from, savedPosition) =>
+      new Promise((resolve) => {
+        if (savedPosition) {
+          return setTimeout(() => resolve(savedPosition), 500)
+        }
+        return { x: 0, y: 0 }
+      }),
     routes: [],
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
+    history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE),
   })
 
   Router.afterEach(() => {
     if (config.toTopEveryPage) {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     }
 
     // check version and refresh
-    requests.checkVersion();
-  });
+    requests.checkVersion()
+  })
 
   return Router
 })

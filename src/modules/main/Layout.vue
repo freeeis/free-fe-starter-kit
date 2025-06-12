@@ -1,50 +1,43 @@
 <template>
   <div>
     <mourning></mourning>
-    <q-layout view="hhh lpr fff" class="admin-layout"
-      @scroll="scrollTop = $event.position;">
+    <q-layout view="hhh lpr fff" class="admin-layout" @scroll="scrollTop = $event.position;">
       <q-header class="print-hide">
         <div class="header-inner full-width bg-primary">
-        <q-toolbar class="admin-main-toolbar">
-          <q-toolbar-title class="cursor-pointer" @click="toPortal">
-            <q-img class="logo" src="icons/icon-128x128.png"
-              width="40px" height="40px"></q-img>
-            服务平台
-          </q-toolbar-title>
+          <q-toolbar class="admin-main-toolbar">
+            <q-toolbar-title class="cursor-pointer" @click="toPortal">
+              <q-img class="logo" src="icons/icon-128x128.png" width="40px" height="40px"></q-img>
+              {{ $t(ctx.config.siteName) }}
+            </q-toolbar-title>
 
-          <q-space></q-space>
+            <q-space></q-space>
 
-          <theme-switch></theme-switch>
+            <theme-switch reload></theme-switch>
 
-          <select-locales></select-locales>
+            <select-locales></select-locales>
 
-          <q-btn flat class="user-profile-btn">
-            <q-avatar>
-              <q-img src="icons/icon-128x128.png" round class="bg-grey-1"></q-img>
-            </q-avatar>
-            <span class="user-name ellipsis q-ml-md">
-              {{userName}}
-              <div class="date-label">{{$filter('normalDate', new Date())}}</div>
-            </span>
-            <e-icon class="user-profile-menu-icon"
-              :name="ucMenuShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></e-icon>
-            <q-menu content-class="user-profile-menu" fit @update:modelValue="ucMenuChanged">
-              <q-list style="min-width: 191px">
-                <q-item>
-                  <q-item-section>
-                    <q-btn
-                      class="logout-btn"
-                      flat
-                      :label="$t('LOGOUT')"
-                      v-close-popup
-                      @click="logoutClicked"
-                    />
-                  </q-item-section>
-                </q-item>
-              </q-list>
-            </q-menu>
-          </q-btn>
-        </q-toolbar>
+            <q-btn flat class="user-profile-btn">
+              <q-avatar>
+                <q-img v-if="userAvatar?.id" :src="$filter('serverImage', userAvatar?.id || userAvatar)" round></q-img>
+                <q-img v-else :src="userAvatar" round></q-img>
+              </q-avatar>
+              <span class="user-name ellipsis q-ml-md">
+                {{ userName }}
+                <div class="date-label">{{ $filter('normalDate', new Date()) }}</div>
+              </span>
+              <e-icon class="user-profile-menu-icon"
+                :name="ucMenuShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></e-icon>
+              <q-menu content-class="user-profile-menu" fit @input="ucMenuChanged">
+                <q-list style="min-width: 191px">
+                  <q-item>
+                    <q-item-section>
+                      <q-btn class="logout-btn" flat :label="$t('LOGOUT')" v-close-popup @click="logoutClicked" />
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
+          </q-toolbar>
         </div>
       </q-header>
 
@@ -55,19 +48,19 @@
               :showIcon="true" class="admin-menu col print-hide">
             </leveled-menus>
           </div>
-          <div class="col admin-main-content-wrapper q-ml-md">
+          <div class="col admin-main-content-wrapper">
             <bread-crumbs
               class="admin-main-bread-crumbs print-hide q-mb-md"></bread-crumbs>
-            <router-view class="admin-page-router-view" style="height: calc(100% - 60px);"/>
+            <router-view class="admin-page-router-view" style="height: calc(100% - 60px);" />
           </div>
         </q-page>
       </q-page-container>
 
       <q-footer class="row backend-footer">
         <div class="row full-width justify-center items-center">
-          <div>服务平台后台管理</div>
-          <div class="q-mx-md">© 2022-{{(new Date()).getFullYear()}}</div>
-          <div class="cursor-pointer" @click="toICP">{{ICP}}</div>
+          <div>{{ $t('服务平台后台管理') }}</div>
+          <div class="q-mx-md">© 2022-{{ (new Date()).getFullYear() }}</div>
+          <div class="cursor-pointer" @click="toICP">{{ ICP }}</div>
         </div>
       </q-footer>
     </q-layout>
@@ -75,12 +68,13 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router'
 import { mapStores } from 'pinia';
-import useAppStore from '@/stores/app';
-import { useObjectData, objectDataProps } from 'free-fe-core-modules/composible/useObjectData';
+import useAppStore from '@/stores/app.js';
+import { useObjectData, objectDataProps } from 'free-fe-core-modules/composible/useObjectData.js';
 
-export default {
+export default defineComponent({
   name: 'WebLayout',
   components: {
   },
@@ -121,6 +115,24 @@ export default {
     ...mapStores(useAppStore),
     userName() {
       return this.ctx.modules.account.store().user?.Name || this.$t('未知用户');
+    },
+
+    userAvatar() {
+      if (!this.ctx.modules.account.store().user) return '';
+
+      const {
+        Avatar,
+      } = this.ctx.modules.account.store().user;
+
+      if (Avatar) {
+        return Avatar[0] || Avatar;
+      }
+
+      if (this.ctx.modules.account.store().user.role) {
+        return `admin/${this.ctx.modules.account.store().user.role}`;
+      }
+
+      return 'icons/icon-128x128.png';
     },
   },
   beforeCreate() {
@@ -175,7 +187,7 @@ export default {
   beforeUnmount() {
     this.appStore.SET_CRUMBS(undefined);
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -183,23 +195,28 @@ export default {
   background: $bodyBackground;
   position: absolute;
   min-width: $contentMinWidth;
+
   .header-inner {
     &>div {
       max-width: $contentMaxWidth;
       margin: 0 auto;
     }
   }
+
   .admin-page {
     min-width: $contentMinWidth;
     max-width: $contentMaxWidth;
     margin: 0 auto;
   }
+
   .user-profile-menu-icon {
     font-size: 16px;
   }
+
   .leveled-menu-wrapper {
     min-width: 180px;
   }
+
   .backend-footer {
     height: 60px;
   }

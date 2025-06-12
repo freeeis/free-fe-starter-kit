@@ -28,7 +28,6 @@ FreeEIS，是一种可扩展的、企业级系统统一开发框架。FreeEIS旨
 
 ## 特性
 
-
 - 🛠 高扩展性
 
   “一切”皆可为模块，从一个漂亮的按钮、一个简单的运算工具函数，到一套完备的ERP系统，都可以做为FreeEIS中的模块。模块拆分灵活，模块间可零耦合，模块即插即用。同时考虑模块自身的扩展性，可开发模块做为另一模块的“插件”。
@@ -45,25 +44,25 @@ FreeEIS，是一种可扩展的、企业级系统统一开发框架。FreeEIS旨
 
   FreeEIS尽力做到少封装，无SDK，避免改变现有的开发习惯。一个脚手架工程 + 一套简单的规范就可以实现快速的系统开发。
 
-
 - 🚪 代码安全
 
   在某些场景下，我们不希望所有的开发人员拿到很多甚至所有功能模块的代码才可以运行调试自己的功能模块。FreeEIS的设计使得开发人员只关注自己所开发的模块也只需要访问到自己开发的功能模块的代码库，可以在不影响开发的情况下确保代码安全。
-
 
 ## 使用
 
 ### 前提条件
 
 当前版本中，前端使用了如下技术或框架，您需要已经对这些技术或框架有所了解甚至拥有相关经验：
- - [VUE3](https://vuejs.org/)是我们整个前端部分的基础。
- - [Quasar Framework](https://quasar.dev/)是一个基于VUE的框架，具有多种特性，如拥有丰富的组件，支持Material Design，支持跨平台等等。但FreeEIS中并禁止使用其他组件库，您依然可以根据自己的喜好选择，我们只是借助了Quasar Framework的脚手架和跨平台支持，甚至您也可以将FreeEIS放在与Quasar Framework无关的其他VUE工程中使用。
+
+- [VUE3](https://vuejs.org/)是我们整个前端部分的基础。
+- [Quasar Framework](https://quasar.dev/)是一个基于VUE的框架，具有多种特性，如拥有丰富的组件，支持Material Design，支持跨平台等等。但FreeEIS中并禁止使用其他组件库，您依然可以根据自己的喜好选择，我们只是借助了Quasar Framework的脚手架和跨平台支持，甚至您也可以将FreeEIS放在与Quasar Framework无关的其他VUE工程中使用。
 
 当前版本中，后端使用了如下技术或框架，您需要已经对这些技术或框架有所了解甚至拥有相关经验：
- - [NodeJS](https://nodejs.org/)是基础！
- - [ExpressJS](http://expressjs.com/)是基础之上的基础😉。
- - [MongoDB](https://www.mongodb.com/)、[Mongoose](http://www.mongoosejs.net/), 目前已经实现的数据库操作模块基于Mongoose，但我们期望后续逐步添加更多数据库的支持。
- - [Redis](https://redis.io/)，建议使用Redis的docker镜像部署。
+
+- [NodeJS](https://nodejs.org/)是基础！
+- [ExpressJS](http://expressjs.com/)是基础之上的基础😉。
+- [MongoDB](https://www.mongodb.com/)、[Mongoose](http://www.mongoosejs.net/), 目前已经实现的数据库操作模块基于Mongoose，但我们期望后续逐步添加更多数据库的支持。
+- [Redis](https://redis.io/)，建议使用Redis的docker镜像部署。
 
 ### 前端
 
@@ -80,7 +79,6 @@ $ yarn install
 $ yarn start
 
 ```
-
 
 ### 后端
 
@@ -111,21 +109,19 @@ $ yarn start
 
 我们期望通过提供一些内置的功能模块，来简化开发人员的工作，比如账号管理、权限控制这些在任何系统中都需要的功能，我们做成了模块，可以直接被引用。下面是一个列表，列出来目前我们所提供的内置功能模块，以及他们的功能。当然，根据我们的宗旨，我们不强制您使用任何一个内置模块，您可以根据自己的需要定制开发所有需要的模块，而只是使用FreeEIS的规范并用她来组装系统。并且我们鼓励您这么做，因为我们相信，在任何一个领域都有很多比我们更加专业的开发人员，我们希望有更多的人开发出越来越多的强大的功能模块供他人使用。
 
-| 模块      | 前端模块 | 后端模块 | 功能 | 说明|
-| :------- |------- |------- | ----|----: |
-| 内核 | [free-fe-core](https://github.com/freeeis/free-fe-core) | [free-be-core](https://github.com/freeeis/free-be-core) | 加载其他模块|默认添加在脚手架中|
-| 基础功能 | [free-fe-core-modules](https://github.com/freeeis/free-fe-core-modules) | [free-be-core-modules](https://github.com/freeeis/free-be-core-modules)| 数据字典、日志、菜单管理、系统配置、<br>错误代码管理、缓存管理、哀悼日、<br>文件处理、数据校验方法、<br>多语言支持、多皮肤支持等等 | 默认添加在脚手架中|
-| 账号管理 | [free-fe-account](https://github.com/freeeis/free-fe-account) | [free-be-account](https://github.com/freeeis/free-be-account) |账号管理、组织结构管理、权限管理、<br>角色管理、权限控制| 默认添加在脚手架中|
-| 数据库 | / | [free-be-mongodb](https://github.com/freeeis/free-be-mongodb) |数据库操作| 默认添加在脚手架中|
-| 演示模块 | [free-fe-demo](https://github.com/freeeis/free-fe-demo) | [free-be-demo](https://github.com/freeeis/free-be-demo) |演示模块内部结构和使用方法| 默认添加在脚手架中|
-
+| 模块     | 前端模块                                                                | 后端模块                                                                | 功能                                                                                                                               |               说明 |
+| :------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -----------------: |
+| 内核     | [free-fe-core](https://github.com/freeeis/free-fe-core)                 | [free-be-core](https://github.com/freeeis/free-be-core)                 | 加载其他模块                                                                                                                       | 默认添加在脚手架中 |
+| 基础功能 | [free-fe-core-modules](https://github.com/freeeis/free-fe-core-modules) | [free-be-core-modules](https://github.com/freeeis/free-be-core-modules) | 数据字典、日志、菜单管理、系统配置、<br>错误代码管理、缓存管理、哀悼日、<br>文件处理、数据校验方法、<br>多语言支持、多皮肤支持等等 | 默认添加在脚手架中 |
+| 账号管理 | [free-fe-account](https://github.com/freeeis/free-fe-account)           | [free-be-account](https://github.com/freeeis/free-be-account)           | 账号管理、组织结构管理、权限管理、<br>角色管理、权限控制                                                                           | 默认添加在脚手架中 |
+| 数据库   | /                                                                       | [free-be-mongodb](https://github.com/freeeis/free-be-mongodb)           | 数据库操作                                                                                                                         | 默认添加在脚手架中 |
+| 演示模块 | [free-fe-demo](https://github.com/freeeis/free-fe-demo)                 | [free-be-demo](https://github.com/freeeis/free-be-demo)                 | 演示模块内部结构和使用方法                                                                                                         | 默认添加在脚手架中 |
 
 ## 联系我们
 
 扫码添加微信加入交流群
 
 <img width="120" alt="" style="margin-left:24px" src="https://user-images.githubusercontent.com/33030594/227093642-b38b7871-16eb-48b6-b96a-191433dc55c2.png">
-
 
 ## 贡献
 

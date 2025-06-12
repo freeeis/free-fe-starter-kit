@@ -8,11 +8,10 @@
  * @LastEditors: zhiquan
  */
 
-// import VueRouter from 'vue-router';
-import { boot } from 'quasar/wrappers'
-import core from 'free-fe-core';
-import config from '../config';
+import { defineBoot } from '#q-app/wrappers'
 
+import core from 'free-fe-core'
+import config from '../config/index.js'
 
 // const originalPush = VueRouter.prototype.push;
 // VueRouter.prototype.push = function push(location, onResolve, onReject) {
@@ -20,18 +19,18 @@ import config from '../config';
 //   return originalPush.call(this, location).catch((err) => err);
 // };
 
-export default boot((ctx) => {
-  const { routes } = core.init({ ...ctx, config });
+export default defineBoot((ctx) => {
+  const { routes } = core.init({ ...ctx, config })
 
   // 在所有路由的最后，添加404页面，防止无法找到所请求页面
   routes.push({
     path: '/:catchAll(.*)*',
     name: 'page404',
-    component: () => import('../modules/Error404.vue') || import('../Error404.vue'),
-  });
+    component: () => import('../modules/Error404.vue'),
+  })
 
   routes.forEach((route) => {
-    if(route && route.path && !route.path.startsWith('/')) {
+    if (route && route.path && !route.path.startsWith('/')) {
       route.path = `/${route.path}`
     }
 

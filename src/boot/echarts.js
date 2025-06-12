@@ -7,12 +7,12 @@
  * @LastEditTime: 2023-03-07 09:16:10
  * @LastEditors: zhiquan
  */
+import { defineBoot } from '#q-app/wrappers'
 
-import { boot } from 'quasar/wrappers';
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
 
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
-export default boot(async ({ app }) => {
-  app.config.globalProperties.$echarts = echarts;
+export default defineBoot(async ({ app }) => {
+  app.config.globalProperties.$echarts = echarts
 })

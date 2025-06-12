@@ -1,3 +1,5 @@
 {
-  "@quasar/qpdfviewer": {}
+  "@quasar/qmarkdown": {
+    "import_md": true
+  }
 }

@@ -32,9 +32,7 @@ export default defineComponent({
           h(
             "div",
             {
-              class:
-                "absolute-center text-h4 text-bold text-center\
-                q-pb-xl",
+              class: "absolute-center text-h4 text-bold text-center q-pb-xl",
             },
             [
               h(

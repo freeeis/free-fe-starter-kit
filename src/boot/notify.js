@@ -1,7 +1,10 @@
-import { Notify } from 'quasar';
+import { defineBoot } from '#q-app/wrappers'
+import { Notify } from 'quasar'
 
-Notify.setDefaults({
-  position: 'top',
-  timeout: 1500,
-  actions: [{ icon: 'close', color: 'white' }],
-});
+export default defineBoot(() => {
+  Notify.setDefaults({
+    position: 'top',
+    timeout: 1500,
+    actions: [{ icon: 'close', color: 'white' }],
+  })
+})
