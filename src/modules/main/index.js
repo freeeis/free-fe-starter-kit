@@ -13,9 +13,28 @@ export default {
     {
       ref: 'portal>portal',
     },
+
+    // 这里可以使用account模块中的登录组件，比较简单
+    // {
+    //   path: '/login',
+    //   ref: 'account>login'
+    // },
+
+    // 也可以参考如下自定义的登录组件自行开发登录界面
     {
       path: '/login',
-      ref: 'account>login'
+      component: () => import('./view/layoutWrapper.vue'),
+      props: {
+        bg: new URL('./assets/login_bg.jpg', import.meta.url).href,
+      },
+      children: [
+        {
+          path: '',
+          components: {
+            default: () => import('./view/accountEntry/login.vue'),
+          },
+        },
+      ],
     },
     {
       path: '/register',
