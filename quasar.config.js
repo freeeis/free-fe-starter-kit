@@ -101,7 +101,7 @@ export default defineConfig((ctx) => {
           ...viteConf.resolve.alias,
           '@': path.resolve(__dirname, './src'),
         }
-        // 示例：使用自定义插件
+        // 使用自定义插件，生成打包版本标识，方便前端必要时刷新
         viteConf.plugins.push(versionControlPlugin())
       },
     },
@@ -111,7 +111,7 @@ export default defineConfig((ctx) => {
       // vueDevtools: true,
       // https: true,
       open: false, // opens browser window automatically
-      // port: ctx.mode.spa ? 8080 : (ctx.mode.pwa ? 9000 : 9090),
+      port: ctx.mode.spa ? 8080 : (ctx.mode.pwa ? 9000 : 9090),
       proxy: {
         '/api': {
           target: DEV_SERVER,
