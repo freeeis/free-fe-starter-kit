@@ -116,10 +116,13 @@ export default defineConfig((ctx) => {
         '/api': {
           target: DEV_SERVER,
           changeOrigin: true,
-          pathRewrite: { '^/api': '' },
         },
-        '/assets': {
+        '/sassets': {
           target: DEV_SERVER,
+          changeOrigin: true,
+          // sassets to assets
+          // use sassets as a prefix for static assets as assets prefix is used by quasar
+          rewrite: (path) => path.replace(/^\/sassets/, '/assets'),
         },
       },
     },
