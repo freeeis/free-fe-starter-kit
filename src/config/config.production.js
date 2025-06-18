@@ -12,8 +12,8 @@ export default {
     'main',
   ],
 
-  countIcon: 'img:images/count.svg',
-  failIcon: 'img:images/fail.svg',
-  successIcon: 'img:images/success.svg',
-  ongoingIcon: 'img:images/ongoing.svg',
+  countIcon: 'img:/images/count.svg',
+  failIcon: 'img:/images/fail.svg',
+  successIcon: 'img:/images/success.svg',
+  ongoingIcon: 'img:/images/ongoing.svg',
 };

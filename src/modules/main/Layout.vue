@@ -6,7 +6,7 @@
         <div class="header-inner full-width bg-primary">
           <q-toolbar class="admin-main-toolbar">
             <q-toolbar-title class="cursor-pointer" @click="toPortal">
-              <q-img class="logo" src="icons/icon-128x128.png" width="40px" height="40px"></q-img>
+              <q-img class="logo" src="/icons/icon-128x128.png" width="40px" height="40px"></q-img>
               {{ $t(ctx.config.siteName) }}
             </q-toolbar-title>
 
@@ -132,7 +132,7 @@ export default defineComponent({
         return `admin/${this.ctx.modules.account.store().user.role}`;
       }
 
-      return 'icons/icon-128x128.png';
+      return '/icons/icon-128x128.png';
     },
   },
   beforeCreate() {
