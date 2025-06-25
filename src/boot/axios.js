@@ -298,7 +298,7 @@ export default defineBoot(({ app }) => {
       }
 
       return requests
-        .postRequest('can_i', { url })
+        .postRequest(`can_i?${Date.now()}`, { url })
         .then((d) => {
           let can = d && d.data && d.data.can
           const urlList = url.split(',')
