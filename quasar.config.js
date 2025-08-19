@@ -100,6 +100,26 @@ export default defineConfig((ctx) => {
         viteConf.resolve.alias = {
           ...viteConf.resolve.alias,
           '@': path.resolve(__dirname, './src'),
+
+          // 动态别名插件。因vite中node_modules内不能通过@来访问./src
+          '@/boot': (id) => {
+            const moduleRoot = id.match(/node_modules\/free-fe-([^/]+)/)?.[0]
+            return moduleRoot
+              ? path.join(moduleRoot, 'src/boot')
+              : path.resolve(__dirname, 'src/boot')
+          },
+          '@/stores': (id) => {
+            const moduleRoot = id.match(/node_modules\/free-fe-([^/]+)/)?.[0]
+            return moduleRoot
+              ? path.join(moduleRoot, 'src/stores')
+              : path.resolve(__dirname, 'src/stores')
+          },
+          '@/config': (id) => {
+            const moduleRoot = id.match(/node_modules\/free-fe-([^/]+)/)?.[0]
+            return moduleRoot
+              ? path.join(moduleRoot, 'src/config')
+              : path.resolve(__dirname, 'src/config')
+          }
         }
         // 使用自定义插件，生成打包版本标识，方便前端必要时刷新
         viteConf.plugins.push(versionControlPlugin())
