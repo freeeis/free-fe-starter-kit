@@ -207,6 +207,16 @@ export default defineBoot(({ app }) => {
    * @returns 响应数据
    */
   const postRequest = (url, data, opts) => {
+    // replace password with encrypted
+    if (data?.Password
+      && app.config.globalProperties.ctx?.modules?.account) {
+      data.Password = app.config.globalProperties.ctx.modules.account.utils.encryptPwd(
+        data.Password,
+      );
+    }
+
+    if (data?.pwdConfirm) delete data.pwdConfirm;
+
     if (!opts?.__ignoreDecycle) {
       data = addLocale(data)
     }
@@ -225,6 +235,16 @@ export default defineBoot(({ app }) => {
    * @returns 响应数据
    */
   const putRequest = (url, data, opts) => {
+    // replace password with encrypted
+    if (data?.Password
+      && app.config.globalProperties.ctx?.modules?.account) {
+      data.Password = app.config.globalProperties.ctx.modules.account.utils.encryptPwd(
+        data.Password,
+      );
+    }
+
+    if (data?.pwdConfirm) delete data.pwdConfirm;
+
     if (!opts?.__ignoreDecycle) {
       data = addLocale(data)
     }
