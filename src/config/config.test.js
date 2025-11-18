@@ -11,8 +11,8 @@ export default {
     'main',
   ],
 
-  countIcon: 'img:/images/count.svg',
-  failIcon: 'img:/images/fail.svg',
-  successIcon: 'img:/images/success.svg',
-  ongoingIcon: 'img:/images/ongoing.svg',
+  countIcon: `img:${import.meta.env.BASE_URL}images/count.svg`,
+  failIcon: `img:${import.meta.env.BASE_URL}images/fail.svg`,
+  successIcon: `img:${import.meta.env.BASE_URL}images/success.svg`,
+  ongoingIcon: `img:${import.meta.env.BASE_URL}images/ongoing.svg`,
 };
