@@ -10,7 +10,7 @@
     <path
       v-for="(cap, idx) in captchaPathes || []"
       :key="idx"
-      :d="cap"
+      :d="cap.p || cap"
       :stroke="stroke"
       :fill="fill"
     />
