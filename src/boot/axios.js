@@ -17,12 +17,40 @@ import { getLocale } from './i18n.js'
 
 import useAppStore from '@/stores/app.js'
 
-let requests
+const REQUESTS_SINGLETON_KEY = '__free_fe_requests_singleton__'
+
+const createPlaceholderCanI = (requestsRef) => async (...args) => {
+  if (typeof requestsRef.__realCanI === 'function') {
+    return requestsRef.__realCanI(...args)
+  }
+
+  // HMR场景下boot可能不会重跑，短暂轮询等待真实canI就绪
+  for (let i = 0; i < 40; i += 1) {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 50)
+    })
+
+    if (typeof requestsRef.__realCanI === 'function') {
+      return requestsRef.__realCanI(...args)
+    }
+  }
+
+  return false
+}
+
+const globalObj = typeof globalThis !== 'undefined' ? globalThis : window
+const requests = globalObj[REQUESTS_SINGLETON_KEY] || {}
+
+if (!globalObj[REQUESTS_SINGLETON_KEY]) {
+  requests.canI = createPlaceholderCanI(requests)
+  globalObj[REQUESTS_SINGLETON_KEY] = requests
+}
 const Mocks = []
 let { baseUrl } = config
 const ERROR_MESSAGES = {
   401: 'No permission!',
 }
+const activeRequestCancels = new Map()
 
 /**
  * capacitor环境下，接口路径前需要添加设置的后台地址
@@ -42,12 +70,29 @@ axiosInstance.interceptors.request.use((cfg) => {
   cfg.cancelToken = new axios.CancelToken((tk) => {
     cfg.cancelTokenFunc = tk
   })
+
+  // 向前兼容：仅在显式配置时启用同组请求互斥取消
+  if (cfg.__cancelGroup && cfg.__cancelPrevious) {
+    const prevCancel = activeRequestCancels.get(cfg.__cancelGroup)
+    if (typeof prevCancel === 'function') {
+      prevCancel('request canceled by group replacement')
+    }
+    activeRequestCancels.set(cfg.__cancelGroup, cfg.cancelTokenFunc)
+  }
+
   return cfg
 })
 
 // respone interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
+    if (response.config && response.config.__cancelGroup) {
+      const currentCancel = activeRequestCancels.get(response.config.__cancelGroup)
+      if (currentCancel === response.config.cancelTokenFunc) {
+        activeRequestCancels.delete(response.config.__cancelGroup)
+      }
+    }
+
     if (
       response.config &&
       response.config.shouldCancelRequest &&
@@ -56,24 +101,37 @@ axiosInstance.interceptors.response.use(
         : true)
     ) {
       response.config.cancelTokenFunc()
-      throw new Error('request canceled')
+      const cancelError = new Error('request canceled')
+      cancelError.__CANCEL__ = true
+      return Promise.reject(cancelError)
     } else {
       return response.data
     }
   },
   (error) => {
+    if (error && error.config && error.config.__cancelGroup) {
+      const currentCancel = activeRequestCancels.get(error.config.__cancelGroup)
+      if (currentCancel === error.config.cancelTokenFunc) {
+        activeRequestCancels.delete(error.config.__cancelGroup)
+      }
+    }
+
+    if (axios.isCancel(error)) {
+      return Promise.reject(error)
+    }
+
     /**
      * TODO: 如下处理不应该写死，而应该提取一些设置使其可以更灵活处理
      */
     if (error && error.response && error.response.status === 401) {
       if (
-        window.location.pathname !== '/login' &&
-        !window.location.pathname.startsWith('/login?')
+        window.location.pathname !== `${import.meta.env.BASE_URL}login` &&
+        !window.location.pathname.startsWith(`${import.meta.env.BASE_URL}login?`)
       ) {
         // clear cached token
         Cookies.set('token', '')
 
-        window.location.href = `/login?redirect=${window.location.pathname}`
+        window.location.href = `${import.meta.env.BASE_URL}login?redirect=${window.location.pathname}`
       }
     } else if (
       error &&
@@ -83,10 +141,10 @@ axiosInstance.interceptors.response.use(
       error.response.data.msg === 'RSTPWD'
     ) {
       if (
-        window.location.pathname !== '/recover' &&
-        !window.location.pathname.startsWith('/recover?')
+        window.location.pathname !== `${import.meta.env.BASE_URL}recover` &&
+        !window.location.pathname.startsWith(`${import.meta.env.BASE_URL}recover?`)
       ) {
-        window.location.href = `/recover?redirect=${window.location.pathname}`
+        window.location.href = `${import.meta.env.BASE_URL}recover?redirect=${window.location.pathname}`
       }
     } else if (error && error.response && error.response.status !== 404) {
       if (error.response.data && error.response.data.msg) {
@@ -97,6 +155,10 @@ axiosInstance.interceptors.response.use(
 
         Notify.create(errMsg)
       }
+    }
+
+    if (error && !error.response && error.config?.__propagateNetworkError) {
+      return Promise.reject(error)
     }
   },
 )
@@ -174,8 +236,16 @@ export default defineBoot(({ app }) => {
   const getRequest = (url, options, newWin = false) => {
     let queryString = ''
 
-    const shouldCancel = { shouldCancelRequest: options && options.cancel_request }
+    const shouldCancel = {
+      shouldCancelRequest: options && options.cancel_request,
+      __cancelGroup: options && options.__cancelGroup,
+      __cancelPrevious: options && options.__cancelPrevious,
+      __propagateNetworkError: options && options.__propagateNetworkError,
+    }
     if (options) delete options.cancel_request
+    if (options) delete options.__cancelGroup
+    if (options) delete options.__cancelPrevious
+    if (options) delete options.__propagateNetworkError
 
     options = addLocale(options)
 
@@ -257,8 +327,41 @@ export default defineBoot(({ app }) => {
     )
   }
 
+  // 检查当前用户对某些接口路径是否有权限访问
+  const canI = async (url, force = false) => {
+    const store = useAppStore()
+
+    if (!force && store && store.canI) {
+      const storedCanI = store.canI.find((ci) => ci && ci.url === url)
+      if (storedCanI && storedCanI.can !== void 0) {
+        return new Promise((resolve) => {
+          resolve(!!storedCanI.can)
+        })
+      }
+    }
+
+    return requests
+      .postRequest(`can_i?${Date.now()}`, { url })
+      .then((d) => {
+        let can = d && d.data && d.data.can
+        const urlList = url.split(',')
+        can = Array.isArray(can) ? can : [can]
+
+        for (let i = 0; i < urlList.length; i += 1) {
+          const u = urlList[i]
+
+          store.ADD_CANI({ url: u, can: can[i] || false })
+        }
+
+        if (can.length === 1) return can[0]
+
+        return can
+      })
+      .catch(() => false)
+  }
+
   // 封装所有可用的实例和方法，以绑定到全局
-  requests = {
+  Object.assign(requests, {
     $axios: axiosInstance,
     postRequest,
     getRequest,
@@ -270,7 +373,7 @@ export default defineBoot(({ app }) => {
       // check version and refresh
       if (config.checkVersion) {
         const currentVersion = localStorage.getItem('version')
-        axios.get(`/__v.json?ts=${Date.now()}`).then((dd) => {
+        axios.get(`${import.meta.env.BASE_URL}__v.json?ts=${Date.now()}`).then((dd) => {
           const nv = dd && dd.data && dd.data.v
           if (nv && currentVersion !== nv) {
             localStorage.setItem('version', nv)
@@ -288,39 +391,9 @@ export default defineBoot(({ app }) => {
         })
       },
     },
-    // 检查当前用户对某些接口路径是否有权限访问
-    canI: async (url, force = false) => {
-      const store = useAppStore()
-
-      if (!force && store && store.canI) {
-        const storedCanI = store.canI.find((ci) => ci && ci.url === url)
-        if (storedCanI && storedCanI.can !== void 0) {
-          return new Promise((resolve) => {
-            resolve(!!storedCanI.can)
-          })
-        }
-      }
-
-      return requests
-        .postRequest(`can_i?${Date.now()}`, { url })
-        .then((d) => {
-          let can = d && d.data && d.data.can
-          const urlList = url.split(',')
-          can = Array.isArray(can) ? can : [can]
-
-          for (let i = 0; i < urlList.length; i += 1) {
-            const u = urlList[i]
-
-            store.ADD_CANI({ url: u, can: can[i] || false })
-          }
-
-          if (can.length === 1) return can[0]
-
-          return can
-        })
-        .catch(() => false)
-    },
-  }
+    canI,
+  })
+  requests.__realCanI = canI
 
   // for use inside Vue files (Options API) through this.$axios and this.$api
 
