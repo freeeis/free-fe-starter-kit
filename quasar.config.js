@@ -9,15 +9,24 @@ import versionControlPlugin from './version.control.plugin'
 
 const DEV_SERVER = 'http://127.0.0.1:8000'
 
+const publicPathMap = {
+  development: '/free/',
+  test: '',
+  production: '/free/',
+  capacitor: '',
+}
+
 export default defineConfig((ctx) => {
+  const currentEnv = process.env.env || 'development'
+
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
-    // preFetch: true,
+    preFetch: true,
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['axios', 'free', 'i18n', 'libs', 'echarts', 'notify', 'dompurify'],
+    boot: ['axios', 'free', 'i18n','notify', 'dompurify'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -34,12 +43,14 @@ export default defineConfig((ctx) => {
 
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
+      'material-icons-outlined',
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
+      publicPath: publicPathMap[currentEnv] || '',
       target: {
-        browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
+        browser: ['es2018', 'firefox78', 'chrome80', 'safari13'],
         node: 'node20',
       },
 
@@ -51,7 +62,7 @@ export default defineConfig((ctx) => {
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
       // publicPath: '/',
-      // analyze: true,
+      analyze: ctx.dev,
       // env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
@@ -92,11 +103,12 @@ export default defineConfig((ctx) => {
         ],
       ],
 
-      sourcemap: true,
+      sourcemap: ctx.dev,
       env: {
         env: process.env.env,
       },
       extendViteConf(viteConf) {
+        viteConf.resolve.preserveSymlinks = true
         viteConf.resolve.alias = {
           ...viteConf.resolve.alias,
           '@': path.resolve(__dirname, './src'),
@@ -121,6 +133,53 @@ export default defineConfig((ctx) => {
               : path.resolve(__dirname, 'src/config')
           }
         }
+
+        viteConf.optimizeDeps = viteConf.optimizeDeps || {}
+        viteConf.optimizeDeps.force = ctx.dev
+        viteConf.optimizeDeps.include = [
+          ...(viteConf.optimizeDeps.include || []),
+          'free-dsl-core',
+          'postcss',
+          'postcss-nested',
+        ]
+
+        // Split heavy dependencies into stable chunks to reduce the initial bundle size.
+        viteConf.build = viteConf.build || {}
+        viteConf.build.rollupOptions = viteConf.build.rollupOptions || {}
+        viteConf.build.rollupOptions.output = viteConf.build.rollupOptions.output || {}
+        viteConf.build.rollupOptions.output.manualChunks = (id) => {
+          if (!id || !id.includes('node_modules')) return
+
+          if (id.includes('/echarts') || id.includes('echarts-wordcloud')) {
+            return 'vendor-echarts'
+          }
+
+          if (id.includes('/pdfjs') || id.includes('/pdfjs-dist') || id.includes('/pdfjs_clear')) {
+            return 'vendor-pdf'
+          }
+
+          if (id.includes('/tinymce')) {
+            return 'vendor-editor'
+          }
+
+          // Keep all free-fe packages in one chunk to avoid cross-chunk TDZ cycles.
+          if (id.includes('/free-fe-')) {
+            return 'vendor-free'
+          }
+
+          if (
+            id.includes('/vue/') ||
+            id.includes('/vue-router/') ||
+            id.includes('/pinia/') ||
+            id.includes('/quasar/')
+          ) {
+            return 'vendor-vue'
+          }
+
+          // Leave other dependencies to Rollup default heuristics.
+          return undefined
+        }
+
         // 使用自定义插件，生成打包版本标识，方便前端必要时刷新
         viteConf.plugins.push(versionControlPlugin())
       },
@@ -136,6 +195,7 @@ export default defineConfig((ctx) => {
         '/api': {
           target: DEV_SERVER,
           changeOrigin: true,
+          ws: true,
         },
         '/sassets': {
           target: DEV_SERVER,
@@ -166,7 +226,7 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify', 'Dialog', 'Meta', 'Loading'],
+      plugins: ['Notify', 'Dialog', 'Meta', 'Loading', 'AppFullscreen', 'AddressbarColor'],
     },
 
     animations: 'all', // --- includes all animations

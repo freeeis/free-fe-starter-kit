@@ -48,7 +48,7 @@ if (!globalObj[REQUESTS_SINGLETON_KEY]) {
 const Mocks = []
 let { baseUrl } = config
 const ERROR_MESSAGES = {
-  401: 'No permission!',
+  401: '无操作权限!',
 }
 const activeRequestCancels = new Map()
 

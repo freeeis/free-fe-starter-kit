@@ -6,7 +6,8 @@ import {
   createWebHashHistory,
 } from 'vue-router'
 import config from '../config/index.js'
-import { requests } from '../boot/axios.js'
+// import { requests } from '../boot/axios.js'
+
 
 /*
  * If not building with SSR mode, you can
@@ -25,21 +26,31 @@ export default defineRouter(async function () {
       : createWebHashHistory
 
   const Router = createRouter({
-    // scrollBehavior: () => ({ left: 0, top: 0 }),
-    scrollBehavior: async (to, from, savedPosition) =>
-      new Promise((resolve) => {
-        if (savedPosition) {
-          return setTimeout(() => resolve(savedPosition), 500)
+    scrollBehavior: async (to, from, savedPosition) => {
+      if (savedPosition) {
+        return savedPosition
+      }
+
+      if (to.hash) {
+        return {
+          el: to.hash,
+          top: 120,
+          behavior: 'smooth'
         }
-        return { x: 0, y: 0 }
-      }),
+      }
+
+      return {
+        left: 0,
+        top: 0
+      }
+    },
     routes: [],
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE),
-  })
+  });
 
   Router.afterEach(() => {
     if (config.toTopEveryPage) {
@@ -47,7 +58,7 @@ export default defineRouter(async function () {
     }
 
     // check version and refresh
-    requests.checkVersion()
+    // requests.checkVersion()
   })
 
   return Router
