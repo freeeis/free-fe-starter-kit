@@ -108,7 +108,7 @@
     transition: background-color 0.15s;
   }
   tbody tr:hover {
-    background: rgba(22, 119, 255, 0.04);
+    background: var(--primary-hover);
   }
 
   .persistant-top-row,

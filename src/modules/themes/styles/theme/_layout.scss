@@ -30,7 +30,7 @@
   // Shared active state for menu items / nav rows.
   .q-item.q-router-link--active,
   .q-item--active {
-    background: rgba(22, 119, 255, 0.08);
+    background: var(--primary-soft);
   }
 
   // Centered notification text.
@@ -104,6 +104,7 @@
   min-width: 220px;
   max-width: 220px;
   padding: 0;
+  margin-right: 12px;
 }
 
 .leveled-menu {
@@ -137,7 +138,7 @@
   }
   .q-item.q-router-link--active,
   .q-item--active {
-    background: rgba(22, 119, 255, 0.08);
+    background: var(--primary-soft);
     color: var(--q-primary);
     font-weight: 600;
     border-radius: 4px;
@@ -202,4 +203,30 @@
 .free-field--error {
   border: 1px solid var(--q-negative) !important;
   border-radius: 5px;
+}
+
+@media (max-width: 760px) {
+  .admin-main-toolbar {
+    padding: 0 12px;
+
+    .user-name { display: none; }
+  }
+
+  .leveled-menu-wrapper {
+    min-width: 184px;
+    max-width: 184px;
+  }
+
+  .admin-page {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .admin-main-content-wrapper {
+    overflow-x: auto;
+
+    .q-table__container {
+      min-width: 640px;
+    }
+  }
 }

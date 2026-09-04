@@ -4,6 +4,8 @@
 // theme. Shared components and layout are loaded once by web.sass below.
 .theme-EISThemeDefault {
   --q-primary: #1677FF;
+  --primary-soft: rgba(22, 119, 255, 0.1);
+  --primary-hover: rgba(22, 119, 255, 0.04);
   --q-secondary: #6B7280;
   --q-accent: #1677FF;
   --q-dark: #1F2937;
