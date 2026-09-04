@@ -1,7 +1,7 @@
 @import './default.scss';
 
-// 全局变量
-body {
+// Theme tokens shared by the admin layout and its descendants.
+.admin-layout {
   --simple-field-width: 100%;
   --field-label-width: 120px;
   --field-label-font-size: 14px;
@@ -9,71 +9,62 @@ body {
   --field-label-after: ':';
   --field-label-required-color: red;
   --editor-area-background: rgba(238,238,238,1);
-}
-
-//全局样式
-#q-app {
   background: var(--bodyBackground);
 
-  .free-app {
-    background-color: #88888811;
+  // Layout foundation and shared component defaults.
+  .step-left {
+    .q-stepper__tab {
+      flex: 0 0 auto
+    }
+
+    .q-stepper__header {
+      justify-content: flex-start
+    }
   }
-}
 
-.step-left {
-  .q-stepper__tab {
-    flex: 0 0 auto
+  .simple-field {
+    flex: 1
   }
 
-  .q-stepper__header {
-    justify-content: flex-start
+  .q-item.q-router-link--active,
+  .q-item--active {
+    background: rgba(0, 0, 0, 0.15)
   }
-}
 
-// input fields
-.simple-field {
-  flex: 1
-}
-
-.q-item.q-router-link--active,
-.q-item--active {
-  background: rgba(0, 0, 0, 0.15)
-}
-
-.q-notification .q-notification__message {
-  text-align: center
-}
-
-.free-field-search .q-field__prepend {
-  flex-wrap: wrap
-}
-
-.free-field-search .simple-field .q-field__prepend {
-  max-width: calc(100% - 48px);
-  .q-chip__content {
-    text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  .q-notification .q-notification__message {
+    text-align: center
   }
-}
 
-.free-field-search .simple-field.empty .q-field__prepend {
-  display: none;
-}
+  .free-field-search .q-field__prepend {
+    flex-wrap: wrap
+  }
 
-// hide input when having data in search component
-.free-field-search .has-data {
-  input {
+  .free-field-search .simple-field .q-field__prepend {
+    max-width: calc(100% - 48px);
+
+    .q-chip__content {
+      text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .free-field-search .simple-field.empty .q-field__prepend {
     display: none;
   }
 
-  textarea {
-    display: none;
+  // Hide the search input after a value has been selected.
+  .free-field-search .has-data {
+    input,
+    textarea {
+      display: none;
+    }
   }
 }
 
+// Theme-specific tokens and component rules.
 .theme-EISThemeDefault {
   --q-primary   : #4871BF;
   --q-secondary : #E09E10;
@@ -311,8 +302,11 @@ body {
   }
 }
 
-// import customer style
-@import './theme/web';
-@import './theme/flows';
-@import './theme/adminTree';
-@import './theme/systemConfig';
+// Extension layers. New default-theme styles belong in one of these partials.
+// The scope keeps legacy selectors from leaking into portal or auth layouts.
+@scope (.admin-layout) {
+  @import './theme/web';
+  @import './theme/flows';
+  @import './theme/adminTree';
+  @import './theme/systemConfig';
+}
