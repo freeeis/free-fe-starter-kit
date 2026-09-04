@@ -1,0 +1,455 @@
+// ============================================================================
+// Business layer — module-specific visuals
+// ----------------------------------------------------------------------------
+// Layer 5 of the cascade. Visual rules for top-level module pages
+// (flow-list, flow-step, admin-tree, system-config, sticky buttons, etc.).
+// These are the only place a new "page-wide" visual should land — components
+// and layout rules belong to the lower layers.
+// ============================================================================
+
+// --- Flow list (table of records with status / actions) ---------------------
+.flow-list {
+  .q-th { margin: 0 25px; }
+
+  .filter-header-cell {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    padding-right: 24px;
+  }
+
+  .q-table__container {
+    position: relative;
+  }
+  .q-table__middle { overflow: hidden; }
+
+  .table-row {
+    cursor: pointer;
+
+    .q-td {
+      max-width: 300px;
+      padding: 0;
+    }
+    .q-td .table-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--table-row-height);
+      padding: 0 8px;
+    }
+    .flow-list-status-td {
+      width: 160px;
+      max-width: 300px !important;
+      min-width: 160px !important;
+    }
+    .step-status-wrapper { display: flex; }
+    .step-icon {
+      position: absolute;
+      left: 0;
+      width: 45px;
+      height: 45px;
+      margin-right: 6px;
+      font-size: 45px;
+      line-height: 45px;
+    }
+    .status-info {
+      position: absolute;
+      left: 50px;
+      text-align: left;
+    }
+    .step-title,
+    .status-0,
+    .status-1,
+    .status--1 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .step-status { font-size: 12px; }
+    .status-1 { color: #10B981; }
+    .status-1 .step-icon { color: #10B981; }
+    .status--1 { color: #EF4444; }
+    .status--1 .step-icon { color: #EF4444; }
+  }
+
+  .to-details-td { width: 20px; }
+  .table-row td {
+    font-size: 14px;
+    font-weight: 400;
+
+    .to-details {
+      height: 80px;
+      width: 20px;
+    }
+    .to-details > div {
+      font-size: 18px;
+      position: absolute;
+      right: 5px;
+      width: 30px;
+      height: 80px;
+      border-radius: 5px;
+      line-height: 80px;
+      text-align: center;
+    }
+  }
+
+  .q-table__bottom {
+    border: 0;
+    margin-top: 16px;
+  }
+
+  .filter-row {
+    cursor: initial;
+
+    td { border: 0; }
+    .free-field-wrapper {
+      .field-label {
+        width: auto;
+        min-width: 56px;
+        margin: 0 4px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 32px;
+
+        &::after { content: ''; }
+      }
+      .q-field__before { padding: 0; }
+      .q-field__control {
+        max-width: 180px;
+        &::before { border: 0; border-radius: 0; }
+      }
+      .keyword .q-field__control {
+        width: 240px;
+        max-width: 240px;
+      }
+    }
+    .query-btn, .export-btn { @extend .btn-primary; }
+    .clear-btn              { @extend .btn-secondary; }
+  }
+
+  .summary-head-wrapper {
+    & + .q-table__container {
+      top: 0;
+      box-shadow: none;
+    }
+
+    .summary-head-item {
+      .summary-head-icon {
+        font-size: 40px;
+
+        &.e-icon {
+          display: inline-flex;
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .summary-head-btn {
+        min-width: 88px;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  .q-table { @extend .zebra-table; }
+  .q-table tbody tr { height: var(--table-row-height); }
+}
+
+// --- Flow step (single-record form with action timeline) -------------------
+.flow-step {
+  &-message {
+    padding-left: 24px;
+    height: 32px;
+    min-height: 32px;
+
+    .q-banner__content {
+      color: #EA0732;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      top: 4px;
+    }
+  }
+
+  .q-stepper__step-inner {
+    padding: 0 !important;
+
+    & > div { padding: 0 24px; }
+  }
+
+  .flow-step-free-fields {
+    margin-top: 16px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: var(--background);
+
+    .free-field-static { padding: 0 6px; }
+    & > .free-field-wrapper > .free-field-fixed-list { margin-right: 4px; }
+    & > .free-field-wrapper td { border-color: var(--table-border-color); }
+  }
+
+  .flow-step-submit-log {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    &.max-height-true {
+      overflow-y: scroll;
+
+      .q-timeline__entry { padding-left: 24px; }
+    }
+  }
+}
+
+.flow-step.q-stepper {
+  .q-stepper__header {
+    background: var(--background);
+    min-height: 120px;
+    border-radius: 6px;
+    flex-wrap: nowrap;
+
+    .q-stepper__label {
+      .q-stepper__caption { display: none; }
+      .q-stepper__title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+    }
+    .q-focus-helper { display: none; }
+    .q-ripple { display: none; }
+    .q-stepper__dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.04);
+      font-size: 20px;
+      line-height: 48px;
+      color: #6B7280;
+
+      i {
+        font-size: 20px;
+        line-height: 48px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      span { color: unset; }
+
+      &::after,
+      &::before {
+        background: transparent;
+        border-top: 1px dashed #D1D5DB;
+      }
+    }
+    .q-stepper__tab--active {
+      position: unset;
+
+      .q-stepper__dot {
+        background: var(--q-primary);
+        color: #fff;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 120px;
+        width: 18px;
+        height: 18px;
+        border-width: 9px;
+        border-style: dashed dashed dashed solid;
+        border-color: currentColor transparent transparent transparent;
+      }
+    }
+    .q-stepper__tab--error i { color: #EF4444; }
+    .q-stepper__tab--done i   { color: #10B981; }
+    .q-stepper__tab--disabled { color: #9CA3AF; }
+  }
+  .q-stepper__content {
+    background: var(--background);
+    border-radius: 5px;
+
+    .flow-action-buttons {
+      border-radius: 5px;
+
+      .q-btn {
+        min-width: 96px;
+        height: 32px;
+        border-radius: 5px;
+      }
+    }
+
+    .flow-step-submit-log {
+      font-size: 14px;
+      font-weight: 400;
+
+      .q-timeline__title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .q-timeline__subtitle { display: none; }
+      .q-timeline__content  { padding-bottom: 16px; }
+    }
+
+    .flow-step-free-fields { min-height: 320px; }
+  }
+}
+
+// --- Flow action buttons (toolbar inside flow pages) -----------------------
+.flow-action-buttons {
+  border-bottom: 1px solid var(--table-border-color);
+  padding: 12px 16px;
+
+  & > span {
+    & > .q-btn { margin: 0 8px 0 0; }
+    &:not(:last-child) { margin-right: 8px; }
+
+    .q-btn-group { margin: 0 8px 0 0; }
+  }
+
+  .flow-action-btn- {
+    &delete,
+    &recall,
+    &remove { background-color: var(--q-negative); color: #fff; }
+    &print,
+    &export  { background-color: var(--q-warning); color: #fff; }
+  }
+}
+
+// --- Admin tree (e.g. menu management) -------------------------------------
+.admin-main-content-wrapper {
+  .q-tree {
+    border: 1px dashed #D1D5DB;
+    border-bottom: none;
+    margin-left: 8px;
+    margin-right: 8px;
+    background: transparent;
+
+    .q-tree__node-header-content > div { border: 0 !important; }
+
+    .q-tree__node {
+      padding-bottom: 0;
+
+      .q-tree__node-header-content {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+
+        .action-buttons {
+          width: 100px;
+          display: inline-block;
+
+          &::before {
+            display: inline-block;
+            position: absolute;
+            content: '';
+            height: 24px;
+            width: 2px;
+            top: calc(50% - 12px);
+            right: 120px;
+          }
+
+          button {
+            height: 28px;
+            width: 28px;
+            margin-right: 6px;
+            color: #EF4444;
+            border: 1px solid;
+            border-radius: 4px;
+
+            &:not(:last-child) {
+              margin-right: 12px;
+              color: #1677FF;
+            }
+          }
+        }
+      }
+
+      .q-tree__node-header {
+        min-height: 44px;
+        border-radius: 0;
+        padding-left: 12px;
+        border-bottom: 1px solid #E5E7EB;
+      }
+      .q-tree__node-body {
+        padding: 0;
+        border-bottom: 1px solid #E5E7EB;
+
+        .action-btns { margin-bottom: 16px; }
+      }
+      &:last-child .q-tree__node-header { border-bottom: none; }
+    }
+  }
+
+  .q-page-sticky.sticky-button { z-index: 1; }
+}
+
+// --- Sticky action button column (bottom-right of pages) -------------------
+.sticky-button {
+  & > div .column .q-btn {
+    .q-btn__wrapper {
+      min-height: unset;
+      padding-top: 0;
+      line-height: 32px;
+    }
+  }
+  .q-fab__actions .q-btn { width: 96px; }
+  .q-fab__actions .q-btn__wrapper { padding-top: 0; }
+}
+
+.flow-action-btn-,
+.sticky-button- {
+  &previous, &next, &print, &export, &create, &register, &regaudit, &cancel {
+    @extend .btn-secondary;
+  }
+  &submit, &save, &recall, &recallop, &remove, &enable, &edit, &sign, &assign,
+  &sback, &delete, &recallnotify, &change, &resetpwd, &tosteptwo, &off,
+  &offnotify, &return {
+    @extend .btn-primary;
+  }
+}
+
+// --- System config (stepper-as-tabs) ---------------------------------------
+.system-config-wrapper {
+  .q-stepper__header {
+    justify-content: flex-start;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    .q-stepper__tab {
+      position: relative !important;
+      flex: unset;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .q-stepper__dot {
+        margin: 0;
+
+        &::before { display: none; }
+      }
+      .q-stepper__label {
+        margin-top: 6px;
+        text-align: center;
+
+        &::after { display: none; }
+      }
+      &:not(:last-child) { margin-right: 24px; }
+      &--active {
+        border: none !important;
+        overflow: visible;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 80px !important;
+          width: 18px;
+          height: 18px;
+          border-width: 9px;
+          border-left: 9px solid transparent;
+          border-right: 9px solid transparent;
+          border-bottom: 9px solid var(--q-primary);
+        }
+      }
+    }
+  }
+}
+

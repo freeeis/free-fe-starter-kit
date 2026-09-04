@@ -1,0 +1,462 @@
+// ============================================================================
+// Form layer — free-field components
+// ----------------------------------------------------------------------------
+// Layer 4 of the cascade. Shared rules for free-field-* and the Quasar
+// input primitives they wrap. Themes only re-skin via tokens; geometry and
+// composition belong here.
+// ============================================================================
+
+// --- Quasar field overrides (free-field relies on these) --------------------
+.q-field__marginal {
+  height: auto;
+}
+.q-field--auto-height .q-field__control,
+.q-field--auto-height .q-field__native {
+  min-height: 32px !important;
+}
+.q-field__label {
+  top: 0 !important;
+  line-height: 32px;
+  font-size: 14px;
+}
+.q-field--float .q-field__label {
+  display: none;
+}
+.q-field__control-container {
+  padding-top: 0 !important;
+}
+.q-field__control {
+  border: 0 !important;
+  min-height: 32px;
+}
+.q-field--focused .q-field__control::before {
+  border-radius: 5px !important;
+}
+.q-field--error .q-field__control {
+  border: 1px solid var(--q-negative) !important;
+}
+.q-field--error .q-field__control::after {
+  display: none;
+}
+.q-textarea .q-field__native {
+  padding: 4px !important;
+}
+
+// --- Field label -----------------------------------------------------------
+.free-field-wrapper {
+  .field-label {
+    display: inline-block;
+    font-weight: 400;
+    text-align: right;
+    vertical-align: middle;
+    font-size: var(--field-label-font-size);
+    color: var(--field-label-color);
+    width: var(--field-label-width) !important;
+    min-width: var(--field-label-width) !important;
+    max-width: var(--field-label-width) !important;
+
+    &.required::before {
+      content: '* ';
+      color: var(--field-label-required-color);
+    }
+    &::after {
+      content: var(--field-label-after);
+    }
+    .required-mark {
+      display: none;
+    }
+  }
+}
+
+// --- Category header inside a free-field form ------------------------------
+.free-field-category {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #111827;
+  margin: 8px 0;
+
+  .label {
+    &::before { content: '【'; }
+    &::after  { content: '】'; }
+  }
+}
+
+.free-field-wrapper {
+  &:first-child .free-field-category {
+    margin-top: 0;
+  }
+
+  .free-field-separator {
+    margin: 24px 0;
+    border-top: 1px dashed var(--table-border-color);
+    background: transparent;
+  }
+
+  .q-field__append .postfix {
+    font-size: 12px;
+    color: #6B7280;
+  }
+}
+
+// --- Simple field ----------------------------------------------------------
+.simple-field {
+  align-items: center;
+  min-height: 32px;
+
+  .q-field {
+    width: var(--simple-field-width);
+    align-items: center;
+  }
+  .q-field--readonly .q-field {
+    width: var(--simple-field-width);
+  }
+  .q-field--readonly .q-field__control {
+    padding: 0;
+    border: 0;
+
+    &::before { border: 0 !important; }
+  }
+
+  .q-field__control {
+    width: var(--simple-field-width);
+    padding: 0 8px;
+    height: 32px;
+    min-height: 32px;
+    border-radius: 5px;
+  }
+  .q-field__control-container {
+    line-height: 32px;
+    margin: 0;
+  }
+  .q-field__before {
+    display: inline-block;
+  }
+  .q-input {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .postfix,
+  .prefix {
+    font-size: 12px;
+    color: #6B7280;
+  }
+}
+
+// --- Date / range variants -------------------------------------------------
+.free-field-date-range,
+.free-field-year-range,
+.free-field-time-range {
+  .simple-field {
+    flex: 0;
+  }
+}
+
+.free-field-date.free-field--readonly .q-field__control {
+  background: transparent;
+}
+
+// --- Dynamic / fixed / mixed tables ----------------------------------------
+.free-field-dynamic-list,
+.free-field-fixed-list,
+.free-field-mixed-table {
+  .q-table {
+    overflow: hidden;
+
+    tr {
+      height: 32px;
+    }
+    th {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .q-td {
+      padding: 0;
+      margin: 0;
+      width: auto;
+      height: auto;
+
+      .free-field-wrapper {
+        padding: 0;
+        margin: 0;
+        max-height: 100%;
+      }
+    }
+    .simple-field {
+      min-width: 10px;
+      margin: 0;
+      padding: 0;
+
+      .q-field {
+        width: 100%;
+        & *,
+        .q-field__control::before {
+          border: 0;
+          border-radius: 0;
+        }
+        input {
+          padding: initial;
+        }
+      }
+    }
+    .free-field-select > span {
+      width: 100%;
+    }
+  }
+  .q-table__container {
+    margin-left: 12px;
+
+    .q-table__bottom {
+      border-left: 1px solid rgba(191, 191, 191, 0.5);
+      height: 24px !important;
+      min-height: 24px !important;
+    }
+    .q-table__container {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+    }
+    .q-td:first-child {
+      border-left: 0;
+    }
+  }
+  .simple-field.free-field--readonly {
+    span.full-width {
+      display: flex;
+      .readonly-content > span {
+        line-height: 32px;
+      }
+    }
+  }
+}
+
+// --- Select variants -------------------------------------------------------
+.free-field-select {
+  .q-field__native {
+    padding-bottom: 0;
+  }
+  .q-select__dropdown-icon { display: inline-flex; }
+}
+.free-field--readonly .free-field-select .q-select__dropdown-icon { display: none; }
+
+.free-field-select-chain {
+  span:nth-child(2) { width: 100%; }
+  label { width: 100%; }
+  .simple-field { max-width: var(--simple-field-width); }
+  .field-label { align-self: center; }
+  .q-field--labeled .q-field__native {
+    padding-bottom: 0;
+  }
+}
+
+.free-field-select-ascheck {
+  .field-label { align-self: center; }
+  & > .column { margin-left: -10px; }
+}
+
+// --- Tips & agreement ------------------------------------------------------
+.free-field-wrapper {
+  .free-field-tips {
+    position: relative;
+    margin-left: calc(var(--field-label-width) + 10px);
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B7280;
+    padding-right: 20px;
+
+    .tips-list .free-field-tips-tip {
+      display: block;
+
+      .tip-link {
+        font-size: 14px;
+        font-weight: 500;
+
+        &-prefix::before { content: '【'; }
+        &-postfix::after  { content: '】'; }
+        &-text            { text-decoration: underline; }
+      }
+    }
+  }
+}
+
+.free-field-wrapper.without-label {
+  & > .simple-field > .q-field > .q-field__before,
+  & > .free-field-text > .q-field > .q-field__before,
+  & > .free-field-dynamic-list > .q-field > .q-field__before,
+  & > .free-field-select > span > .q-field > .q-field__before {
+    display: none;
+  }
+  & > .free-field-text {
+    height: 100%;
+    min-height: 100%;
+  }
+  & > .free-field-dynamic-list > .q-table__container,
+  & > .free-field-fixed-list > .q-table__container {
+    margin: 0;
+  }
+}
+
+.free-field-wrapper.with-label {
+  & > .simple-field > .q-field > .q-field__before {
+    display: inline-block;
+  }
+  .free-field-rich .content {
+    margin-left: 12px;
+  }
+}
+
+// --- Read-only state -------------------------------------------------------
+.free-field--readonly {
+  &.simple-field { min-height: 32px; }
+
+  .free-field-wrapper { margin: 0; }
+  .free-field-wrapper * {
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  .q-field__control {
+    width: unset !important;
+  }
+  .q-field__append { display: none; }
+  .free-field-warning,
+  .uploader-btns,
+  .delete-btn { display: none !important; }
+  .file-list { margin-top: 0 !important; }
+  .q-td { margin: 0; padding: 0; height: auto !important; }
+  .required-mark { display: none; }
+}
+
+.field-label-readonly { margin-right: 12px; }
+
+// --- Rich editor / uploader / radio-list -----------------------------------
+.free-field-rich .tox-tinymce { border-radius: 5px; }
+
+.free-field-file,
+.free-field-image,
+.free-field-file-list,
+.free-field-image-list {
+  .q-uploader__header { display: none; }
+  .q-uploader:not(.only-icon) {
+    max-height: unset;
+    margin-left: 12px;
+  }
+  .q-uploader__list {
+    min-height: unset !important;
+    padding: 0 !important;
+  }
+  .upload-btn,
+  .add-btn {
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  .delete-btn {
+    height: 24px !important;
+    width: 24px !important;
+    font-size: 14px;
+    border-radius: 50%;
+
+    .q-btn__wrapper {
+      min-width: 1em;
+      min-height: 1em;
+    }
+  }
+}
+
+.free-field-field-type-options .q-field__control {
+  padding: 0 8px !important;
+}
+
+.free-field-radio-list {
+  .q-item {
+    height: 96px;
+
+    .icon-section {
+      width: 94px;
+
+      .icon {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .label-section {
+      padding-right: 10px;
+
+      .label {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .description {
+        font-size: 14px;
+        font-weight: 400;
+        color: #6B7280;
+      }
+    }
+  }
+}
+
+// --- Query filters & search dialog -----------------------------------------
+.free-field-search:not(.free-field--readonly),
+.free-field-text:not(.free-field--readonly) {
+  .q-field__control::before { display: none; }
+}
+
+.free-field-search {
+  height: 32px;
+
+  .q-field__control { padding-right: 0 !important; }
+}
+
+.free-field-search-dialog-card {
+  .simple-field {
+    padding-top: 12px;
+
+    .q-field__control {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.free-field-query-filters {
+  .query-btns {
+    .q-btn { margin-right: 10px; }
+    .q-btn .q-icon { margin-right: 6px; }
+  }
+  .free-field-check .field-label-empty {
+    width: 30px;
+    min-width: unset;
+  }
+  .simple-field { min-width: 200px; }
+}
+
+// --- Misc ------------------------------------------------------------------
+.row-zebra-even {
+  background: #fff !important;
+
+  & td { background: #fff !important; }
+}
+
+td.td-lines-3 .table-cell span,
+td.td-lines-2 .table-cell span {
+  display: -webkit-box;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+td.td-lines-3 .table-cell span { -webkit-line-clamp: 3; }
+td.td-lines-2 .table-cell span { -webkit-line-clamp: 2; }
+
+.field-no-label {
+  .field-label-empty,
+  .field-label { display: none; }
+}
+
+.q-table .pre-line .table-cell * { white-space: pre-line; }
+.q-table td.index { max-width: 80px; }
+.q-date .q-date__header,
+.q-time .q-time__header { display: none; }

@@ -1,60 +1,31 @@
 @import './default.scss';
 
-
-// $bodyBackground: #F1F1F1;
-
-// $foreground: #333; //#c9d1d9;
-
-$primary   : green;
-// $secondary : #E09E10;
-// $accent    : #E09E10;
-
-// $dark      : #403e3e;
-
-// $positive  : #0CAFCC;
-// $negative  : #820909;
-// $info      : #2a9ab0;
-// $warning   : #bc3939;
-
-// // layout;
-// $portalContentWidthValue: 1200px;
-// $portalContentMaxWidth: 100%;
-// $portalContentMinWidth: 1200px;
-// $contentMaxWidth: 100%;
-// $contentMinWidth: 400px;
-
-// // Input field label;
-// $freeFieldCategoryMargin: 30px auto -20px auto;
-// $freeFieldWrapperMargin: 0 0 30px 0;
-// $freeFieldMargin: 0px 20px 0px 0;
-// $simpleFieldWidth: 100%;
-// $simpleFieldHeight: 40px;
-// $fieldLabelWidth: 120px;
-// $fieldLabelFontSize: 12px;
-// $fieldLabelColor: black;
-// $fieldLabelAfter: '';
-// $fieldLabelRequiredColor: red;
-// $editorAreaBackground: rgba(238,238,238,1);
-
-// $zebraEvenColor: #F0F5FF;
-// $zebraOddColor: $background;
-
-// // table;
-// $tableBorderColor: rgba(0, 0, 0, 0.12);
-// $tableRowHeight: 40px;
-
-$bodyBackground: var(--q-dark-page);
-$background: var(--q-dark);
-
+// Dark palette. Shared layout, forms and business modules use these tokens so
+// dark mode stays visually consistent with the light themes.
 .theme-EISThemeDark {
-  // --q-primary: green;
-  --background: var(--q-dark);
-  --body-background: var(--q-dark-page);
+  --q-primary: #60A5FA;
+  --q-secondary: #94A3B8;
+  --q-accent: #60A5FA;
+  --q-dark: #0F172A;
+  --q-positive: #34D399;
+  --q-negative: #F87171;
+  --q-info: #60A5FA;
+  --q-warning: #FBBF24;
+
+  --background: #1E293B;
+  --body-background: #0F172A;
+  --foreground: #F8FAFC;
+  --zebra-even-color: #243447;
+  --zebra-odd-color: #1E293B;
+  --editor-area-background: #243447;
+  --table-border-color: rgba(148, 163, 184, 0.2);
+  --table-row-height: 48px;
+  --field-label-width: 120px;
+  --field-label-font-size: 14px;
+  --field-label-color: #CBD5E1;
+  --field-label-after: ':';
+  --field-label-required-color: #F87171;
+  --simple-field-width: 100%;
 }
 
-// import customer style
 @import './theme/web';
-@import './theme/flows';
-@import './theme/adminTree';
-@import './theme/systemConfig';
-

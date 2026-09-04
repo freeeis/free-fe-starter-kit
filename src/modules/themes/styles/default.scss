@@ -1,87 +1,105 @@
- $bodyBackground: #F1F1F1;
- $background: rgba(255,255,255,1);
- $foreground: #333; //#c9d1d9;
+// ============================================================================
+// FreeEIS default theme — base layer
+// ----------------------------------------------------------------------------
+// Layer 1 of the cascade. Defines design tokens (CSS variables) and a small
+// set of cross-theme utility classes. Every theme entry (theme.scss /
+// theme2.scss / dark.scss) only declares its token values; the rest of the
+// styles come from the shared components / layout / modules below.
+// ============================================================================
 
- $primary   : #185095;
- $secondary : #E09E10;
- $accent    : #E09E10;
+// --- Sass variables (Quasar bridge, free-field / layout constants) ----------
+$primary          : #1677FF;
+$secondary        : #6B7280;
+$accent           : #1677FF;
 
- $dark      : #403e3e;
+$dark             : #1F2937;
 
- $positive  : #0CAFCC;
- $negative  : #c10015;
- $info      : #2a9ab0;
- $warning   : #bc3939;
+$positive         : #10B981;
+$negative         : #EF4444;
+$info             : #3B82F6;
+$warning          : #F59E0B;
 
- // layout;
- $portalContentWidthValue: 1200px;
- $portalContentMaxWidth: 100%;
- $portalContentMinWidth: 1200px;
- $contentMaxWidth: 100%;
- $contentMinWidth: 400px;
+// layout
+$portalContentWidthValue: 1200px;
+$portalContentMaxWidth: 100%;
+$portalContentMinWidth: 1200px;
+$contentMaxWidth  : 100%;
+$contentMinWidth  : 400px;
 
- // Input field label;
- $freeFieldCategoryMargin: 30px auto -20px auto;
- $freeFieldWrapperMargin: 0 0 30px 0;
- $freeFieldMargin: 0px 20px 0px 0;
- $simpleFieldWidth: 100%;
- $simpleFieldHeight: 40px;
- $fieldLabelWidth: 120px;
- $fieldLabelFontSize: 12px;
- $fieldLabelColor: black;
- $fieldLabelAfter: '';
- $fieldLabelRequiredColor: red;
- $editorAreaBackground: rgba(238,238,238,1);
+// input field label
+$freeFieldCategoryMargin: 30px auto -20px auto;
+$freeFieldWrapperMargin: 0 0 30px 0;
+$freeFieldMargin : 0px 20px 0px 0;
+$simpleFieldWidth: 100%;
+$simpleFieldHeight: 40px;
+$fieldLabelWidth : 120px;
+$fieldLabelFontSize: 12px;
+$fieldLabelColor : #6B7280;
+$fieldLabelAfter : ':';
+$fieldLabelRequiredColor: #EF4444;
+$editorAreaBackground: #F5F7FA;
 
- $zebraEvenColor: #F0F5FF;
- $zebraOddColor: $background;
+$zebraEvenColor  : #F5F7FA;
+$zebraOddColor   : #FFFFFF;
 
- // table;
- $tableBorderColor: rgba(0, 0, 0, 0.12);
- $tableRowHeight: 40px;
+// table
+$tableBorderColor: rgba(0, 0, 0, 0.08);
+$tableRowHeight  : 48px;
 
+// --- Default Sass $bodyBackground / $background (overridden per theme) -----
+$bodyBackground   : #F5F7FA;
+$background       : #FFFFFF;
+$foreground       : #111827;
+
+// --- Design tokens exposed to the DOM as CSS variables ----------------------
+// Only token values that must be reachable from runtime code or that vary
+// across themes. Anything else belongs in a Sass variable above.
+:root {
+  --background     : #{$background};
+  --body-background: #{$bodyBackground};
+  --foreground     : #{$foreground};
+
+  --zebra-even-color: #{$zebraEvenColor};
+  --zebra-odd-color : #{$zebraOddColor};
+  --editor-area-background: #{$editorAreaBackground};
+  --table-border-color: #{$tableBorderColor};
+  --table-row-height: #{$tableRowHeight};
+  --field-label-width: #{$fieldLabelWidth};
+  --field-label-font-size: #{$fieldLabelFontSize};
+  --field-label-color: #{$fieldLabelColor};
+  --field-label-after: '#{$fieldLabelAfter}';
+  --field-label-required-color: #{$fieldLabelRequiredColor};
+  --simple-field-width: #{$simpleFieldWidth};
+}
+
+// --- Global utility classes (kept here for compatibility; new code should
+//     prefer semantic class names) ------------------------------------------
 
 .zebra-table {
-  &table, &.q-table, & .q-table {
-    th {
-      tr {
-        background: var(--background);
-      }
-    }
+  th tr {
+    background: var(--background);
+  }
 
-    tbody {
-      tr {
-        &:nth-child(2n) {
-          background: var(--zebra-even-color);
-        }
-      }
-    }
+  tbody tr:nth-child(2n) {
+    background: var(--zebra-even-color);
   }
 }
 
-.with-triangle {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 18px;
-    height: 18px;
-    border-width: 9px;
-    border-style: dashed dashed dashed solid;
-    border-color: #EAF4FD transparent transparent transparent;
-  }
+.with-triangle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  border-width: 9px;
+  border-style: dashed dashed dashed solid;
+  border-color: #EAF4FD transparent transparent transparent;
 }
 
-.fixed-table {
-  &.q-table, & .q-table {
-    table-layout: fixed;
-  }
+.fixed-table,
+.fixed-table .q-table {
+  table-layout: fixed;
 }
 
-.zebra-even {
-  background: var(--zebra-even-color) !important;
-}
-
-.zebra-odd {
-  background: var(--zebra-odd-color) !important;
-}
+.zebra-even { background: var(--zebra-even-color) !important; }
+.zebra-odd  { background: var(--zebra-odd-color) !important; }

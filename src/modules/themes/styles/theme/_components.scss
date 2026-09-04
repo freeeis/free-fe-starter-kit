@@ -1,0 +1,304 @@
+// ============================================================================
+// Components layer — cross-theme reusable building blocks
+// ----------------------------------------------------------------------------
+// Layer 2 of the cascade. Holds primitive UI rules shared by every theme
+// (buttons, table, stepper, breadcrumbs, pagination, dialog cards, etc.).
+// Theme entries should never redefine these; they only change tokens.
+// ============================================================================
+
+// --- Buttons ---------------------------------------------------------------
+.breadcrumb-back-btn {
+  border-radius: 5px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 5px;
+
+  .q-btn__wrapper {
+    padding-top: 0;
+
+    .q-btn__content {
+      line-height: 30px;
+
+      .q-icon {
+        line-height: 32px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-cancel,
+.cancel-btn,
+.btn-ok,
+.ok-btn,
+.save-btn,
+.btn-save {
+  height: 32px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  background: var(--q-primary);
+  color: #fff;
+  min-width: 80px;
+  letter-spacing: 0;
+
+  .q-icon {
+    font-size: 14px;
+  }
+
+  &:hover {
+    opacity: 0.92;
+  }
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--q-primary);
+  border: 1px solid var(--q-primary);
+}
+
+.btn-cancel,
+.cancel-btn,
+.btn-ok,
+.ok-btn,
+.save-btn,
+.btn-save {
+  width: 88px;
+}
+
+.btn-cancel:hover,
+.cancel-btn:hover,
+.btn-ok:hover,
+.ok-btn:hover,
+.save-btn:hover,
+.btn-save:hover {
+  opacity: 1;
+}
+
+.btn-cancel,
+.cancel-btn {
+  background: #fff;
+  color: #6B7280;
+  border-color: #D1D5DB;
+}
+
+// --- Table -----------------------------------------------------------------
+.q-table {
+  td, th {
+    padding: 0 8px;
+    height: var(--table-row-height);
+  }
+  thead {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+  thead th {
+    background: #F9FAFB;
+    color: #374151;
+    font-weight: 500;
+  }
+  &--horizontal-separator thead th {
+    border-bottom: 1px solid var(--table-border-color);
+  }
+  tbody tr {
+    transition: background-color 0.15s;
+  }
+  tbody tr:hover {
+    background: rgba(22, 119, 255, 0.04);
+  }
+
+  .persistant-top-row,
+  .persistant-bottom-row {
+    height: 6px;
+  }
+  .persistant-top-row *,
+  .persistant-bottom-row * {
+    position: absolute;
+    border: 0 !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--body-background);
+  }
+  .persistant-bottom-row * {
+    margin-top: 30px;
+  }
+}
+
+.q-table__bottom--nodata {
+  min-height: 240px;
+  font-size: 14px;
+  color: #9CA3AF;
+}
+
+// --- Stepper ---------------------------------------------------------------
+.q-stepper {
+  box-shadow: none;
+  background: transparent;
+
+  .q-stepper__header {
+    margin-bottom: 16px;
+
+    .q-stepper__header--border {
+      border: 0;
+    }
+    .q-stepper__label {
+      margin-top: 5px !important;
+    }
+    .q-stepper__tab:not(:first-child) {
+      margin-left: 60px;
+    }
+    .q-stepper__dot::after {
+      margin-left: 16px;
+    }
+    .q-stepper__dot::before {
+      margin-right: 16px;
+    }
+  }
+}
+
+// --- Breadcrumbs -----------------------------------------------------------
+.breadcrumbs {
+  background: var(--background);
+  padding: 0 16px 0 20px;
+  height: 44px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 44px;
+  color: #6B7280;
+
+  & > div,
+  & > div > div,
+  & > div > button {
+    margin-top: unset;
+  }
+
+  .q-breadcrumbs__separator {
+    width: 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 44px;
+    color: #D1D5DB;
+  }
+  .q-btn {
+    @extend .breadcrumb-back-btn;
+    .q-btn__wrapper {
+      min-height: 1em;
+      padding-bottom: 0;
+    }
+  }
+}
+
+// --- Pagination helper -----------------------------------------------------
+.pagination-go-to-page {
+  margin-left: 4px;
+  vertical-align: middle;
+  line-height: 20px;
+  display: inline-flex;
+  align-items: center;
+
+  label {
+    display: inline-block;
+  }
+
+  .q-field__control {
+    max-width: 48px;
+    height: 24px;
+    font-size: 12px;
+    padding: 0 0 0 4px;
+    margin-right: 4px;
+  }
+
+  button {
+    line-height: 12px;
+    margin-left: 4px;
+    max-width: 40px;
+    padding: 0;
+  }
+}
+
+// --- Carousel / misc -------------------------------------------------------
+.q-carousel__slide {
+  padding: 0;
+}
+
+// --- Dialog card / warning -------------------------------------------------
+.basic-dialog-card {
+  .action-buttons {
+    min-height: 64px;
+    margin-bottom: 0;
+    position: relative;
+    border-top: 1px solid #E5E7EB;
+  }
+
+  .warning {
+    font-size: 12px;
+    font-weight: 400;
+    color: #EA0732;
+    margin: 0 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
+// --- Free-field wrapper baseline -------------------------------------------
+.free-field-wrapper {
+  margin: 16px 0;
+}
+
+// --- Page skeleton helpers (used by Layout + each page) --------------------
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 16px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin-right: 8px;
+
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.page-toolbar {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & > * {
+    margin: 0 8px 8px 0;
+
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.page-content {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 16px;
+  min-height: 200px;
+}

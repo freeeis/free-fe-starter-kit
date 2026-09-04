@@ -1,0 +1,205 @@
+// ============================================================================
+// Layout layer — admin shell, side menu, toolbar, footer
+// ----------------------------------------------------------------------------
+// Layer 3 of the cascade. Holds the admin-layout shell rules. Only token
+// values vary across themes; geometry and component placement live here.
+// ============================================================================
+
+// --- Admin shell root ------------------------------------------------------
+.admin-layout,
+.login-layout,
+.register-layout,
+.recover-layout {
+  background: var(--body-background);
+
+  // Keep the legacy stepper left alignment behaviour.
+  .step-left {
+    .q-stepper__tab {
+      flex: 0 0 auto;
+    }
+    .q-stepper__header {
+      justify-content: flex-start;
+    }
+  }
+
+  // Shared simple-field behaviour (used by every admin page).
+  .simple-field {
+    flex: 1;
+  }
+
+  // Shared active state for menu items / nav rows.
+  .q-item.q-router-link--active,
+  .q-item--active {
+    background: rgba(22, 119, 255, 0.08);
+  }
+
+  // Centered notification text.
+  .q-notification .q-notification__message {
+    text-align: center;
+  }
+
+  // Free-field search chrome.
+  .free-field-search .q-field__prepend {
+    flex-wrap: wrap;
+  }
+  .free-field-search .simple-field .q-field__prepend {
+    max-width: calc(100% - 48px);
+
+    .q-chip__content {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .free-field-search .simple-field.empty .q-field__prepend {
+    display: none;
+  }
+  .free-field-search .has-data {
+    input,
+    textarea {
+      display: none;
+    }
+  }
+}
+
+// --- Top toolbar -----------------------------------------------------------
+.admin-main-toolbar {
+  height: 56px;
+  padding: 0 24px;
+
+  .admin-logo {
+    width: auto;
+    height: 32px;
+  }
+
+  .q-avatar .e-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-name {
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    white-space: nowrap;
+    color: #fff;
+
+    .date-label {
+      margin-top: 2px;
+      font-size: 11px;
+      line-height: 12px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+  }
+
+  .user-profile-btn {
+    color: #fff;
+  }
+}
+
+// --- Side menu (LeveledMenus) ----------------------------------------------
+.leveled-menu-wrapper {
+  min-width: 220px;
+  max-width: 220px;
+  padding: 0;
+}
+
+.leveled-menu {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+
+  .q-item {
+    min-height: 40px !important;
+    padding: 0 12px;
+  }
+  .q-expansion-item {
+    margin: 0 4px;
+
+    .q-item__section--avatar {
+      min-width: 28px !important;
+
+      i {
+        font-size: 16px;
+      }
+    }
+    .q-expansion-item__content {
+      padding-left: 0 !important;
+    }
+  }
+  .q-item.q-router-link--active,
+  .q-item--active {
+    background: rgba(22, 119, 255, 0.08);
+    color: var(--q-primary);
+    font-weight: 600;
+    border-radius: 4px;
+  }
+}
+
+// --- Page container --------------------------------------------------------
+.admin-page {
+  min-width: $contentMinWidth;
+  max-width: $contentMaxWidth;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.admin-main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100%;
+  background: transparent;
+
+  .q-table__container {
+    box-shadow: none;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+  }
+
+  .summary-head-wrapper {
+    background: var(--background);
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    height: 100px;
+    margin-bottom: 16px;
+    padding: 0 16px;
+  }
+}
+
+// --- Footer ----------------------------------------------------------------
+.backend-footer {
+  height: 48px;
+  background: var(--background);
+  border-top: 1px solid var(--table-border-color);
+  color: #6B7280;
+  font-size: 13px;
+
+  & > div {
+    width: 100%;
+  }
+}
+
+// --- User profile menu -----------------------------------------------------
+.user-profile-menu {
+  .logout-btn {
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0;
+  }
+}
+
+// --- Free-field warning/error state (shared with form layer) ---------------
+.free-field--error {
+  border: 1px solid var(--q-negative) !important;
+  border-radius: 5px;
+}

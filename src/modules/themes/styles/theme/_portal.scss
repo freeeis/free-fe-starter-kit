@@ -1,0 +1,148 @@
+// ============================================================================
+// Portal layer — public-facing site (separate from admin layout)
+// ----------------------------------------------------------------------------
+// Used by the public portal at /portal. Kept in its own file so the admin
+// layer above does not have to carry rules the admin pages never use.
+// ============================================================================
+
+.portal-layout {
+  .sliding-news {
+    padding: 0 18px;
+    font-size: 16px;
+
+    &-title { padding-right: 16px; }
+
+    .sliding-news-label {
+      font-weight: 600;
+      font-size: 16px;
+
+      .sliding-news-label-icon { font-size: 18px; }
+    }
+    .sliding-news-right { height: 100%; }
+    .sliding-news-close-btn {
+      font-size: 12px;
+      padding: 0;
+      margin: 0 18px 0 24px;
+    }
+  }
+
+  .portal-main-toolbar {
+    height: 60px;
+    padding: 0 50px;
+
+    .portal-logo {
+      width: 391px;
+      height: 49px;
+      margin: 5px 0;
+    }
+    .portal-main-toolbar-buttons .e-icon {
+      width: 18px;
+      height: 18px;
+    }
+    .portal-main-toolbar-buttons {
+      .q-btn,
+      .welcome-info {
+        margin-left: 39px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .q-img { display: block; }
+    }
+  }
+
+  .portal-main-menu {
+    height: 60px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+
+    & > div > a {
+      min-width: 110px;
+      margin: 0 4px;
+    }
+    .active,
+    .q-btn:active {
+      font-weight: 600;
+      background: #D9E8F2;
+      border-radius: 5px;
+    }
+  }
+
+  .portal-sliding-head {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .portal-main-content-wrapper {
+    .filter-area {
+      .free-field-wrapper {
+        .simple-field { margin-right: 12px; }
+
+        .field-label {
+          width: auto;
+          min-width: 56px;
+          margin: 0 4px;
+          font-size: 12px;
+          font-weight: 400;
+          vertical-align: middle;
+
+          &::after { content: ''; }
+        }
+        .q-field__before { padding: 0; }
+        .q-field__control {
+          max-width: 150px;
+          &::before { border: 0; border-radius: 0; }
+        }
+        .keyword {
+          flex-grow: 1 !important;
+          & * { flex-grow: 1 !important; }
+          .q-field__control {
+            width: 100% !important;
+            max-width: 100%;
+          }
+        }
+      }
+      .query-btn { @extend .btn-primary; }
+      .clear-btn { @extend .btn-secondary; }
+    }
+  }
+}
+
+.main-footer {
+  padding: 15px 50px 45px 50px;
+
+  .footer-logo {
+    width: 391px;
+    height: 49px;
+  }
+  .footer-menu-title {
+    height: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 41px;
+  }
+  .footer-menu-title-dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .q-item__label--caption {
+    margin-left: 8px;
+    height: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 36px;
+    white-space: nowrap;
+
+    .text { padding-bottom: 2px; }
+  }
+  .q-item--active * { font-weight: 600; }
+  .footer-qrcode {
+    font-size: 128px;
+    width: 128px;
+    height: 128px;
+    cursor: pointer;
+  }
+}
